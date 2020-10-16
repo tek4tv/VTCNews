@@ -45,7 +45,29 @@
             $("#body-content").html(data);
         });
     }
+    var i =1;  
+    self.clickPlay = function () {        
+        // Change src attribute of image          
        
+        if ($("#play-pause").val() % 2 == 0) {
+            $("#play-pause").attr("src", "/fonts/icon/play.png");
+            i++;
+            $("#play-pause").val(i);
+            $("#audio-play").get(0).pause();
+            console.log($("#play-pause").val())
+        } else {
+            $("#play-pause").attr("src", "/fonts/icon/pause.png");
+            i++;
+            $("#play-pause").val(i);
+            $("#audio-play").get(0).load();          
+            console.log($("#play-pause").val())
+        }
+    }
+    self.closeAudio = function () {
+        $("#audio-play").get(0).pause();
+        $("#close-audio").css('visibility', 'hidden');
+    }
+
 }
 $(function () {
     ko.cleanNode(document.getElementById("body-content"));

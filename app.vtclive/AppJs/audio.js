@@ -11,9 +11,27 @@
             return JSON.parse(item);
         }
     };
+
     self.scrollToTop = function () {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
+    }
+
+    self.loadData = function () {
+        self.loadAudioPodcast();
+        self.loadAudioPodcasts();
+        self.sideBar();
+    }
+    self.sideBar = function () {
+        $.ajax({
+            url: '/Home/SideBar',
+            type: 'GET',
+            contentType: 'application/html; charset=utf-8',
+            dataType: 'html'
+        }).done(function (data) {
+
+            $("#input-sidebar").html(data);
+        });
     }
     self.backAudio = function () {
         $.ajax({
@@ -38,6 +56,7 @@
             self.scrollToTop();
         });
     }
+
     self.audioPodcast = function () {
         $.ajax({
             url: '/Home/AudioPodcast',
@@ -50,6 +69,7 @@
 
         });
     }
+
     self.audioBook = function () {
         $.ajax({
             url: '/Home/AudioBook',
@@ -84,8 +104,7 @@
         }).done(function (data) {
             var item = [];
             item.push(data[0]) 
-            var url = "https://vodovp.tek4tv.vn/" + self.convertToJson(data[0].Image)[0].Url;
-           
+            var url = "https://vodovp.tek4tv.vn/" + self.convertToJson(data[0].Image)[0].Url;          
             self.imagePoster(self.convertToKoObject(url))
             self.podcast.removeAll();   
             $.each(item, function (index, item) {
@@ -108,34 +127,38 @@
             })
             $.each(imgs, function (index, item) {
                 $.each(item, function (index, img) {
-                    console.log(img);
+                    
                 })
-            })         
-            
+            })                     
         }); 
     }
+
+    self.audioSelected = ko.observable() 
+    self.playAudio = function (item) {    
+        var url = " https://vodovp.tek4tv.vn/" + self.convertToJson(item.Image())[0].Url;
+        var path = item.Path();
+        console.log(item)
+        self.audioSelected(item);
+        var text = item.Title()
+        $("#name").text(text.substring(0, 20));     
+        $("#img-selected").attr("src", url);
+        $("#play-pause").attr("src", "/fonts/icon/pause.png");
+        $("#close-audio").css({ 'visibility': '' });
+        var audio = $("#audio-play");
+        $("#audio-play").attr(
+            'src', path
+        );
+        audio.load();              
+    }
+    console.log(self.audioSelected())
     
 
-    /*self.isImageStorage = function (item) {
-        if (item.ThumbNail() === null || item.ThumbNail().length === 0) {
-            return '/BackEnd/assets/global/img/no_thumb.jpg';
-        }
-        var ext = item.ThumbNail().split('.').pop().toLowerCase();
-        var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
-        if ($.inArray(ext, fileExtension, 0) === -1) {
-            return '/BackEnd/assets/global/img/no_thumb.jpg';
-        } else {
-            var listRemote = item.RemoteStorage().split('#');
-            var url = "https://vodovp.tek4tv.vn/";
-            return url + "/" + item.ThumbNail();
-        }
-    };*/
-
+    
 }
 $(function () {
     ko.cleanNode(document.getElementById("body-content"));
     var audioModel = new AudioModel();
-    audioModel.loadAudioPodcast();
-    audioModel.loadAudioPodcasts();
+   
+    audioModel.loadData();
     ko.applyBindings(audioModel, document.getElementById("body-content"));
 });

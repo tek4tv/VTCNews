@@ -24,6 +24,10 @@ namespace app.vtclive.Controllers
         {
             return PartialView("_Video");
         }
+        public PartialViewResult VideoDetail()
+        {
+            return PartialView("_VideoDetail");
+        }
         public PartialViewResult AudioMusic()
         {
             return PartialView("_AudioMusic");
@@ -40,6 +44,10 @@ namespace app.vtclive.Controllers
         {
             return PartialView("_AudioDetail");
         }
-        
+        public PartialViewResult SideBar()
+        {
+            return PartialView("_SideBar");
+        }
+
     }
 }

@@ -45,6 +45,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GenLinkImage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Users\maito\OneDrive\Desktop\GenLinkImage.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -169,6 +173,7 @@
     <Content Include="AppJs\audioPodcast.js" />
     <Content Include="AppJs\homeApp.js" />
     <Content Include="AppJs\layoutApp.js" />
+    <Content Include="AppJs\video.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -195,7 +200,11 @@
     <Content Include="fonts\icon\icon2.png" />
     <Content Include="fonts\icon\icon3.png" />
     <Content Include="fonts\icon\icon4.png" />
+    <Content Include="fonts\icon\left.png" />
     <Content Include="fonts\icon\logo-vtcnews.png" />
+    <Content Include="fonts\icon\pause.png" />
+    <Content Include="fonts\icon\play.png" />
+    <Content Include="fonts\icon\right.png" />
     <Content Include="fonts\icon\vov-fm89.png" />
     <Content Include="fonts\icon\vov-giaothong.png" />
     <Content Include="fonts\icon\vov-tv.png" />
@@ -242,8 +251,10 @@
     <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\knockout.validation.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\prettify.js" />
     <Content Include="Scripts\swiper-bundle.min.js" />
+    <Content Include="Scripts\vi.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -266,6 +277,8 @@
     <Content Include="Views\Home\_AudioPodcast.cshtml" />
     <Content Include="Views\Home\_AudioBook.cshtml" />
     <Content Include="Views\Home\_AudioDetail.cshtml" />
+    <Content Include="Views\Home\_SideBar.cshtml" />
+    <Content Include="Views\Home\_VideoDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
