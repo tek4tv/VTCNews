@@ -11,14 +11,16 @@
     <link href="~/Content/layout.css" rel="stylesheet" />
     <link href="~/Content/swiper-bundle.min.css" rel="stylesheet" />
     <link href="~/Content/prettify.css" rel="stylesheet" />
+    <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
+
 </head>
 <body>
 
     @*Main*@
-    <div id="main" >
+    <div id="main">
         @RenderBody()
     </div>
-    <div  class="container opacity-background">
+    <div class="container opacity-background">
         <div class="d-flex justify-content-end" style="position: fixed; bottom: 130px; right: 20px;  z-index: 1000;">
             <img src="~/fonts/icon/icon-live.png" width=70 height=70 />
         </div>
@@ -37,7 +39,7 @@
             <img id="img-selected" src="" alt="img" class="img-fluid" style="padding:4px; width:100% ;height:50px" />
         </div>
         <div style="width:50%;  ">
-            <p style="padding-left:5%; background-color:white"><span style="font-weight: bold; height: 100%; padding-top:5%;font-size: 16px;" ><marquee behavior="scroll" scrollamount="1" direction="left" id="name"></marquee> </span> <br /><span style="color: #b2b2b2" name="author"></span></p>
+            <p style="padding-left:5%; background-color:white"><span style="font-weight: bold; height: 100%; padding-top:5%;font-size: 16px;"><marquee behavior="scroll" scrollamount="1" direction="left" id="name"></marquee> </span> <br /><span style="color: #b2b2b2" name="author"></span></p>
         </div>
         <div class="d-flex d-flex justify-content-around" style="width:30%; background-color:white; margin-left:5%">
             <div style="width:15%; margin-top:10%;">
@@ -60,7 +62,7 @@
         </div>
     </div>
 
-    <div id="avg-nav-bar" class="opacity-background"> 
+    <div id="avg-nav-bar" class="opacity-background">
         <button class="select-button selected" data-bind="click: $root.homeApp">
             <i class="demo-icon icon-home-outline"></i>
             <span>Trang chủ</span>
@@ -82,13 +84,16 @@
             <span>Cá nhân</span>
         </button>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="~/Scripts/swiper-bundle.min.js"></script>
     <script src="~/Scripts/jquery-3.4.1.js"></script>
     <script src="~/Scripts/moment.min.js"></script>
-    <script src="~/Scripts/vi.js"></script>    
+    <script src="~/Scripts/vi.js"></script>
+    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+    <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
     <script src="https://kit.fontawesome.com/e5c3f46e36.js" crossorigin="anonymous"></script>
     <script src="~/Scripts/jquery.slimscroll.min.js"></script>
     <script src="~/Scripts/prettify.js"></script>
@@ -96,7 +101,7 @@
     <script src="/Scripts/knockout.mapping-latest.js"></script>
     <script src="/Scripts/knockout.validation.min.js"></script>
     <script src="/Scripts/knockout-postbox.min.js"></script>
-    <script>  
+    <script>
         $('.select-button ').click(function () {
             $('.selected').removeClass('selected');
             $(this).addClass('selected');
@@ -114,6 +119,17 @@
         jQuery(document).ready(function () {
             moment.locale('vi');
         });
+
+        var VideoDetailModel = function () {
+            var self = this;
+            self.videoDetail = ko.observableArray();
+        }
+        $(function () {
+            ko.cleanNode(document.getElementById("body-content"));
+            var videoDetailModel = new VideoDetailModel();
+            ko.applyBindings(videoDetailModel, document.getElementById("body-content"));
+        })
+
     </script>
     @RenderSection("scripts", required: false)
 

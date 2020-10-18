@@ -125,8 +125,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Api\AudioController.cs" />
-    <Compile Include="Api\HomeController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -190,13 +188,16 @@
     <Content Include="fonts\icon\icon-audio-tym.png" />
     <Content Include="fonts\icon\icon-audio.png" />
     <Content Include="fonts\icon\icon-cam.png" />
+    <Content Include="fonts\icon\icon-facebook.png" />
     <Content Include="fonts\icon\icon-home.png" />
     <Content Include="fonts\icon\icon-live.png" />
     <Content Include="fonts\icon\icon-micro.png" />
     <Content Include="fonts\icon\icon-nofi.png" />
     <Content Include="fonts\icon\icon-share.png" />
+    <Content Include="fonts\icon\icon-twtter.png" />
     <Content Include="fonts\icon\icon-user.png" />
     <Content Include="fonts\icon\icon-video.png" />
+    <Content Include="fonts\icon\icon-zalo.png" />
     <Content Include="fonts\icon\icon2.png" />
     <Content Include="fonts\icon\icon3.png" />
     <Content Include="fonts\icon\icon4.png" />
@@ -278,7 +279,6 @@
     <Content Include="Views\Home\_AudioBook.cshtml" />
     <Content Include="Views\Home\_AudioDetail.cshtml" />
     <Content Include="Views\Home\_SideBar.cshtml" />
-    <Content Include="Views\Home\_VideoDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -364,6 +364,22 @@ div.scrollmenu {
 }
 .text-icon {
     color: white;
-    font-size: 15px;
+    font-size: 15px; 
+}
+.style-ratio {   
+    position: relative;
+    width: 100%;
+    padding-top: 66.66%; /* 3:2 Aspect Ratio */
+}
+.text-18px {
+    font-size: 18px;
+    color: #515151;
     
+}
+.div-style-ratio-1-6 {
+    background-color: #f3f3f3;
+    position: relative;
+    width: 100%;
+    padding-top: 10px ;
+    padding-bottom:10px;
 }

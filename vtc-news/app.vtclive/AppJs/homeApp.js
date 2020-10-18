@@ -36,7 +36,7 @@
     self.homeMenus = ko.observableArray();
     self.loadMenu = function () {
         $.ajax({
-            url: "https://localhost:44343/api/home/news/menu",
+            url: "https://api.vtcnews.tek4tv.vn/api/home/news/menu",
             type: 'GET'
         }).done(function (data) {
             self.homeMenus.removeAll();           
@@ -52,7 +52,7 @@
     self.firstGetarticleHots = ko.observableArray();
     self.loadFirstGetarticleHots = function () {
         $.ajax({
-            url: "/api/home/news/getarticlehot",
+            url: "https://api.vtcnews.tek4tv.vn/api/home/news/getarticlehot",
             type: 'GET'
         }).done(function (data) {
             self.firstGetarticleHots.removeAll();           
@@ -62,7 +62,7 @@
     }
     self.loadGetarticleHot = function () {
         $.ajax({
-            url: "/api/home/news/getarticlehot",
+            url: "https://api.vtcnews.tek4tv.vn/api/home/news/getarticlehot",
             type: 'GET'
         }).done(function (data) {
             self.getarticleHots.removeAll();
@@ -77,7 +77,7 @@
     self.getChannelHots = ko.observableArray();
     self.loadGetChannelHots = function () {
         $.ajax({
-            url: "/api/home/news/getchannelhot",
+            url: "https://api.vtcnews.tek4tv.vn/api/home/news/getchannelhot",
             type: 'GET'
         }).done(function (data) {
             self.getChannelHots.removeAll();
@@ -92,7 +92,7 @@
     self.GetArticleSuggestionHome = ko.observableArray();
     self.loadGetArticleSuggestionHome = function () {
         $.ajax({
-            url: "/api/home/news/GetArticleSuggestionHome",
+            url: "https://api.vtcnews.tek4tv.vn/api/home/news/GetArticleSuggestionHome",
             type: 'GET'
         }).done(function (data) {
             self.GetArticleSuggestionHome.removeAll();
@@ -106,7 +106,7 @@
     self.GetVideoHome = ko.observableArray();
     self.loadGetVideoHome = function () {
         $.ajax({
-            url: "api/home/news/GetVideoHome",
+            url: "https://api.vtcnews.tek4tv.vn/api/home/news/GetVideoHome",
             type: 'GET'
         }).done(function (data) {
             console.log(data.length-1)
@@ -118,7 +118,7 @@
     self.GetVideoHome4 = ko.observableArray();
     self.loadGetVideoHome4 = function () {
         $.ajax({
-            url: "api/home/news/GetVideoHome",
+            url: "https://api.vtcnews.tek4tv.vn/api/home/news/GetVideoHome",
             type: 'GET'
         }).done(function (data) {
             self.GetVideoHome4.removeAll();

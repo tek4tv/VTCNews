@@ -99,7 +99,7 @@
     self.imagePoster = ko.observable();
     self.loadAudioPodcast = function () {
         $.ajax({
-            url: "/api/audio/episode",
+            url: "https://api.vtcnews.tek4tv.vn/api/audio/episode",
             type: 'GET'
         }).done(function (data) {
             var item = [];
@@ -116,7 +116,7 @@
 
     self.loadAudioPodcasts = function () {
         $.ajax({
-            url: "/api/audio/episode",
+            url: "https://api.vtcnews.tek4tv.vn/api/audio/episode",
             type: 'GET'
         }).done(function (data) {                    
             self.podcasts.removeAll();

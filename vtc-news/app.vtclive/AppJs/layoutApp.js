@@ -68,6 +68,8 @@
         $("#close-audio").css('visibility', 'hidden');
     }
 
+    
+
 }
 $(function () {
     ko.cleanNode(document.getElementById("body-content"));
