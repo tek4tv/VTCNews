@@ -201,6 +201,7 @@ div.scrollmenu {
         text-decoration: none;
     }
 .size-content{
+    margin-top:1px;
     font-size:15px;
 }
 
@@ -218,7 +219,7 @@ div.scrollmenu {
 .p-content {
     font-size: 18px;
     font-weight: bold;
-    line-height: 20px;
+    
 }
 .carousel-indicators li {
     width: 10px !important;

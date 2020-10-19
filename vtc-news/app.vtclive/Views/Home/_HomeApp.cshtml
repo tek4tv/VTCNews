@@ -38,7 +38,7 @@
     <div class="container" data-bind="foreach: getarticleHots">
         <div class="d-flex" style="width:100%">
             <div style="width:40%">
-                <img class="img-fluid img-content" style="height:92px;"  data-bind="attr: { src: image16_9 }" />
+                <img class="img-fluid img-content"  data-bind="attr: { src: image16_9 }" />
             </div>
             <div style="width:60%; margin-left:5%">
                 <p class="p-content" data-bind="text: title"></p>
@@ -59,10 +59,8 @@
                     <img class="img-fluid img-content d-block w-100" data-bind="attr: { src: image16_9 }"
                          alt="First slide">
                     <p class="p-content" data-bind="text: title"></p>
-                </div>
-                
+                </div>                
             </div>
-
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
         </div>
@@ -77,8 +75,7 @@
                 <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(publishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: categoryName"></span></p>
             </div>
         </div>
-        <hr class="hr-bottom-parent" />
-       
+        <hr class="hr-bottom-parent" />      
     </div>
 
     <div class="container" style="background-color:#1f2242; ">
@@ -88,20 +85,20 @@
         <div style="width:100%" data-bind="foreach: GetVideoHome">
             <div class="img">
                 <img src="~/fonts/icon/icon-video.png" class="icon-audio" height=50 width=50 />
-                <img class="img-fluid img-content"  data-bind="attr: { src: image16_9 }" />
+                <img class="img-fluid img-content" data-bind="attr: { src: image16_9 }" />
             </div>
             <p style="color:white; font-size:25px"><strong data-bind="text: title"></strong></p>
         </div>
-        <hr style="border: 1px solid #161933" />     
-            <div  class="d-flex flex-wrap justify-content-between" data-bind="foreach: GetVideoHome4">
-                <div style="width:48%; " >
-                    <div class="img">
-                        <img src="~/fonts/icon/icon-video.png" class="icon-audio" height=50 width=50 />
-                        <img class="img-fluid img-content" data-bind="attr: { src: image16_9 }" />
-                    </div>
-                    <p style="color:white; font-size:15px" data-bind="text: title"></p>
+        <hr style="border: 1px solid #161933" />
+        <div class="d-flex flex-wrap justify-content-between" data-bind="foreach: GetVideoHome4">
+            <div style="width:48%; ">
+                <div class="img">
+                    <img src="~/fonts/icon/icon-video.png" class="icon-audio" height=50 width=50 />
+                    <img class="img-fluid img-content" data-bind="attr: { src: image16_9 }" />
                 </div>
-            </div>         
+                <p style="color:white; font-size:15px" data-bind="text: title"></p>
+            </div>
+        </div>
         <div class="d-flex justify-content-center" style="padding-bottom:20px">
             <button class="button button-0 button-1" data-bind="click: $root.videoApp">Xem thêm</button>
         </div>
@@ -261,10 +258,7 @@
         </div>
     </div> 
 </div>
-
-
-<script>
-   
+<script>  
     var swiper = new Swiper('.swiper-container', {
         pagination: {
             el: '.swiper-pagination',
