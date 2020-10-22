@@ -1,4 +1,4 @@
-﻿ <!--ko if: $root.mode() == "videos" -->
+﻿ 
 <div style="position:fixed;top: 0; width: 100%;z-index:1001">
     <div class="side-nav">
         <nav class="navbar navbar-light ">
@@ -7,7 +7,7 @@
             <div class="d-flex justify-content-between opacity-background" style="width:100%;">
                 <div>
                     <a class="navbar-brand" href="#" style="padding-top:0px">
-                        <span style="font-size:16px;cursor:pointer; color:white" onclick="openNav()">&#9776; </span>
+                        <span style="font-size:16px;cursor:pointer; color:white" onclick="openNav()"><i class="demo-icon icon-menu"></i> </span>
                     </a>
                 </div>
                 <div style="margin-top:5px">
@@ -20,7 +20,7 @@
         </nav>
     </div>
 </div>
-<div onclick="closeNav()" class="opacity-background" style=" margin-bottom:200px; margin-top:48px;" data-bind="foreach: GetVideoHomes">
+<div onclick="closeNav()" class="opacity-background" style=" margin-bottom:100px; margin-top:48px;" data-bind="foreach: videoHomes">
     <div style="width:100%" data-bind="click: $root.loadByVideoByID">
         <div class="img">
             <img src="~/fonts/icon/icon-video.png" class="icon-audio" height=50 width=50 />
@@ -33,5 +33,5 @@
         </div>
     </div>
 </div>
-<!-- /ko -->
+
 <script src="~/AppJs/video.js"></script>

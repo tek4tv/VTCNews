@@ -48,6 +48,10 @@ namespace app.vtclive.Controllers
         {
             return PartialView("_SideBar");
         }
-
+        public PartialViewResult NewsDetail()
+        {
+            return PartialView("_NewsDetail");
+        }
+        
     }
 }

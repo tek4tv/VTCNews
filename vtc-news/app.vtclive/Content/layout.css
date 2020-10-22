@@ -3,22 +3,23 @@
     padding: 0;
 }
 body {
-    font-family: 'Roboto', sans-serif !important;
+    
     font-size: 13px;
     transition: background-color .5s;
 }
-
-
 @font-face {
-    font-family: 'fontello';
+    
+   font-family: 'fontello';
     src: url('../fonts/fontello.woff') format('woff'),
         url('../fonts/fontello.woff2') format('woff2'), 
         url('../fonts/fontello.ttf') format('truetype'), 
         url('../fonts/fontello.svg') format('svg'),
-        url('../fonts/fontello.eot') format('embedded-opentype');
+        url('../fonts/fontello.eot') format('embedded-opentype');      
      font-weight: normal;
      font-style: normal;
 }
+
+
 .demo-icon {
     font-family: "fontello";
     font-style: normal;
@@ -127,7 +128,7 @@ button:focus {
     background-color: white;
     overflow-x: hidden;
     padding-top: 20px;
-    border-right: 1px solid gray;
+    
 }
 
     /* Style the sidenav links and the dropdown button */
@@ -201,8 +202,8 @@ div.scrollmenu {
         text-decoration: none;
     }
 .size-content{
-    margin-top:1px;
-    font-size:15px;
+    margin-top:10px;
+    font-size:1em;
 }
 
 .hr-bottom {
@@ -210,16 +211,21 @@ div.scrollmenu {
   opacity:0.4;
 }
 .hr-bottom-parent {
+   
     border: -0.4px solid gray;
     opacity: 0.4;
 }
 .img-content {
-    border-radius: 5px;    
+    border-radius: 2px;
+    margin-top: 5px;
+   
 }
 .p-content {
     font-size: 18px;
     font-weight: bold;
-    
+    margin-bottom: 0rem;
+    line-height: initial;
+    text-align:left;
 }
 .carousel-indicators li {
     width: 10px !important;
@@ -296,29 +302,7 @@ div.scrollmenu {
 }
 
 
-.swiper-container {
-    width: 100%;
-    height: 100%;
-}
 
-.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-}
 
 .img {
     position: relative;
@@ -383,4 +367,63 @@ div.scrollmenu {
     width: 100%;
     padding-top: 10px ;
     padding-bottom:10px;
+}
+.p-text-home-1 {
+    font-size: 24px;
+}
+
+
+.div-4-3 {
+    position: relative;
+    width: 100%;
+    padding-top: 70%;
+    border-radius: 5px;
+}
+.img-4-3 {
+    position: absolute;
+    padding-top: -70%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.div-3-2 {
+    position: relative;
+    width: 100%;
+    padding-top: 70%;
+}
+.img-3-2 {
+    position: absolute;
+    padding-top: -70%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    width:50%;
+    text-align: center;
+    font-size: 1.2em;
+    background: #fff;
+    margin-bottom:40px;
+    /* Center slide text vertically */
+    background-color:#da9912;
+   
+   
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
 }

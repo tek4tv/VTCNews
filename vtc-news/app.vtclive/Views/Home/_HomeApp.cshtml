@@ -1,51 +1,58 @@
-﻿<div style="position:fixed;top: 0; width: 100%;z-index:1001" >
+﻿<!--ko if: $root.mode() == "" -->
+<div style="position:fixed;top: 0; width: 100%;z-index:1001">
     <div class="side-nav">
         <nav class="navbar navbar-light ">
             <div id="input-sidebar">
 
             </div>
             <div class="d-flex justify-content-between opacity-background" style="width:100%;">
-                <div >
+                <div>
                     <a class="navbar-brand" href="#" style="padding-top:0px">
-                        <span style="font-size:16px;cursor:pointer; color:white" onclick="openNav()">&#9776; </span>
+                        <span style="font-size:16px;cursor:pointer; color:white" onclick="openNav()"><i class="demo-icon icon-menu"></i></span>
                     </a>
                 </div>
                 <div style="margin-top:5px">
                     <img src="~/fonts/icon/logo-vtcnews.png" style="height:30px; width:80px" />
                 </div>
-                <div >
-                    <i  class="demo-icon icon-search" style="color:white; font-size:16px; padding-top:10px;"></i>
+                <div>
+                    <i class="demo-icon icon-search" style="color:white; font-size:16px; padding-top:10px;"></i>
                 </div>
             </div>
         </nav>
     </div>
     <div style="margin-top: -10px;" class="opacity-background">
-        <div class="scrollmenu" data-bind="foreach: homeMenus">
-            <a href="#"></a>
-            <a href="#" data-bind="text: title"></a>
+        <div class="scrollmenu">
+            <a href="#">
+                <i class="demo-icon icon-home-outline"></i>
+            </a>
+            <!--ko foreach: $root.homeMenus -->
+            <a href="#" data-bind="click: $root.selectHomeMenu" ><span data-bind="text: title"></span></a>
+            <!-- /ko -->
         </div>
     </div>
 </div>
-<div onclick="closeNav()" class="opacity-background" style=" margin-bottom:200px; margin-top:88px;">
+<div onclick="closeNav()" class="opacity-background" style=" margin-bottom:100px; margin-top:88px;">
     <div style="width:100%" data-bind="foreach: firstGetarticleHots">
-        <img class="img-fluid "  data-bind="attr: { src: image16_9 }"/>
+        <img class="img-fluid " data-bind="attr: { src: image16_9 }" />
         <div class="container " style="margin-top:10px">
-            <p style="font-size:24px"><strong data-bind="text: title"></strong> <span><i class="fas fa-video" style="color:#a3161d"></i></span> </p>
+            <p style="font-size:24px; line-height: initial;text-align:left;"><strong data-bind="text: title"></strong> <span><i class="fas fa-video" style="color:#a3161d"></i></span> </p>
             <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(publishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: categoryName"></span></p>
             <hr class="hr-bottom" />
         </div>
     </div>
-    <div class="container" data-bind="foreach: getarticleHots">
+    <div class="container" data-bind="foreach: articleHots">
         <div class="d-flex" style="width:100%">
             <div style="width:40%">
-                <img class="img-fluid img-content"  data-bind="attr: { src: image16_9 }" />
+                <div class="div-4-3 ">
+                    <img class="img-content img-4-3" data-bind="attr: { src: image16_9 }" />
+                </div>
             </div>
             <div style="width:60%; margin-left:5%">
                 <p class="p-content" data-bind="text: title"></p>
                 <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(publishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: categoryName"></span></p>
             </div>
         </div>
-        <hr class="hr-bottom-parent" />        
+        <hr class="hr-bottom-parent" />
     </div>
     <div style="background-color:#da9912">
         <div style="padding:12px;">
@@ -53,50 +60,60 @@
                 <img src="~/fonts/icon/icon3.png" width=45 height=45 />   <span><strong>Chuyên đề nóng</strong></span>
             </h4>
         </div>
-        <div class="swiper-container" >
-            <div class=" swiper-wrapper" data-bind="foreach: getChannelHots">
-                <div style="width:50%; margin-left:10px;">
-                    <img class="img-fluid img-content d-block w-100" data-bind="attr: { src: image16_9 }"
-                         alt="First slide">
-                    <p class="p-content" data-bind="text: title"></p>
-                </div>                
+        <div class="container">
+            <div class="swiper-container ">
+                <div class="swiper-wrapper " data-bind="foreach: channelHots">
+                    <div class="swiper-slide ">
+                        <div class="div-3-2">
+                            <img class="img-3-2 " data-bind="attr: { src: image16_9 }">
+                        </div>
+                        <div>
+                            <p class="p-content" style="font-size: 18px;padding-top:10px;" data-bind="text: title"></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
         </div>
     </div>
-    <div class="container " style="margin-top:15px" data-bind="foreach: GetArticleSuggestionHome">
+
+    <div class="container " style="margin-top:15px" data-bind="foreach: articleSuggestionHome1">
         <div class="d-flex" style="width:100%">
             <div style="width:40%">
-                <img class="img-fluid img-content" style="height:92px;"  data-bind="attr: { src: image16_9 }"/>
+                <div class="div-4-3">
+                    <img class="img-content img-4-3" data-bind="attr: { src: image16_9 }" />
+                </div>
             </div>
-            <div style="width:60%; margin-left:5%">
+            <div style="width:60%; margin-left:5%;">
                 <p class="p-content" data-bind="text: title"></p>
                 <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(publishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: categoryName"></span></p>
             </div>
         </div>
-        <hr class="hr-bottom-parent" />      
+        <hr class="hr-bottom-parent" />
     </div>
 
     <div class="container" style="background-color:#1f2242; ">
         <div>
             <h3 style="color:white; padding:12px; padding-left:0px"><span> <img src="~/fonts/icon/icon2.png" height=45 width=45 /></span> Video</h3>
         </div>
-        <div style="width:100%" data-bind="foreach: GetVideoHome">
-            <div class="img">
-                <img src="~/fonts/icon/icon-video.png" class="icon-audio" height=50 width=50 />
-                <img class="img-fluid img-content" data-bind="attr: { src: image16_9 }" />
+        <div style="width:100%" data-bind="foreach: videoHome">
+            <div data-bind="click: $root.loadByVideoByID">
+                <div class="img div-3-2">
+                    <img src="~/fonts/icon/icon-video.png" class="icon-audio" style="z-index:2" height=50 width=50 />
+                    <img class="img-3-2 img-content" data-bind="attr: {src: $root.getImage($data, 'Thumbnail')}" />
+                </div>
+                <p style="color:white; font-size:24px; line-height: initial;text-align:left; padding-top:5px;">
+                    <strong data-bind="text: Name"></strong>
+                </p>
             </div>
-            <p style="color:white; font-size:25px"><strong data-bind="text: title"></strong></p>
         </div>
         <hr style="border: 1px solid #161933" />
-        <div class="d-flex flex-wrap justify-content-between" data-bind="foreach: GetVideoHome4">
-            <div style="width:48%; ">
-                <div class="img">
-                    <img src="~/fonts/icon/icon-video.png" class="icon-audio" height=50 width=50 />
-                    <img class="img-fluid img-content" data-bind="attr: { src: image16_9 }" />
+        <div class="d-flex flex-wrap justify-content-between" data-bind="foreach: videoHomes">
+            <div style="width:48%; " data-bind="click: $root.loadByVideoByID">
+                <div class="div-3-2 img">
+                    <img src="~/fonts/icon/icon-video.png" style="z-index:2" class="icon-audio" height=50 width=50 />
+                    <img class="img-3-2 img-content" data-bind="attr: {src: $root.getImage($data, 'Thumbnail')}" />
                 </div>
-                <p style="color:white; font-size:15px" data-bind="text: title"></p>
+                <p style="color:white; font-size:1.3em; padding-top:5px; text-align:left; line-height:initial" data-bind="text: Name"></p>
             </div>
         </div>
         <div class="d-flex justify-content-center" style="padding-bottom:20px">
@@ -104,34 +121,16 @@
         </div>
     </div>
 
-    <div class="container " style="margin-top:15px">
+    <div class="container " style="margin-top:15px" data-bind="foreach: articleSuggestionHome2">
         <div class="d-flex" style="width:100%">
             <div style="width:40%">
-                <img class="img-fluid img-content" style="height:92px;" src="~/Content/imgs/meo.jpg" />
+                <div class="div-4-3">
+                    <img class="img-content img-4-3" data-bind="attr: { src: image16_9 }" />
+                </div>
             </div>
-            <div style="width:60%; margin-left:5%">
-                <p class="p-content">Khai trừ Đảng với 5 người liên quan đến vụ án Vũ 'nhôm'</p>
-                <p class="size-content"><span style="opacity:0.5">12 giờ trước</span> <span style="color:#a3161d">Thời sự</span></p>
-            </div>
-        </div>
-        <hr class="hr-bottom-parent" />
-        <div class="d-flex" style="width:100%">
-            <div style="width:40%">
-                <img class="img-fluid img-content" style="height:92px;" src="~/Content/imgs/meo.jpg" />
-            </div>
-            <div style="width:60%; margin-left:5%">
-                <p class="p-content">Khai trừ Đảng với 5 người liên quan đến vụ án Vũ 'nhôm'</p>
-                <p class="size-content"><span style="opacity:0.5">12 giờ trước</span> <span style="color:#a3161d">Thời sự</span></p>
-            </div>
-        </div>
-        <hr class="hr-bottom-parent" />
-        <div class="d-flex" style="width:100%">
-            <div style="width:40%">
-                <img class="img-fluid img-content" style="height:92px;" src="~/Content/imgs/meo.jpg" />
-            </div>
-            <div style="width:60%; margin-left:5%">
-                <p class="p-content">Khai trừ Đảng với 5 người liên quan đến vụ án Vũ 'nhôm'</p>
-                <p class="size-content"><span style="opacity:0.5">12 giờ trước</span> <span style="color:#a3161d">Thời sự</span></p>
+            <div style="width:60%; margin-left:5%;">
+                <p class="p-content" data-bind="text: title"></p>
+                <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(publishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: categoryName"></span></p>
             </div>
         </div>
         <hr class="hr-bottom-parent" />
@@ -224,45 +223,50 @@
             </div>
         </div>
         <hr />
-        <div>
+        <div class="container " style="margin-top:15px" data-bind="foreach: articleSuggestionHome3">
             <div class="d-flex" style="width:100%">
                 <div style="width:40%">
-                    <img class="img-fluid img-content" style="height:92px;" src="~/Content/imgs/meo.jpg" />
+                    <div class="div-4-3">
+                        <img class="img-content img-4-3" data-bind="attr: { src: image16_9 }" />
+                    </div>
                 </div>
-                <div style="width:60%; margin-left:5%">
-                    <p class="p-content">Khai trừ Đảng với 5 người liên quan đến vụ án Vũ 'nhôm'</p>
-                    <p class="size-content"><span style="opacity:0.5">12 giờ trước</span> <span style="color:#a3161d">Thời sự</span></p>
-                </div>
-            </div>
-            <hr class="hr-bottom-parent" />
-            <div class="d-flex" style="width:100%">
-                <div style="width:40%">
-                    <img class="img-fluid img-content" style="height:92px;" src="~/Content/imgs/meo.jpg" />
-                </div>
-                <div style="width:60%; margin-left:5%">
-                    <p class="p-content">Khai trừ Đảng với 5 người liên quan đến vụ án Vũ 'nhôm'</p>
-                    <p class="size-content"><span style="opacity:0.5">12 giờ trước</span> <span style="color:#a3161d">Thời sự</span></p>
-                </div>
-            </div>
-            <hr class="hr-bottom-parent" />
-            <div class="d-flex" style="width:100%">
-                <div style="width:40%">
-                    <img class="img-fluid img-content" style="height:92px;" src="~/Content/imgs/meo.jpg" />
-                </div>
-                <div style="width:60%; margin-left:5%">
-                    <p class="p-content">Khai trừ Đảng với 5 người liên quan đến vụ án Vũ 'nhôm'</p>
-                    <p class="size-content"><span style="opacity:0.5">12 giờ trước</span> <span style="color:#a3161d">Thời sự</span></p>
+                <div style="width:60%; margin-left:5%;">
+                    <p class="p-content" data-bind="text: title"></p>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(publishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: categoryName"></span></p>
                 </div>
             </div>
             <hr class="hr-bottom-parent" />
         </div>
-    </div> 
+    </div>
 </div>
-<script>  
-    var swiper = new Swiper('.swiper-container', {
-        pagination: {
-            el: '.swiper-pagination',
-        },
-    });
-</script>
+<!-- /ko -->
+<!--ko if: $root.mode() == "selectedMenu" -->
+<div style="position:fixed;top: 0; width: 100%;z-index:1001">
+    <div class="side-nav">
+        <nav class="navbar navbar-light ">         
+            <div class="d-flex justify-content-between opacity-background" style="width:100%;">
+                <div data-bind="click: $root.backHomeMenu">
+                    <a class="navbar-brand" href="#" style="padding-top:0px">
+                        <span style="font-size:16px;cursor:pointer; color:white" onclick="openNav()"><i class="demo-icon icon-left-4" style="color:white"></i></span>
+                    </a>
+                </div>
+                <div style="margin-top:5px">
+                    <img src="~/fonts/icon/logo-vtcnews.png" style="height:30px; width:80px" />
+                </div>
+                <div>
+                    <i class="demo-icon icon-search" style="color:white; font-size:16px; padding-top:10px;"></i>
+                </div>
+            </div>
+        </nav>
+    </div>   
+    <div style="margin-top: -10px;">
+        <div class="scrollmenu">
+            <!--ko foreach: $root.selectHomeMenuDetail -->
+            <a href="#" data-bind="text: title"></a>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>
+<!-- /ko -->
+
 <script src="~/AppJs/homeApp.js"></script>

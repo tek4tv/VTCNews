@@ -95,7 +95,7 @@
 
     self.podcasts = ko.observableArray().reverse();
     self.podcast = ko.observableArray();
-    self.lengthPodcast = ko.observable();
+    self.podcastLength = ko.observable();
     self.imagePoster = ko.observable();
     self.loadAudioPodcast = function () {
         $.ajax({
@@ -110,7 +110,7 @@
             $.each(item, function (index, item) {
                 self.podcast.push(self.convertToKoObject(item))                
             })
-            self.lengthPodcast(data.length);
+            self.podcastLength(data.length);
         });           
     }
 
@@ -162,3 +162,6 @@ $(function () {
     audioModel.loadData();
     ko.applyBindings(audioModel, document.getElementById("body-content"));
 });
+
+
+

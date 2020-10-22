@@ -15,7 +15,7 @@
 
     self.podcasts = ko.observableArray();
     self.podcast = ko.observableArray();
-    self.lengthPodcast = ko.observable();
+    self.podcastLenth = ko.observable();
     self.imagePoster = ko.observable();
     self.loadAudioPodcast = function () {
         $.ajax({
@@ -31,7 +31,7 @@
             $.each(item, function (index, item) {
                 self.podcast.push(self.convertToKoObject(item))
             })
-            self.lengthPodcast(data.length);
+            self.podcastLenth(data.length);
         });
         console.log(self.podcast())
         console.log(self.imagePoster())

@@ -4,26 +4,24 @@
     Layout = "~/Views/Shared/_LayoutVideoDetail.cshtml";
 }
 
-<div style="position:fixed;top: 0; width: 100%;z-index:1001">
-    <div class="side-nav">
-        <nav class="navbar navbar-light ">
-            <div class="d-flex justify-content-between" style="width:100%;">
-                <div class="backtoHome">
-                    <a class="navbar-brand" href="#">
-                        <span><i class="fas fa-arrow-left" style="width:30px;padding-top:5px; color:white"></i></span>
-                    </a>
-                </div>
-                <div style="margin-top:5px">
-                    <img src="~/fonts/icon/logo-vtcnews.png" style="height:30px; width:80px" />
-
-                </div>
-                <div>
-                    <i class="demo-icon icon-search" style="color:white; font-size:16px; padding-top:10px;"></i>
-                </div>
+<div class="side-nav">
+    <nav class="navbar navbar-light ">
+        <div class="d-flex justify-content-between opacity-background" style="width:100%;">
+            <div class="backtoHome">
+                <a class="navbar-brand" href="#" style="padding-top:0px">
+                    <span style="font-size:16px;cursor:pointer; color:white" onclick="openNav()"><i class="demo-icon icon-left-4" style="color:white"></i></span>
+                </a>
             </div>
-        </nav>
-    </div>
+            <div style="margin-top:5px">
+                <img src="~/fonts/icon/logo-vtcnews.png" style="height:30px; width:80px" />
+            </div>
+            <div>
+                <i class="demo-icon icon-search" style="color:white; font-size:16px; padding-top:10px;"></i>
+            </div>
+        </div>
+    </nav>
 </div>
+
 @section scripts {
     <script src="~/AppJs/header.js?v=3"></script>
 }

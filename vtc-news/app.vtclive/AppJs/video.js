@@ -16,10 +16,8 @@
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
-    self.loadData = function () {
-        //self.loadGetVideoHomes();
-        self.sideBar();
-       // self.loadGetImageThumbnail();
+    self.loadData = function () {      
+        self.sideBar();      
         self.loadVideos();
         self.mode('videos')
     }
@@ -44,7 +42,7 @@
             $("#input-sidebar").html(data);
         });
     }
-    self.GetVideoHomes = ko.observableArray();   
+    self.videoHomes = ko.observableArray();   
     self.getImage = function (item, type) {
         $.each(self.convertToJson(item.Image()), function (idx, img) {
             if (img.Type == type) {
@@ -59,19 +57,15 @@
             url: "https://api.vtcnews.tek4tv.vn/api/playlist/all",
             type: 'GET'
         }).done(function (data) {
-            self.GetVideoHomes.removeAll();              
+            self.videoHomes.removeAll();              
            $.each(data.Media, function (index, item) {                
-              self.GetVideoHomes.push(self.convertToKoObject(item));                             
+              self.videoHomes.push(self.convertToKoObject(item));                             
             })               
            
         });
     }
 
-    self.loadSelectedVideo = function (item) {
-        alert(item.Path())
-    }
-   
-    self.getVideoByID = ko.observable();
+    
     self.loadByVideoByID = function (item) {       
         var url = window.location.origin + "/VideoDetail/Index/" + item.PrivateID();     
         if (navigator.userAgent.match(/Android/i)

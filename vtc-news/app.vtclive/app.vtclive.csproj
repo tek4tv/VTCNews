@@ -245,6 +245,19 @@
     <Content Include="fonts\fontello.eot" />
     <Content Include="fonts\fontello.ttf" />
     <Content Include="fonts\fontello.woff2" />
+    <Content Include="fonts\font-text\HelveticaNeue-Light.ttf" />
+    <Content Include="fonts\font-text\HelveticaNeue-MediumItalic.ttf" />
+    <Content Include="fonts\font-text\HelveticaNeue-Thin.ttf" />
+    <Content Include="fonts\font-text\HelveticaNeue-ThinItalic.ttf" />
+    <Content Include="fonts\font-text\helveticaneue.ttf" />
+    <Content Include="fonts\font-text\helveticaneuebold.ttf" />
+    <Content Include="fonts\font-text\helveticaneuebolditalic.ttf" />
+    <Content Include="fonts\font-text\helveticaneuecondensedblack.ttf" />
+    <Content Include="fonts\font-text\helveticaneueitalic.ttf" />
+    <Content Include="fonts\font-text\helveticaneuelightitalic.ttf" />
+    <Content Include="fonts\font-text\helveticaneuemedium.ttf" />
+    <Content Include="fonts\font-text\helveticaneueultralight.ttf" />
+    <Content Include="fonts\font-text\helveticaneueultralightitalic.ttf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -287,6 +300,8 @@
     <Content Include="Views\VideoDetail\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutVideoDetail.cshtml" />
     <Content Include="Views\Header\Index.cshtml" />
+    <Content Include="Views\Home\_NewsDetail.cshtml" />
+    <Content Include="Views\Home\_MenuDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
