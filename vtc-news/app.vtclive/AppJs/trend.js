@@ -42,6 +42,7 @@
         });   
         $(window).scroll(function () {          
             $element = $('#body-content');
+            $loadding = $('#loadding');
             if ($(window).scrollTop() + $(window).height() >= $element.height()) {
                 if (isBusy == true) {
                     return false;
@@ -51,6 +52,7 @@
                 }
                 isBusy = true;
                 page++;
+                $loadding.removeClass('hidden');
                 $.ajax({
                     url: "https://api.vtcnews.tek4tv.vn/api/home/news/trending/" + page,
                     type: 'GET'
@@ -59,6 +61,7 @@
                     $.each(data, function (index, item) {
                         self.trends.push(self.convertToKoObject(item))
                     })
+                    $loadding.addClass('hidden');
                     isBusy = false
                 });   
             }
