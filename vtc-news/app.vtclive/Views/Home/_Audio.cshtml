@@ -1,13 +1,13 @@
-﻿<div style="position:fixed;top: 0; width: 100%;z-index:1001">
+﻿<div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
     <div class="side-nav">
         <nav class="navbar navbar-light ">
             <div id="input-sidebar">
 
             </div>
-            <div class="d-flex justify-content-between opacity-background" style="width:100%;" >
+            <div class="d-flex justify-content-between opacity-background" style="width:100%;">
                 <div>
                     <a class="navbar-brand" href="#" style="padding-top:0px">
-                        <span style="font-size:16px;cursor:pointer; color:white" onclick="openNav()">&#9776; </span>
+                        <span style="font-size:16px;cursor:pointer; color:white" onclick="openNav()"><i class="demo-icon icon-menu"></i></span>
                     </a>
                 </div>
                 <div style="margin-top:5px">
@@ -19,12 +19,21 @@
             </div>
         </nav>
     </div>
+    <div style="margin-top: -10px;" class="opacity-background">
+        <div class="scrollmenu">
+            <a href="#">
+                <i class="demo-icon icon-home-outline"></i>
+            </a>
+            <!--ko foreach: $root.homeMenus -->
+            <a href="#" data-bind="click: $root.selectHomeMenu"><span data-bind="text: title"></span></a>
+            <!-- /ko -->
+        </div>
+    </div>
 </div>
 <div onclick="closeNav()">
-    <div style="background-color:#fff9cc; " id="bg-audio" class="opacity-background">
+    <div style="background-color:#fff9cc; margin-top:80px; " id="bg-audio" class="opacity-background load-hidden">
         <div style="margin: 2%">
-            <div>
-                <h4>Podcast</h4>
+            <div>              
                 <h3 style="color:black; padding:12px; padding-left:0px"><span><i class="demo-icon icon-podcast"></i></span> Podcast</h3>
             </div>
             <div data-bind=" click: $root.audioDetail">
@@ -45,7 +54,7 @@
                     <div class="audio-podcast" style="width:49%; background-color:white">
                         <div class="img img-text-bottom-left">
                             <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
-                            <img class="img-fluid img-content" style="height:125px;" src="~/Content/imgs/meo.jpg" />
+                            <img class="img-fluid img-content"  src="~/Content/imgs/meo.jpg" />
                             <div class="bottom-left"><span>10 tập</span></div>
                         </div>
                         <div class="container" style="background-color:white; padding-top:5px; padding-bottom:5px;border-radius: 5px;">
@@ -55,7 +64,7 @@
                     <div class="audio-podcast" style="width:49%; background-color:white">
                         <div class="img img-text-bottom-left">
                             <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
-                            <img class="img-fluid img-content" style="height:125px;" src="~/Content/imgs/meo.jpg" />
+                            <img class="img-fluid img-content"  src="~/Content/imgs/meo.jpg" />
                             <div class="bottom-left"><span>10 tập</span></div>
                         </div>
                         <div class="container" style="background-color:white; padding-top:5px; padding-bottom:5px;border-radius: 5px;">
@@ -91,7 +100,7 @@
                 <div class="audio-podcast" style="width:49%; background-color:white">
                     <div class="img img-text-bottom-left">
                         <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
-                        <img class="img-fluid img-content" style="height:125px;" src="~/Content/imgs/meo.jpg" />
+                        <img class="img-fluid img-content"  src="~/Content/imgs/meo.jpg" />
                         <div class="bottom-left"><span>10 tập</span></div>
                     </div>
                     <div class="container" style="background-color:white; padding-top:5px; padding-bottom:5px;border-radius: 5px;">
@@ -101,7 +110,7 @@
                 <div class="audio-podcast" style="width:49%; background-color:white">
                     <div class="img img-text-bottom-left">
                         <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
-                        <img class="img-fluid img-content" style="height:125px;" src="~/Content/imgs/meo.jpg" />
+                        <img class="img-fluid img-content"  src="~/Content/imgs/meo.jpg" />
                         <div class="bottom-left"><span>10 tập</span></div>
                     </div>
                     <div class="container" style="background-color:white; padding-top:5px; padding-bottom:5px">
@@ -113,7 +122,7 @@
                 <div class="audio-podcast" style="width:49%; background-color:white">
                     <div class="img img-text-bottom-left">
                         <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
-                        <img class="img-fluid img-content" style="height:125px;" src="~/Content/imgs/meo.jpg" />
+                        <img class="img-fluid img-content"  src="~/Content/imgs/meo.jpg" />
                         <div class="bottom-left"><span>10 tập</span></div>
                     </div>
                     <div class="container" style="background-color:white; padding-top:5px; padding-bottom:5px;border-radius: 5px;">
@@ -123,7 +132,7 @@
                 <div class="audio-podcast" style="width:49%; background-color:white">
                     <div class="img img-text-bottom-left">
                         <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
-                        <img class="img-fluid img-content" style="height:125px;" src="~/Content/imgs/meo.jpg" />
+                        <img class="img-fluid img-content"  src="~/Content/imgs/meo.jpg" />
                         <div class="bottom-left"><span>10 tập</span></div>
                     </div>
                     <div class="container" style="background-color:white; padding-top:5px; padding-bottom:5px;border-radius: 5px;">
@@ -156,7 +165,7 @@
                 <div class="audio-podcast" style="width:49%; background-color:white">
                     <div class="img img-text-bottom-left">
                         <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
-                        <img class="img-fluid img-content" style="height:125px;" src="~/Content/imgs/meo.jpg" />
+                        <img class="img-fluid img-content"  src="~/Content/imgs/meo.jpg" />
                         <div class="bottom-left"><span>10 ca khúc</span></div>
                     </div>
                     <div class="container" style="background-color:white; padding-top:5px; padding-bottom:5px;border-radius: 5px;">
@@ -166,7 +175,7 @@
                 <div class="audio-podcast" style="width:49%; background-color:white">
                     <div class="img img-text-bottom-left">
                         <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
-                        <img class="img-fluid img-content" style="height:125px;" src="~/Content/imgs/meo.jpg" />
+                        <img class="img-fluid img-content"  src="~/Content/imgs/meo.jpg" />
                         <div class="bottom-left"><span>10 tập</span></div>
                     </div>
                     <div class="container" style="background-color:white; padding-top:5px; padding-bottom:5px">
@@ -178,7 +187,7 @@
                 <div class="audio-podcast" style="width:49%; background-color:white">
                     <div class="img img-text-bottom-left">
                         <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
-                        <img class="img-fluid img-content" style="height:125px;" src="~/Content/imgs/meo.jpg" />
+                        <img class="img-fluid img-content"  src="~/Content/imgs/meo.jpg" />
                         <div class="bottom-left"><span>10 ca khúc</span></div>
                     </div>
                     <div class="container" style="background-color:white; padding-top:5px; padding-bottom:5px;border-radius: 5px;">
@@ -188,7 +197,7 @@
                 <div class="audio-podcast" style="width:49%; background-color:white">
                     <div class="img img-text-bottom-left">
                         <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
-                        <img class="img-fluid img-content" style="height:125px;" src="~/Content/imgs/meo.jpg" />
+                        <img class="img-fluid img-content"  src="~/Content/imgs/meo.jpg" />
                         <div class="bottom-left"><span>10 ca khúc</span></div>
                     </div>
                     <div class="container" style="background-color:white; padding-top:5px; padding-bottom:5px;border-radius: 5px;">
@@ -202,5 +211,4 @@
         </div>
     </div>
 </div>
-
 <script src="~/AppJs/audio.js?v=3"></script>

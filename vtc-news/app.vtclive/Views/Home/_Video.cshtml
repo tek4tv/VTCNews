@@ -1,5 +1,4 @@
-﻿ 
-<div style="position:fixed;top: 0; width: 100%;z-index:1001">
+﻿<div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
     <div class="side-nav">
         <nav class="navbar navbar-light ">
             <div id="input-sidebar">
@@ -20,7 +19,7 @@
         </nav>
     </div>
 </div>
-<div onclick="closeNav()" class="opacity-background" style=" margin-bottom:100px; margin-top:48px;" data-bind="foreach: videoHomes">
+<div onclick="closeNav()" class="opacity-background load-hidden" style=" margin-bottom:100px; margin-top:56px; " data-bind="foreach: videoHomes">
     <div style="width:100%" data-bind="click: $root.loadByVideoByID">
         <div class="img">
             <img src="~/fonts/icon/icon-video.png" class="icon-audio" height=50 width=50 />

@@ -68,8 +68,27 @@
         $("#close-audio").css('visibility', 'hidden');
     }
 
-    
+    self.live = function () {
+        $.ajax({
+            url: '/Home/Live',
+            type: 'GET',
+            contentType: 'application/html; charset=utf-8',
+            dataType: 'html'
+        }).done(function (data) {
+            $("#body-content").html(data);
+        });
+    }
 
+    self.trend = function () {
+        $.ajax({
+            url: '/Home/Trend',
+            type: 'GET',
+            contentType: 'application/html; charset=utf-8',
+            dataType: 'html'
+        }).done(function (data) {
+            $("#body-content").html(data);
+        });
+    }
 }
 $(function () {
     ko.cleanNode(document.getElementById("body-content"));

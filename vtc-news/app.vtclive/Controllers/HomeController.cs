@@ -52,6 +52,17 @@ namespace app.vtclive.Controllers
         {
             return PartialView("_NewsDetail");
         }
-        
+        public PartialViewResult Live()
+        {
+            return PartialView("_Live");
+        }
+        public PartialViewResult Channel()
+        {
+            return PartialView("_Channel");
+        }
+        public PartialViewResult Trend()
+        {
+            return PartialView("_Trend");
+        }
     }
 }

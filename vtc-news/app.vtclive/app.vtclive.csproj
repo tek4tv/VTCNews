@@ -174,6 +174,7 @@
     <Content Include="AppJs\header.js" />
     <Content Include="AppJs\homeApp.js" />
     <Content Include="AppJs\layoutApp.js" />
+    <Content Include="AppJs\trend.js" />
     <Content Include="AppJs\video.js" />
     <Content Include="AppJs\videoDetail.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -181,6 +182,14 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\imgs\vov1.png" />
+    <Content Include="Content\imgs\vov2.png" />
+    <Content Include="Content\imgs\vov3.png" />
+    <Content Include="Content\imgs\vov4.png" />
+    <Content Include="Content\imgs\vov5.png" />
+    <Content Include="Content\imgs\vov6.png" />
+    <Content Include="Content\imgs\vovgthcm.png" />
+    <Content Include="Content\imgs\vovtv.png" />
     <Content Include="Content\layout.css" />
     <Content Include="Content\prettify.css" />
     <Content Include="Content\swiper-bundle.min.css" />
@@ -300,8 +309,9 @@
     <Content Include="Views\VideoDetail\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutVideoDetail.cshtml" />
     <Content Include="Views\Header\Index.cshtml" />
-    <Content Include="Views\Home\_NewsDetail.cshtml" />
-    <Content Include="Views\Home\_MenuDetail.cshtml" />
+    <Content Include="Views\Home\_Live.cshtml" />
+    <Content Include="Views\Home\_Channel.cshtml" />
+    <Content Include="Views\Home\_Trend.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

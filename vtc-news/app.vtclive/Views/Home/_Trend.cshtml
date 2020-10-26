@@ -1,0 +1,39 @@
+﻿<div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
+    <div class="side-nav">
+        <nav class="navbar navbar-light ">
+            <div id="input-sidebar">
+
+            </div>
+            <div class="d-flex justify-content-between opacity-background" style="width:100%;">
+                <div>
+                    <a class="navbar-brand" href="#" style="padding-top:0px">
+                        <span style="font-size:16px;cursor:pointer; color:white" onclick="openNav()"><i class="demo-icon icon-menu"></i></span>
+                    </a>
+                </div>
+                <div style="margin-top:5px">
+                    <img src="~/fonts/icon/logo-vtcnews.png" style="height:30px; width:80px" />
+                </div>
+                <div>
+                    <i class="demo-icon icon-search" style="color:white; font-size:16px; padding-top:10px;"></i>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+</div>
+<div class="container hidden-detail" style="margin-top: 70px;" data-bind="foreach: trends">
+    <div class="d-flex" style="width:100%" >
+        <div style="width:40%">
+            <div class="div-4-3 ">
+                <img class="img-content img-4-3" data-bind="attr: { src:image16_9 }" />
+            </div>
+        </div>
+        <div style="width:60%; margin-left:5%">
+            <p class="p-content" data-bind="text: Title"></p>
+            <span data-bind="if: IsVideoArticle  == 1"><i class="fas fa-video" style="color:#a3161d"></i></span>
+            <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+        </div>
+    </div>
+    <hr class="hr-bottom-parent" />
+</div>
+<script src="~/AppJs/trend.js?v=5"></script>

@@ -22,14 +22,14 @@
         @RenderBody()
     </div>
     <div class="container opacity-background">
-        <div class="d-flex justify-content-end" style="position: fixed; bottom: 130px; right: 20px;  z-index: 1000;">
-            <img src="~/fonts/icon/icon-live.png" width=70 height=70 />
+        <div class="d-flex justify-content-end" style="position: fixed; bottom: 130px; right: 20px;  z-index: 1000;" data-bind="click: $root.live">
+            <img src="~/fonts/icon/icon-live.png" width=50 height=50 />
         </div>
     </div>
     <div id="close-audio" class="d-flex opacity-background" style="position: fixed;
         width: 100%;
         height: 50px;
-        bottom: 50px;
+        bottom: 40px;
         z-index: 1000;
         border-top: solid 1px #e5e5e5;
         border-bottom: solid 1px #e5e5e5;
@@ -46,7 +46,7 @@
             <div style="width:15%; margin-top:10%;">
                 <img src="~/fonts/icon/left.png" class="img-fluid" />
             </div>
-            <div style="width:15%; margin-top:10%;" data-bind="click: $root.clickPlay">
+            <div style="width:15%; margin-top:10%; " data-bind="click: $root.clickPlay">
                 <img id="play-pause" src="~/fonts/icon/pause.png" class="img-fluid" />
             </div>
             <div style="width:15%;  margin-top:10%;">
@@ -68,7 +68,7 @@
             <i class="demo-icon icon-home-outline"></i>
             <span>Trang chủ</span>
         </button>
-        <button class="select-button " data-bind="click: $root.newApp">
+        <button class="select-button " data-bind="click: $root.trend">
             <i class="demo-icon icon-bell"></i>
             <span>Tin Mới</span>
         </button>
@@ -85,12 +85,12 @@
             <span>Cá nhân</span>
         </button>
     </div>
-    <script src="~/Scripts/swiper-bundle.min.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
     <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/swiper-bundle.min.js"></script>
     <script src="~/Scripts/moment.min.js"></script>
     <script src="~/Scripts/vi.js"></script>
     <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
@@ -103,6 +103,21 @@
     <script src="/Scripts/knockout.validation.min.js"></script>
     <script src="/Scripts/knockout-postbox.min.js"></script>
     <script>
+       @* var prevScrollpos = window.pageYOffset;
+        window.onscroll = function () {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                $("#top-header").css("visibility", "")
+                $(".load-hidden").css("margin-top", "90px")
+                $(".hidden-detail").css("margin-top", "56px")
+                
+            } else {
+                $("#top-header").css("visibility", "hidden")
+                $(".load-hidden").css("margin-top", "")
+                $(".hidden-detail").css("margin-top", "")              
+            }
+            prevScrollpos = currentScrollPos;
+        }*@
         $('.select-button ').click(function () {
             $('.selected').removeClass('selected');
             $(this).addClass('selected');

@@ -2,13 +2,10 @@
     margin: 0;
     padding: 0;
 }
-body {
-    
-    font-size: 13px;
-    transition: background-color .5s;
+body{
+    font-size:13px;
 }
-@font-face {
-    
+@font-face {  
    font-family: 'fontello';
     src: url('../fonts/fontello.woff') format('woff'),
         url('../fonts/fontello.woff2') format('woff2'), 
@@ -18,7 +15,6 @@ body {
      font-weight: normal;
      font-style: normal;
 }
-
 
 .demo-icon {
     font-family: "fontello";
@@ -55,7 +51,7 @@ body {
     right: 0;
     bottom: 0;
     width: 100%;
-    height: 50px;
+    height: 45px;
     border-top: 1px solid #e2e2e2;
     background-color: #f2f2f2;
     z-index: 999;
@@ -77,24 +73,20 @@ body {
 
         #avg-nav-bar button:active {
             background-color: #a3161d;
-            border-radius: 0 25px 0 25px;          
+            border-radius: 0 5px 0 5px;          
         }
 
         #avg-nav-bar button i {
             display: inline-block;
-            width: auto;
-            height: 26px;
-            fill: #999999;
-            padding-top:5px;
-            font-size:20px;
+            width: auto;                           
+            font-size:13px;
         }
 
         #avg-nav-bar button span {
             display: inline-block;
             width: 100%;
-            color: black;
-           
-            font-size: 15px;
+            color: black;          
+            font-size: 13px;
         }
         #avg-nav-bar button.selected i {          
             color: white;
@@ -108,8 +100,6 @@ body {
             #avg-nav-bar button.selected span {
                 color: white;
             }
-
-            
 
 button:focus {
     outline: none !important
@@ -217,7 +207,7 @@ div.scrollmenu {
 }
 .img-content {
     border-radius: 2px;
-    margin-top: 5px;
+   
    
 }
 .p-content {
@@ -319,7 +309,7 @@ div.scrollmenu {
     -webkit-box-shadow: 2px 6px 16px -8px rgba(0,0,0,0.75);
     -moz-box-shadow: 2px 6px 16px -8px rgba(0,0,0,0.75);
     box-shadow: 2px 6px 16px -8px rgba(0,0,0,0.75);
-    border-radius: 5px
+    border-radius: 1px
 }
 
 
@@ -376,12 +366,29 @@ div.scrollmenu {
 .div-4-3 {
     position: relative;
     width: 100%;
-    padding-top: 70%;
+    padding-top: 56.25%;
     border-radius: 5px;
 }
 .img-4-3 {
     position: absolute;
-    padding-top: -70%;
+    padding-top: -56.25%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.div-43 {
+    position: relative;
+    width: 100%;
+    padding-top: 79%;
+    border-radius: 5px;
+}
+
+.img-43 {
+    position: absolute;
+    padding-top: -79%;
     left: 0;
     bottom: 0;
     right: 0;
@@ -392,11 +399,11 @@ div.scrollmenu {
 .div-3-2 {
     position: relative;
     width: 100%;
-    padding-top: 70%;
+    padding-top: 56.25%;
 }
 .img-3-2 {
     position: absolute;
-    padding-top: -70%;
+    padding-top: -56.25%;
     left: 0;
     bottom: 0;
     right: 0;
@@ -427,3 +434,11 @@ div.scrollmenu {
     -webkit-align-items: center;
     align-items: center;
 }
+
+.detail img{
+    width:100%;
+}
+.detail p {
+    padding: 10px;
+}
+
