@@ -12,8 +12,6 @@
     <link href="~/Content/swiper-bundle.min.css" rel="stylesheet" />
     <link href="~/Content/prettify.css" rel="stylesheet" />
     <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
-
-
 </head>
 <body>
 
@@ -21,7 +19,7 @@
     <div id="main">
         @RenderBody()
     </div>
-    <div class="container opacity-background">
+    <div class="container opacity-background" id="img-live" style="visibility:hidden">
         <div class="d-flex justify-content-end" style="position: fixed; bottom: 130px; right: 20px;  z-index: 1000;" data-bind="click: $root.live">
             <img src="~/fonts/icon/icon-live.png" width=50 height=50 />
         </div>
@@ -103,21 +101,28 @@
     <script src="/Scripts/knockout.validation.min.js"></script>
     <script src="/Scripts/knockout-postbox.min.js"></script>
     <script>
-       @* var prevScrollpos = window.pageYOffset;
+        
+        @* var prevScrollpos = window.pageYOffset;
         window.onscroll = function () {
             var currentScrollPos = window.pageYOffset;
-            if (prevScrollpos > currentScrollPos) {
-                $("#top-header").css("visibility", "")
+            if (prevScrollpos - currentScrollPos>15) {
+                $("#top-header").css("display", "block")
                 $(".load-hidden").css("margin-top", "90px")
                 $(".hidden-detail").css("margin-top", "56px")
-                
+
             } else {
-                $("#top-header").css("visibility", "hidden")
+                $("#top-header").css("display", "none")
+               
                 $(".load-hidden").css("margin-top", "")
-                $(".hidden-detail").css("margin-top", "")              
+                $(".hidden-detail").css("margin-top", "")
             }
             prevScrollpos = currentScrollPos;
         }*@
+
+        // load img to content api
+        
+ 
+    
         $('.select-button ').click(function () {
             $('.selected').removeClass('selected');
             $(this).addClass('selected');
@@ -148,6 +153,6 @@
 
     </script>
     @RenderSection("scripts", required: false)
-
+    
 </body>
 </html>

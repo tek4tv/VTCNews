@@ -1,4 +1,75 @@
-﻿<!--ko if: $root.mode() == "" -->
+﻿<!--ko if: $root.mode() == "lazyloading" -->
+<div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
+        <div class="side-nav">
+            <nav class="navbar navbar-light ">
+                <div id="input-sidebar">
+
+                </div>
+                <div class="d-flex justify-content-between opacity-background" style="width:100%;">
+                    <div>
+                        <a class="navbar-brand" href="#" style="padding-top:0px">
+                            <span style="font-size:16px;cursor:pointer; color:white" onclick="openNav()"><i class="demo-icon icon-menu"></i></span>
+                        </a>
+                    </div>
+                    <div style="margin-top:5px">
+                        <img src="~/fonts/icon/logo-vtcnews.png" style="height:30px; width:80px" />
+                    </div>
+                    <div>
+                        <i class="demo-icon icon-search" style="color:white; font-size:16px; padding-top:10px;"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div style="margin-top: -10px;" class="opacity-background">
+            <div class="scrollmenu">
+                <a href="#" >
+                    <i class="demo-icon icon-home-outline"></i>
+                </a>
+                <!--ko foreach: $root.homeMenus -->
+                <a href="#" data-bind="click: $root.selectHomeMenu"><span data-bind="text: Title"></span></a>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+<div>
+    <div class="card br" style="margin-top:100px;">
+        <div class="wrapper">
+            <div class="comment br animate w80"></div>
+            <div class="comment br animate"></div>
+            <div class="comment br animate"></div>
+        </div>
+    </div>
+    <div class="card br">
+        <div class="wrapper">
+            <div class="comment br animate w80"></div>
+            <div class="comment br animate"></div>
+            <div class="comment br animate"></div>
+        </div>
+    </div>
+    <div class="card br">
+        <div class="wrapper">
+            <div class="comment br animate w80"></div>
+            <div class="comment br animate"></div>
+            <div class="comment br animate"></div>
+        </div>
+    </div>
+    <div class="card br">
+        <div class="wrapper">
+            <div class="comment br animate w80"></div>
+            <div class="comment br animate"></div>
+            <div class="comment br animate"></div>
+        </div>
+    </div>
+    <div class="card br">
+        <div class="wrapper">
+            <div class="comment br animate w80"></div>
+            <div class="comment br animate"></div>
+            <div class="comment br animate"></div>
+        </div>
+    </div>
+</div>
+<!-- /ko -->
+<!--ko if: $root.mode() == "" -->
 <div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
     <div class="side-nav">
         <nav class="navbar navbar-light ">
@@ -33,12 +104,11 @@
 </div>
 <div onclick="closeNav()" class="opacity-background load-hidden" style="margin-top:80px;">
     <!--ko foreach: firstGetarticleHots -->
-    <div style="width:100%" data-bind="click: $root.clickDetailNew">
+    <div style="width:100%" data-bind="click: $root.clickDetailNew" class="click-active">
         <img class="img-fluid " data-bind="attr: { src: image16_9 }" />
         <div class="container " style="margin-top:10px">
             <p style="font-size:24px; line-height: initial;text-align:left;">
                 <strong data-bind="text: Title"></strong>
-
                 <span data-bind="if: IsVideoArticle  == 1"><i class="fas fa-video" style="color:#a3161d"></i></span>
             </p>
             <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
@@ -431,7 +501,7 @@
             <img class="img-fluid img-content" data-bind="attr: { src: image16_9 }" />
         </div>
         <div class="container " style="margin-top:10px">
-            <h3><strong data-bind="text: Title"></strong>  </h3>
+            <p class="p-content"><strong data-bind="text: Title"></strong>  </p>
             <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(CreatedDate()).format('llll')"></span> </p>
             <hr class="hr-bottom" />
         </div>
@@ -459,7 +529,7 @@
             </div>
         </nav>
     </div>
-    
+
 </div>
 <!--ko foreach: channelDetail -->
 <div class="container hidden-detail" style="margin-top: 56px;">
@@ -479,4 +549,5 @@
 </div>
 <!-- /ko -->
 <!-- /ko -->
+
 <script src="~/AppJs/homeApp.js"></script>

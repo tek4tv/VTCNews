@@ -24,8 +24,7 @@
         self.loadGetArticleSuggestionHome();
         self.loadVideos()
         self.sideBar();
-       
-    }
+    } 
     self.backHomeMenu = function () {
         $.ajax({
             url: '/Home/HomeApp',
@@ -33,8 +32,9 @@
             contentType: 'application/html; charset=utf-8',
             dataType: 'html'
         }).done(function (data) {
-            $("#body-content").html(data);
             
+            $("#body-content").html(data);
+           
         });
     }
     self.sideBar = function () {
@@ -84,6 +84,7 @@
     self.articleHots = ko.observableArray();
     self.firstGetarticleHots = ko.observableArray();
     self.loadFirstGetarticleHots = function () {
+        self.mode("lazyloading")
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn/api/home/news/getarticlehot",
             type: 'GET'
@@ -91,7 +92,8 @@
             self.firstGetarticleHots.removeAll();           
             self.firstGetarticleHots.push(self.convertToKoObject(data[0]))           
             $(".div-hidden-loading").css('visibility', '');
-            console.log(data)
+            self.mode("")
+            $("#img-live").css('visibility', '');
         });
     }
     self.loadGetarticleHot = function () {
@@ -148,6 +150,15 @@
             for (var i = 0; i < data.length; i++) {               
                 self.articleSuggestionHome.push(self.convertToKoObject(data[i]))               
             }
+            
+            for (var i = 0; i < data.length; i++) {
+                console.log(data[i].ListUrlImages)
+                if (data[i].ListUrlImages.length != 0) {
+                    self.listUrlImagesData1(data[i].ListUrlImages.split(";")[data[i].ListUrlImages.split(";").length - 4])
+                    self.listUrlImagesData2(data[i].ListUrlImages.split(";")[data[i].ListUrlImages.split(";").length - 2])
+                    self.listUrlImagesData3(data[i].ListUrlImages.split(";")[data[i].ListUrlImages.split(";").length - 3])
+                }
+            }
             self.articleSuggestionHome1.removeAll();
             for (var i = 0; i < 5; i++) {
                 if (data[i].ListUrlImages.length == 0) {
@@ -155,13 +166,7 @@
                 } 
             }  
             
-            for (var i = 0; i < 5; i++) {
-                if (data[i].ListUrlImages.length != 0) {                    
-                    self.listUrlImagesData1(data[i].ListUrlImages.split(";")[data[i].ListUrlImages.split(";").length- 4])
-                    self.listUrlImagesData2(data[i].ListUrlImages.split(";")[data[i].ListUrlImages.split(";").length - 2])
-                    self.listUrlImagesData3(data[i].ListUrlImages.split(";")[data[i].ListUrlImages.split(";").length - 3])
-                }            
-            }
+           
                    
             self.articleSuggestionHome2.removeAll();                          
             for (var i = 5; i < 10; i++) {
@@ -273,8 +278,14 @@
                         self.categoryNameData.push(self.convertToKoObject(item))
                     }
                 }
-            })     
-            self.mode("newDetail");        
+            })
+           
+            self.mode("newDetail");     
+            $(".lazy").each(function () {
+                $(this).attr("src", $(this).attr("data-src"));
+                $(this).removeAttr("data-src");
+                $(this).addClass('img-fluid');
+            });
         });
     }
 
