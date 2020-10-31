@@ -105,11 +105,7 @@ button:focus {
     outline: none !important
 }
 
-.click-active:active {
-    background-color: #F3746B;
-    outline: 0;
-    transition: none;
-}
+
 
 
 /*aside-left*/
@@ -177,6 +173,12 @@ button:focus {
             font-size: 18px;
         }
 }
+
+.lazy {
+    border-radius: 2px;
+    display:block;
+}
+
 h6{
     color:#a3161d;
 }
@@ -210,11 +212,8 @@ div.scrollmenu {
     border: -0.4px solid gray;
     opacity: 0.4;
 }
-.img-content {
-    border-radius: 2px;
-   
-   
-}
+
+
 .p-content {
     font-size: 18px;
     font-weight: bold;
@@ -301,6 +300,7 @@ div.scrollmenu {
 
 .img {
     position: relative;
+    
 }
 
     .img .icon-audio {

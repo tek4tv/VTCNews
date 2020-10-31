@@ -12,6 +12,7 @@
     <link href="~/Content/swiper-bundle.min.css" rel="stylesheet" />
     <link href="~/Content/prettify.css" rel="stylesheet" />
     <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
+   
 </head>
 <body>
 
@@ -91,38 +92,18 @@
     <script src="~/Scripts/swiper-bundle.min.js"></script>
     <script src="~/Scripts/moment.min.js"></script>
     <script src="~/Scripts/vi.js"></script>
-    <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
-    <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
     <script src="https://kit.fontawesome.com/e5c3f46e36.js" crossorigin="anonymous"></script>
+
     <script src="~/Scripts/jquery.slimscroll.min.js"></script>
     <script src="~/Scripts/prettify.js"></script>
     <script src="/Scripts/knockout-3.4.2.js"></script>
     <script src="/Scripts/knockout.mapping-latest.js"></script>
     <script src="/Scripts/knockout.validation.min.js"></script>
     <script src="/Scripts/knockout-postbox.min.js"></script>
+
     <script>
-        
-        @* var prevScrollpos = window.pageYOffset;
-        window.onscroll = function () {
-            var currentScrollPos = window.pageYOffset;
-            if (prevScrollpos - currentScrollPos>15) {
-                $("#top-header").css("display", "block")
-                $(".load-hidden").css("margin-top", "90px")
-                $(".hidden-detail").css("margin-top", "56px")
-
-            } else {
-                $("#top-header").css("display", "none")
-               
-                $(".load-hidden").css("margin-top", "")
-                $(".hidden-detail").css("margin-top", "")
-            }
-            prevScrollpos = currentScrollPos;
-        }*@
-
-        // load img to content api
-        
- 
-    
+        var tab = 0;
+        var tabHome = 0;
         $('.select-button ').click(function () {
             $('.selected').removeClass('selected');
             $(this).addClass('selected');
@@ -152,7 +133,10 @@
         })
 
     </script>
+    <script src="~/Scripts/jquery.imageCache.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
     @RenderSection("scripts", required: false)
-    
+
 </body>
 </html>

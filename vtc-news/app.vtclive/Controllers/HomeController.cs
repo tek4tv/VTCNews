@@ -64,5 +64,6 @@ namespace app.vtclive.Controllers
         {
             return PartialView("_Trend");
         }
+        
     }
 }

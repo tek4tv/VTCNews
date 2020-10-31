@@ -46,9 +46,7 @@
         });
     }
     var i =1;  
-    self.clickPlay = function () {        
-        // Change src attribute of image          
-       
+    self.clickPlay = function () {         
         if ($("#play-pause").val() % 2 == 0) {
             $("#play-pause").attr("src", "/fonts/icon/play.png");
             i++;
@@ -60,7 +58,7 @@
             i++;
             $("#play-pause").val(i);
             $("#audio-play").get(0).load();          
-            console.log($("#play-pause").val())
+           
         }
     }
     self.closeAudio = function () {

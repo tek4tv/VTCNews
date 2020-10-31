@@ -272,6 +272,7 @@
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery.imageCache.js" />
     <Content Include="Scripts\jquery.slimscroll.min.js" />
     <Content Include="Scripts\knockout-3.4.2.js" />
     <Content Include="Scripts\knockout-postbox.min.js" />
@@ -310,7 +311,6 @@
     <Content Include="Views\Shared\_LayoutVideoDetail.cshtml" />
     <Content Include="Views\Header\Index.cshtml" />
     <Content Include="Views\Home\_Live.cshtml" />
-    <Content Include="Views\Home\_Channel.cshtml" />
     <Content Include="Views\Home\_Trend.cshtml" />
   </ItemGroup>
   <ItemGroup>

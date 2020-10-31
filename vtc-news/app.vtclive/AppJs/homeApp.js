@@ -16,7 +16,11 @@
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }   
-    self.loadData = function () {        
+    self.loadData = function () {
+        if (tabHome == 0) {
+            self.mode("lazyloading")
+            tabHome++;
+        }
         self.loadMenu();
         self.loadGetarticleHot();
         self.loadFirstGetarticleHots();
@@ -31,10 +35,9 @@
             type: 'GET',
             contentType: 'application/html; charset=utf-8',
             dataType: 'html'
-        }).done(function (data) {
-            
-            $("#body-content").html(data);
-           
+        }).done(function (data) {         
+            $("#body-content").html(data)
+            self.mode("")
         });
     }
     self.sideBar = function () {
@@ -43,35 +46,32 @@
             type: 'GET',
             contentType: 'application/html; charset=utf-8',
             dataType: 'html'
-        }).done(function (data) {
-            
+        }).done(function (data) {         
             $("#input-sidebar").html(data);
         });
     }
     self.homeMenus = ko.observableArray();
-    self.loadMenu = function () {
+    self.loadMenu = function () {     
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn/api/home/news/menu",
             type: 'GET'
         }).done(function (data) {
-            self.homeMenus.removeAll();           
+                 
             $.each(data, function (index, item) {
                 if (item.ParentId == null) {                   
                     self.homeMenus.push(self.convertToKoObject(item))
                 }
             })
-            console.log(data)
+            self.mode("")
         });
     }
     self.selectHomeMenuDetail = ko.observableArray();
-    self.selectHomeMenu = function (item) {
-       
+    self.selectHomeMenu = function (item) {      
         var Id = item.Id();
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn/api/home/news/menu",
             type: 'GET'
-        }).done(function (data) {
-            self.selectHomeMenuDetail.removeAll();
+        }).done(function (data) {          
             $.each(data, function (index, item) {
                 if (item.ParentId == Id) {
                     self.selectHomeMenuDetail.push(self.convertToKoObject(item))
@@ -83,8 +83,7 @@
     self.articleHotsAll = ko.observableArray();
     self.articleHots = ko.observableArray();
     self.firstGetarticleHots = ko.observableArray();
-    self.loadFirstGetarticleHots = function () {
-        self.mode("lazyloading")
+    self.loadFirstGetarticleHots = function () {      
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn/api/home/news/getarticlehot",
             type: 'GET'
@@ -94,6 +93,9 @@
             $(".div-hidden-loading").css('visibility', '');
             self.mode("")
             $("#img-live").css('visibility', '');
+            $(function () {
+                $('.lazy').lazy();
+            });
         });
     }
     self.loadGetarticleHot = function () {
@@ -114,6 +116,7 @@
     } 
     self.channelHots = ko.observableArray();
     self.loadGetChannelHots = function () {
+        $(".loadding").css("visibility", "")
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn/api/home/news/getchannelhot",
             type: 'GET'
@@ -122,17 +125,19 @@
             $.each(data, function (index, item) {
                 self.channelHots.push(self.convertToKoObject(item))
             })
-            var swiper = new Swiper('.swiper-container', {
-                slidesPerView: 2,
-                spaceBetween: 10,
-                freeMode: true,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-            });
            
         });
+
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 2,
+            spaceBetween: 10,
+            freeMode: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+        
     }
     self.articleSuggestionHome = ko.observableArray();
     self.articleSuggestionHome1 = ko.observableArray();
@@ -293,7 +298,9 @@
     
 
     self.channels = ko.observableArray();
+    
     self.loadChannel = function () {
+       
         var index = 1;
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn/api/home/news/ListChannel/" + index,
@@ -302,12 +309,16 @@
             self.channels.removeAll();
             $.each(data, function (index, item) {
                 self.channels.push(self.convertToKoObject(item))
-            })                    
+            })    
+            
         });
         self.mode("loadChannel");
+       
+        
     }
     self.channelDetail = ko.observableArray()
-    self.loadChannelDetail = function (item) {     
+    self.loadChannelDetail = function (item) {
+       
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn/api/home/news/IndexChannelPaging/1/" + item.Id(),
             type: 'GET'
@@ -316,12 +327,25 @@
             $.each(data.Items, function (index, item) {
                 self.channelDetail.push(self.convertToKoObject(item))
             }) 
+            $(".loadding").css("visibility", "")
         });
         self.mode("loadChannelDetail");
+        
     }
-    self.backChannel = function () {
-        self.mode("loadChannel");
+    self.backChannel = function () {    
+       
+        self.loadChannel()
     }
+
+    self.selectNewsDetail = function (item) {
+        $.ajax({
+            url: "https://api.vtcnews.tek4tv.vn/api//home/news/detail/" + item.Id(),
+            type: 'GET'
+        }).done(function (data) {
+           
+
+        });
+    }  
    
 }
 $(function () {
