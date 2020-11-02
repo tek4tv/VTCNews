@@ -1,0 +1,507 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-size:13px;
+}
+@font-face {  
+   font-family: 'fontello';
+    src: url('../fonts/fontello.woff') format('woff'),
+        url('../fonts/fontello.woff2') format('woff2'), 
+        url('../fonts/fontello.ttf') format('truetype'), 
+        url('../fonts/fontello.svg') format('svg'),
+        url('../fonts/fontello.eot') format('embedded-opentype');      
+     font-weight: normal;
+     font-style: normal;
+}
+
+.demo-icon {
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+    /* opacity: .8; */
+    /* For safety - reset parent styles, that can break glyph codes*/
+    font-variant: normal;
+    text-transform: none;
+    /* fix buttons height, for twitter bootstrap */
+    line-height: 1em;
+    /* Animation center compensation - margins should be symmetric */
+    /* remove if not needed */
+    margin-left: .2em;
+    /* You can be more comfortable with increased icons size */
+    /* font-size: 120%; */
+    /* Font smoothing. That was taken from TWBS */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Uncomment for 3D effect */
+    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+
+#avg-nav-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 45px;
+    border-top: 1px solid #e2e2e2;
+    background-color: #f2f2f2;
+    z-index: 999;
+    display: block;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+    #avg-nav-bar button {
+        width: 20%;
+        height: 100%;
+        border: none;
+        background-color: transparent;
+        box-sizing: border-box;
+        display: block;
+        float: left;
+        transition: all ease 0.3s;
+    }
+
+        #avg-nav-bar button:active {
+            background-color: #a3161d;
+            border-radius: 0 5px 0 5px;          
+        }
+
+        #avg-nav-bar button i {
+            display: inline-block;
+            width: auto;                           
+            font-size:13px;
+        }
+
+        #avg-nav-bar button span {
+            display: inline-block;
+            width: 100%;
+            color: black;          
+            font-size: 13px;
+        }
+        #avg-nav-bar button.selected i {          
+            color: white;
+        }
+
+        #avg-nav-bar button.selected {
+            background-color: #a3161d;
+           
+           
+        }
+            #avg-nav-bar button.selected span {
+                color: white;
+            }
+
+button:focus {
+    outline: none !important
+}
+
+
+
+
+/*aside-left*/
+.sidenav {
+    height: 100%;
+    width: 75%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: white;
+    overflow-x: hidden;
+    padding-top: 20px;
+    
+}
+
+    /* Style the sidenav links and the dropdown button */
+    .sidenav a, .dropdown-btn {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 20px;
+        color: black;
+        display: block;
+        border: none;
+        background: none;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        outline: none;        
+    }
+
+        /* On mouse-over */
+        .sidenav a:hover, .dropdown-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+
+/* Add an active class to the active dropdown button */
+.active {
+    background-color: #f0f0f0;
+    color: black;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+    display: none;  
+    padding-left: 8px;
+}
+    .dropdown-container a {
+        color: #515151;
+    }
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+    float: right;
+    padding-right: 8px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+        .sidenav a {
+            font-size: 18px;
+        }
+}
+
+.lazy {
+    border-radius: 2px;
+    display:block;
+}
+
+h6{
+    color:#a3161d;
+}
+.navbar-light {
+    background-color: #a3161d;
+}
+div.scrollmenu {
+    background-color: #a3161d;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+    div.scrollmenu a {
+        display: inline-block;
+        color: white;
+        text-align: center;
+        padding: 14px;
+        text-decoration: none;
+    }
+.size-content{
+    margin-top:10px;
+    font-size:1em;
+}
+
+.hr-bottom {
+  border: 1px solid gray;
+  opacity:0.4;
+}
+.hr-bottom-parent {
+   
+    border: -0.4px solid gray;
+    opacity: 0.4;
+}
+
+
+.p-content {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 0rem;
+    line-height: initial;
+    text-align:left;
+}
+.carousel-indicators li {
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50%;
+}
+.button-0 {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 3px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;    
+}
+.button-01 {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.button-1 {
+    background-color: #090d26;
+    color: white;
+    border: 5px solid #313556; /* Green */
+    border-radius: 40px;
+}
+.button-2 {
+    background-color: #fe6f61;  
+    border-radius: 40px;
+}
+.button-3 {
+    background-color: #138a8f;
+    border-radius: 40px;
+}
+.responsive {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+.button-4 {
+    background-color: #d2bb6c;
+    border-radius: 40px;
+}
+.button-5 {
+    background-color: #a3161d;
+    border-radius: 40px;
+}
+
+.button-6 {
+    background-color: #d2bb6c;
+    border-radius: 40px;
+    border: 5px solid #eee1ac;
+}
+
+.button-7 {
+    background-color: #c43628;
+    border-radius: 40px;
+    border: 5px solid #fe8c80;
+}
+.button-8 {
+    background-color: #138a8f;
+    border-radius: 40px;
+    border: 5px solid #81ced1;
+}
+
+
+
+
+.img {
+    position: relative;
+    
+}
+
+    .img .icon-audio {
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+    }
+
+.audio-podcast {
+    -webkit-box-shadow: 2px 6px 16px -8px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 6px 16px -8px rgba(0,0,0,0.75);
+    box-shadow: 2px 6px 16px -8px rgba(0,0,0,0.75);
+    border-radius: 1px
+}
+
+
+.img-text-bottom-left {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+.bottom-left {
+    position: absolute;
+    bottom: 6px;
+    left: 10px;
+    background-color: #050202;
+    font-size: 15px;
+    border-radius: 10px;
+    opacity: 0.8;
+}
+.bottom-left span{
+    padding:5px;   
+}
+
+.icon-detail{
+    margin-top:10%;
+}
+.icon-detail div img {
+    margin-left:30%;
+}
+.text-icon {
+    color: white;
+    font-size: 15px; 
+}
+.style-ratio {   
+    position: relative;
+    width: 100%;
+    padding-top: 66.66%; /* 3:2 Aspect Ratio */
+}
+.text-18px {
+    font-size: 18px;
+    color: #515151;
+    
+}
+.div-style-ratio-1-6 {
+    background-color: #f3f3f3;
+    position: relative;
+    width: 100%;
+    padding-top: 10px ;
+    padding-bottom:10px;
+}
+.p-text-home-1 {
+    font-size: 24px;
+}
+
+
+.div-4-3 {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 5px;
+}
+.img-4-3 {
+    position: absolute;
+    padding-top: -56.25%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.div-43 {
+    position: relative;
+    width: 100%;
+    padding-top: 79%;
+    border-radius: 5px;
+}
+
+.img-43 {
+    position: absolute;
+    padding-top: -79%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.div-3-2 {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+}
+.img-3-2 {
+    position: absolute;
+    padding-top: -56.25%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    width:50%;
+    text-align: center;
+    font-size: 1.2em;
+    background: #fff;
+    margin-bottom:40px;
+    /* Center slide text vertically */
+    background-color:#da9912;
+   
+   
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.detail img{
+    width:100%;
+}
+.detail p {
+    padding: 10px;
+}
+
+
+
+.br {
+    border-radius: 2px;
+}
+
+.w80 {
+    width: 80%;
+}
+
+.card {
+    border: 1px solid #fff;
+    
+    padding: 20px 30px;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.wrapper {
+    width: 0px;
+    animation: fullView 0.5s forwards cubic-bezier(0.250, 0.460, 0.450, 0.940);
+}
+
+.profilePic {
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+}
+
+.comment {
+    height: 10px;
+    background: #777;
+    margin-top: 20px;
+}
+
+@keyframes fullView {
+    100% {
+        width: 100%;
+    }
+}
+
+
+.animate {
+    animation: shimmer 2s infinite linear;
+    background: linear-gradient(to right, #eff1f3 4%, #e2e2e2 25%, #eff1f3 36%);
+    background-size: 1000px 100%;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
