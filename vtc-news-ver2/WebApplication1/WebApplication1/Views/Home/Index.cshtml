@@ -1,741 +1,1093 @@
-﻿<!--ko if: $root.mode() == "lazyloading" -->
-<div>
-    <div class="card br" style="margin-top:100px;">
-        <div class="wrapper">
-            <div class="comment br animate w80"></div>
-            <div class="comment br animate"></div>
-            <div class="comment br animate"></div>
+﻿<div class="avg-screen-loading" id="screen-welcome" style="display:none">
+    <img style="width:100%; height:100%" src="~/Content/imgs/lachapp.png" />
+</div>
+<div id="lazyloading" style="display:none">
+    <div>
+        <div class="card br" style="margin-top:100px;">
+            <div class="wrapper">
+                <div class="comment br animate w80"></div>
+                <div class="comment br animate"></div>
+                <div class="comment br animate"></div>
+            </div>
         </div>
-    </div>
-    <div class="card br">
-        <div class="wrapper">
-            <div class="comment br animate w80"></div>
-            <div class="comment br animate"></div>
-            <div class="comment br animate"></div>
+        <div class="card br">
+            <div class="wrapper">
+                <div class="comment br animate w80"></div>
+                <div class="comment br animate"></div>
+                <div class="comment br animate"></div>
+            </div>
         </div>
-    </div>
-    <div class="card br">
-        <div class="wrapper">
-            <div class="comment br animate w80"></div>
-            <div class="comment br animate"></div>
-            <div class="comment br animate"></div>
+        <div class="card br">
+            <div class="wrapper">
+                <div class="comment br animate w80"></div>
+                <div class="comment br animate"></div>
+                <div class="comment br animate"></div>
+            </div>
         </div>
-    </div>
-    <div class="card br">
-        <div class="wrapper">
-            <div class="comment br animate w80"></div>
-            <div class="comment br animate"></div>
-            <div class="comment br animate"></div>
+        <div class="card br">
+            <div class="wrapper">
+                <div class="comment br animate w80"></div>
+                <div class="comment br animate"></div>
+                <div class="comment br animate"></div>
+            </div>
         </div>
-    </div>
-    <div class="card br">
-        <div class="wrapper">
-            <div class="comment br animate w80"></div>
-            <div class="comment br animate"></div>
-            <div class="comment br animate"></div>
+        <div class="card br">
+            <div class="wrapper">
+                <div class="comment br animate w80"></div>
+                <div class="comment br animate"></div>
+                <div class="comment br animate"></div>
+            </div>
         </div>
     </div>
 </div>
-<!-- /ko -->
-<!--ko if: $root.mode() == "HomeApp" -->
-<div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
-    <div class="side-nav">
-        <nav class="navbar navbar-light ">
-            <div id="input-sidebar">
-            </div>
-            <div class="d-flex justify-content-between opacity-background" style="width:100%;">
-                <div>
-                    <a class="navbar-brand" href="#" style="padding-top:0px">
-                        <span style="font-size:16px;cursor:pointer; color:white" onclick="openNav()"><i class="demo-icon icon-menu"></i></span>
-                    </a>
-                </div>
-                <div style="margin-top:5px">
-                    <img src="~/fonts/icon/logo-vtcnews.png" style="height:30px; width:80px" />
-                </div>
-                <div>
-                    <i class="demo-icon icon-search" style="color:white; font-size:16px; padding-top:10px;"></i>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <div style="margin-top: -10px;" class="opacity-background">
-        <div class="scrollmenu">
-            <a href="#">
-                <i class="demo-icon icon-home-outline"></i>
-            </a>
-            <!--ko foreach: $root.homeMenus -->
-            <a href="#" data-bind="click: $root.selectHomeMenu"><span data-bind="text: Title"></span></a>
-            <!-- /ko -->
-        </div>
-    </div>
-</div>
-<div onclick="closeNav()" class="opacity-background load-hidden" style="margin-top:80px;">
-    <!--ko foreach: firstGetarticleHots -->
-    <div style="width:100%" data-bind="click: $root.clickDetailNew1" class="click-active">
-        <img class="img-fluid " data-bind="attr: { src: image16_9 }" />
-        <div class="container click-active" style="margin-top:10px">
-            <p style="font-size:24px; line-height: initial;text-align:left;">
-                <strong data-bind="text: Title"></strong>
-                <span data-bind="if: IsVideoArticle  == 1"><i class="fas fa-video" style="color:#a3161d"></i></span>
-            </p>
-            <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
-        </div>
-    </div>
-    <hr class="hr-bottom" />
-    <!-- /ko -->
-    <!--ko foreach: articleHots -->
-    <div class="container" data-bind="click: $root.clickDetailNew1">
-        <div class="d-flex " style="width:100%">
-            <div style="width:40%">
-                <div class="div-4-3 ">
-                    <img class="img-content img-4-3" data-bind="attr: { src: image16_9 }" />
-                </div>
-            </div>
-            <div style="width:60%; margin-left:5%" class=" ">
-                <p class="p-content" data-bind="text: Title"></p>
-                <span data-bind="if: IsVideoArticle  == 1"><i class="fas fa-video" style="color:#a3161d"></i></span>
-                <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
-            </div>
-        </div>
-        <hr class="hr-bottom-parent" />
-    </div>
-    <!-- /ko -->
-    <div style="background-color:#da9912;">
-        <div style="padding:12px;">
-            <h4 style="color:#a3161d" data-bind="click: $root.loadListChannel">
-                <img src="~/fonts/icon/icon3.png" width=30 height=30 />   <span class="click-active"><strong>Chuyên đề nóng</strong></span>
-            </h4>
-        </div>
-        <div class="container">
-            <div class="swiper-container ">
-                <div class="swiper-wrapper " data-bind="foreach: $root.channelHots">
-                    <div class="swiper-slide " style="width:500px" data-bind="click: $root.loadSelectedChannel">
-                        <div class="div-3-2">
-                            <img class="img-3-2" data-bind="attr: { src: image16_9 }" />
-                        </div>
-                        <div>
-                            <p class="p-content" style="font-size: 18px;padding-top:10px;" data-bind="text: Title"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--ko foreach: articleSuggestionHome -->
-    <div class="container " style="margin-top:15px" data-bind="click: $root.clickDetailNew1">
-        <div class="d-flex" style="width:100%">
-            <div style="width:40%">
-                <div class="div-4-3">
-                    <img class="img-content img-4-3" data-bind="attr: { src: image16_9 }" />
-                </div>
-            </div>
-            <div style="width:60%; margin-left:5%;">
-                <p class="p-content">
-                    <span data-bind="text: Title"></span>
-                    <!--ko if: $data.IsVideoArticle() ==1 -->
-                    <span><i class="fas fa-video" style="color:#a3161d"></i></span>
-                    <!-- /ko -->
-                </p>
-                <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
-            </div>
-        </div>
-        <hr class="hr-bottom-parent" />
-    </div>
-    <!-- /ko -->
-    <div class="container" style="background-color:#1f2242; ">
-        <div>
-            <h3 style="color:white; padding:12px; padding-left:0px"><span> <img src="~/fonts/icon/icon2.png" height=30 width=30 /></span> Video</h3>
-        </div>
-        <div style="width:100%" data-bind="foreach: videoHome">
-            <div data-bind="click: $root.loadByVideoByID">
-                <div class="img ">
-                    <img src="~/fonts/icon/icon-video.png" class="icon-audio" style="z-index:2" height=50 width=50 />
-                    <img class="img-fluid img-content" data-bind="attr: { src: 'https://image.vtc.vn/'+ ImageUrl() }" />
-                </div>
-                <p style="color:white; font-size:24px; line-height: initial;text-align:left; padding-top:5px;">
-                    <strong data-bind="text: Title"></strong>
-                </p>
-            </div>
-        </div>
-        <hr style="border: 1px solid #161933" />
-        <div class="d-flex flex-wrap justify-content-between" data-bind="foreach: videoHomes">
-            <div style="width:48%; " data-bind="click: $root.loadByVideoByID">
-                <div class=" img">
-                    <img src="~/fonts/icon/icon-video.png" style="z-index:2" class="icon-audio" height=50 width=50 />
-                    <img class="img-fluid img-content" data-bind="attr: { src: 'https://image.vtc.vn/'+ ImageUrl() }" />
-                </div>
-                <p style="color:white; font-size:1.3em; padding-top:5px; text-align:left; line-height:initial" data-bind="text: Title"></p>
-            </div>
-        </div>
-        <div class="d-flex justify-content-center" style="padding-bottom:20px">
-            <button class="button button-0 button-1">Xem thêm</button>
-        </div>
-    </div>
-    <div class="container" style="background-color:#fff7cc; ">
-        <div style="padding-top:10px;padding-bottom:10px">
-            <h3 style="color:#a3161d;">
-                <span><img src="~/fonts/icon/icon4.png" width=30 height=30 /></span> Audio
-            </h3>
-        </div>
-        <div style="width:100%">
-            <div class="img">
-                <img src="~/fonts/icon/icon-audio.png" class="icon-audio" height=50 width=50 />
-                <img class="img-fluid img-content" src="https://image.vtc.vn/resize/w1JaaFnI-oNXi_YqgetJ_zOOAJe9CHtg0//upload/2020/10/15/rao-trang--sat-lo-17103401.jpg" />
-            </div>
-            <p style=" font-size:25px"><strong>Không gian gia đình Hector-matlot</strong></p>
-            <div>
-                <button class="button button-01 button-2"><i class="demo-icon icon-book"></i> <span>Sách nói</span></button>
-            </div>
-        </div>
-        <hr style="border: 1px solid #eee1ac" />
-        <div class="d-flex">
-            <div style="width:33.33%; margin-right:10px">
-                <div class="img">
-                    <img src="~/fonts/icon/icon-audio.png" class="icon-audio" height=50 width=50 />
-                    <img class="img-responsive img-content" style="width:100%;height:150px" src="https://image.vtc.vn/resize/w1JaaFnI-oNXi_YqgetJ_zOOAJe9CHtg0//upload/2020/10/15/rao-trang--sat-lo-17103401.jpg" />
-                </div>
-
-            </div>
-            <div style="width:66.67%; ">
-                <h5><strong>Nhạc sĩ Hoàng Hà và những bài hát bất hủ</strong></h5>
-                <div>
-                    <button class="button button-01 button-3"><i class="demo-icon icon-music-2"></i> <span>Âm nhạc</span></button>
-                </div>
-            </div>
-        </div>
-        <hr style="border: -0.4px  solid #eee1ac" />
-        <div class="d-flex">
-            <div style="width:33.33%; margin-right:10px">
-                <div class="img">
-                    <img src="~/fonts/icon/icon-audio.png" class="icon-audio" height=50 width=50 />
-                    <img class="img-responsive img-content" style="width:100%;height:150px" src="https://image.vtc.vn/resize/w1JaaFnI-oNXi_YqgetJ_zOOAJe9CHtg0//upload/2020/10/15/rao-trang--sat-lo-17103401.jpg" />
-                </div>
-            </div>
-            <div style="width:66.67%; ">
-                <h5><strong>Nhạc sĩ Hoàng Hà và những bài hát bất hủ</strong></h5>
-                <div>
-                    <button class="button button-01 button-2"><i class="demo-icon icon-book"></i> <span>Sách nói</span></button>
-                </div>
-            </div>
-        </div>
-        <hr style="border: -0.4px  solid #eee1ac" />
-        <div class="d-flex">
-            <div style="width:33.33%; margin-right:10px">
-                <div class="img">
-                    <img src="~/fonts/icon/icon-audio.png" class="icon-audio" height=50 width=50 />
-                    <img class="img-responsive img-content" style="width:100%;height:150px" src="https://image.vtc.vn/resize/w1JaaFnI-oNXi_YqgetJ_zOOAJe9CHtg0//upload/2020/10/15/rao-trang--sat-lo-17103401.jpg" />
-                </div>
-            </div>
-            <div style="width:66.67%; ">
-                <h5><strong>Nhạc sĩ Hoàng Hà và những bài hát bất hủ</strong></h5>
-                <div>
-                    <button class="button button-01 button-4"><i class="demo-icon icon-podcast"></i> <span>Podcast</span></button>
-                </div>
-            </div>
-        </div>
-        <hr style="border: -0.4px  solid #eee1ac" />
-        <div class="d-flex justify-content-center" style="padding-bottom:20px">
-            <button class="button button-0 button-5">Xem thêm</button>
-        </div>
-    </div>
-    <!--ko foreach: articleSuggestionHome -->
-    <div class="container " style="margin-top:15px" data-bind="click: $root.clickDetailNew1">
-        <div class="d-flex" style="width:100%">
-            <div style="width:40%">
-                <div class="div-4-3">
-                    <img class="img-content img-4-3" data-bind="attr: { src: image16_9 }" />
-                </div>
-            </div>
-            <div style="width:60%; margin-left:5%;">
-                <p class="p-content">
-                    <span data-bind="text: Title"></span>
-                    <!--ko if: $data.IsVideoArticle() ==1 -->
-                    <span><i class="fas fa-video" style="color:#a3161d"></i></span>
-                    <!-- /ko -->
-                </p>
-                <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
-            </div>
-        </div>
-        <hr class="hr-bottom-parent" />
-    </div>
-    <!-- /ko -->
-</div>
-<!-- /ko -->
-<!--ko if: $root.mode() == "loadListChannel" -->
-<div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
-    <div class="side-nav">
-        <nav class="navbar navbar-light ">
-            <div class="d-flex justify-content-between" style="width:100%;">
-                <div data-bind="click: $root.backHomeApp">
-                    <a class="navbar-brand" href="#">
-                        <span><i class="fas fa-arrow-left" style="width:30px;padding-top:5px; color:white"></i></span>
-                    </a>
-                </div>
-                <div style="margin-top:5px">
-                    <img src="~/fonts/icon/logo-vtcnews.png" style="height:30px; width:80px" />
-
-                </div>
-                <div>
-                    <i class="demo-icon icon-search" style="color:white; font-size:16px; padding-top:10px;"></i>
-                </div>
-            </div>
-        </nav>
-    </div>
-</div>
-<div onclick="closeNav()" class="opacity-background load-hidden" style=" margin-bottom:100px; margin-top:60px;" data-bind="foreach: channels">
-    <div style="width:100%" data-bind="click: $root.loadSelectedChannel">
-        <div class="img">
-            <img class="img-fluid img-content" data-bind="attr: {src: image16_9}" />
-        </div>
-        <div class="container " style="margin-top:10px">
-            <p class="p-content"><strong data-bind="text:Title"></strong>  </p>
-            <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(CreatedDate()).fromNow()"></span> </p>
-
-        </div>
-        <hr class="hr-bottom" />
-    </div>
-</div>
-<!-- /ko -->
-<!--ko if: $root.mode() == "newListChannelDetail" -->
-<div class="detail">
+<div id="HomeApp" style="display:none">
     <div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
         <div class="side-nav">
-            <nav class="navbar navbar-light ">
+          <nav class="navbar navbar-light ">            
                 <div class="d-flex justify-content-between opacity-background" style="width:100%;">
-                    <div data-bind="click: $root.backChannelDetail">
-                        <a class="navbar-brand" href="#" style="padding-top:0px">
-                            <span style="font-size:16px;cursor:pointer; color:white" onclick="openNav()"><i class="demo-icon icon-left-4" style="color:white"></i></span>
+                    <div>
+                        <a class="navbar-brand " href="#" style="padding-top:0px" data-toggle="modal" data-target="#myModal">
+                            <i class="demo-icon icon-menu" style="color:white"></i>                            
                         </a>
                     </div>
-                    <div style="margin-top:5px">
-                        <img src="~/fonts/icon/logo-vtcnews.png" style="height:30px; width:80px" />
+                    <div >
+                        <img src="https://vtc.vn/Content/mobile/images/logo.png" style="max-height:31px"  />
                     </div>
                     <div>
-                        <i class="demo-icon icon-search" style="color:white; font-size:16px; padding-top:10px;"></i>
+                        <i class="demo-icon icon-search" style="color:white; font-size:18px; padding-top:6px;"></i>
                     </div>
                 </div>
             </nav>
         </div>
-    </div>
-    <!--ko with: $root.detailData -->
-    <div style="width:100%; padding-top:50px;">
-        <div class="container " style="margin-top:10px">
-            <p style="font-size:24px; line-height: initial;text-align:left;">
-                <strong data-bind="text: Title"></strong>
-            </p>
-            <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+        <div style="margin-top: -10px;" class="opacity-background">
+            <div class="scrollmenu">
+                <a class="clicked clicked-menu" id="clicked-menu" href="#">
+                    <i class="demo-icon icon-home-outline"></i>                   
+                </a>
+                <!--ko foreach: $root.homeMenus -->
+                <a href="#" class="clicked-menu" data-bind="click: $root.selectHomeMenu"><span data-bind="text: Title"></span></a>
+                <!-- /ko -->
+            </div>
         </div>
     </div>
-    <div class="detail " style="font-size:18px;" data-bind="html: Content">
-    </div>
-    <div class="hidden-div" style="margin-top:10px; margin-bottom:60px;">
-        <div class="div-style-ratio-1-6 d-flex d-flex justify-content-between container" style="align-items: center">
-            <div style="width:60%;align-items:center" class="d-flex d-flex justify-content-between">
-                <div class="text-18px">Chia sẻ:</div>
-                <div>
-                    <img style="height:40px; width:40px" src="~/fonts/icon/icon-facebook.png" />
+    <div class="opacity-background load-hidden" style="margin-top:80px">
+        <!--ko foreach: firstGetarticleHots -->
+        <div style="width:100%" data-bind="click: $root.clickDetailNew1" class="click-active">
+            <img class="img-fluid " data-bind="attr: { src: image16_9 }" />
+            <div class="container click-active" style="margin-top:10px">
+                <p style="font-size:24px; line-height: initial;text-align:left;">
+                    <strong data-bind="text: Title"></strong>
+                    <span data-bind="if: IsVideoArticle  == 1"><i class="fas fa-video" style="color:#a3161d"></i></span>
+                </p>
+                <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+            </div>
+        </div>
+        <hr class="hr-bottom" />
+        <!-- /ko -->
+        <!--ko foreach: articleHots -->
+        <div class="container" data-bind="click: $root.clickDetailNew1">
+            <div class="d-flex " style="width:100%">
+                <div style="width:40%">
+                    <img class="img-content img-fluid" data-bind="attr: {  src: image16_9  }" />
                 </div>
-                <div>
-                    <img style="height:40px; width:40px" src="~/fonts/icon/icon-twtter.png" />
-                </div>
-                <div>
-                    <img style="height:40px; width:40px" src="~/fonts/icon/icon-zalo.png" />
+                <div style="width:60%; margin-left:5%" class=" ">
+                    <p class="p-content" data-bind="text: Title"></p>
+                    <span data-bind="if: IsVideoArticle  == 1"><i class="fas fa-video" style="color:#a3161d"></i></span>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
                 </div>
             </div>
+            <hr class="hr-bottom-parent" />
+        </div>
+        <!-- /ko -->
+
+        <div style="background-color:#da9912;">
+            <div style="padding:12px;">
+                <!--ko if: $data.channelHots().length >0 -->
+                <h4 style="color:#a3161d" data-bind="click: $root.loadListChannel">
+                    <img src="~/fonts/icon/icon3.png" width=30 height=30 />   <span class="click-active"><strong>Chuyên đề nóng</strong></span>
+                </h4>
+                <!-- /ko -->
+            </div>
+            <div class="container">
+                <div class="d-flex flex-wrap justify-content-between" data-bind="foreach: $root.channelHots">
+                    <div style="width:48%; " data-bind="click: $root.loadSelectedChannel">
+                        <div class=" img">
+                            <img class="img-fluid img-content" data-bind="attr: { src: image16_9  }" />
+                        </div>
+                        <p class="p-content" style="font-size: 18px;padding-top:10px;" data-bind="text: Title"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--ko foreach: articleSuggestionHome -->
+        <div class="container " style="margin-top:15px" data-bind="click: $root.clickDetailNew1">
+            <div class="d-flex" style="width:100%">
+                <div style="width:40%">
+                    <div class="div-4-3">
+                        <img class="img-content img-4-3" data-bind="attr: {  src: image16_9 }" />
+                    </div>
+                </div>
+                <div style="width:60%; margin-left:5%;">
+                    <p class="p-content">
+                        <span data-bind="text: Title"></span>
+                        <!--ko if: $data.IsVideoArticle() ==1 -->
+                        <span><i class="fas fa-video" style="color:#a3161d"></i></span>
+                        <!-- /ko -->
+                    </p>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                </div>
+            </div>
+            <hr class="hr-bottom-parent" />
+        </div>
+        <!-- /ko -->
+        <div class="container" style="background-color:#1f2242; ">
+            <!--ko if: $root.videoHomes().length >0 -->
             <div>
-                <button type="button" class="btn btn-primary"><i class="far fa-thumbs-up"></i> Primary</button>
+                <h3 style="color:white; padding:12px; padding-left:0px"><span> <img src="~/fonts/icon/icon2.png" height=30 width=30 /></span> Video</h3>
             </div>
-        </div>
-        <div class="d-flex justify-content-center " style="margin-top:10px;margin-bottom:10px">
-            <button type="button" class="btn btn-danger"><i class="demo-icon icon-youtube-2"></i> Theo dõi trên Youtube</button>
-        </div>
-        <div class="text-18px container">
-            <p>
-                Tags:
-                <span style="color:blue" data-bind="foreach: $root.tags()">
-                    <span data-bind="text: TagName"></span>,
-                </span>
-            </p>
-        </div>
-
-    </div>
-    <!-- /ko -->
-    <div class="container">
-        <p style="font-size:24px; line-height: initial;text-align:left;"><strong>Thêm thông tin</strong></p>
-    </div>
-    <!--ko foreach: ListArticleRelated -->
-    <div class="container " style="margin-top:15px;" data-bind="click: $root.clickDetailNew1">
-        <div class="d-flex" style="width:100%">
-            <div style="width:40%">
-                <div class="div-4-3">
-                    <img class="img-content img-4-3" data-bind="attr: {src: 'https://image.vtc.vn/'+ ImageUrl() }" />
+            <!-- /ko -->
+            <div style="width:100%" data-bind="foreach: videoHome">
+                <div data-bind="click: $root.loadByVideoByID">
+                    <div class="img ">
+                        <img src="~/fonts/icon/icon-video.png" class="icon-audio" style="z-index:2" height=50 width=50 />
+                        <img class="img-fluid img-content" data-bind="attr: { src: 'https://image.vtc.vn/'+ ImageUrl() }" />
+                    </div>
+                    <p style="color:white; font-size:24px; line-height: initial;text-align:left; padding-top:5px;">
+                        <strong data-bind="text: Title"></strong>
+                    </p>
                 </div>
             </div>
-            <div style="width:60%; margin-left:5%;">
-                <p class="p-content">
-                    <span data-bind="text: Title"></span>
-                    <!--ko if: $data.IsVideoArticle() ==1 -->
-                    <span><i class="fas fa-video" style="color:#a3161d"></i></span>
-                    <!-- /ko -->
-                </p>
-                <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+            <hr style="border: 1px solid #161933" />
+            <div class="d-flex flex-wrap justify-content-between" data-bind="foreach: videoHomes">
+                <div style="width:48%; " data-bind="click: $root.loadByVideoByID">
+                    <div class=" img">
+                        <img src="~/fonts/icon/icon-video.png" style="z-index:2" class="icon-audio" height=50 width=50 />
+                        <img class="img-fluid img-content" data-bind="attr: { src: 'https://image.vtc.vn/'+ ImageUrl() }" />
+                    </div>
+                    <p style="color:white; font-size:1.3em; padding-top:5px; text-align:left; line-height:initial" data-bind="text: Title"></p>
+                </div>
             </div>
+            <!--ko if: $root.videoHome().length >0 -->
+            <div class="d-flex justify-content-center" style="padding-bottom:20px">
+                <button class="button button-0 button-1" data-bind="click: $root.videoApp">Xem thêm</button>
+            </div>
+            <!-- /ko -->
         </div>
-        <hr class="hr-bottom-parent" />
+        <!--ko foreach: articleSuggestionHome1 -->
+        <div class="container " style="margin-top:15px" data-bind="click: $root.clickDetailNew1">
+            <div class="d-flex" style="width:100%">
+                <div style="width:40%">
+                    <div class="div-4-3">
+                        <img class="img-content img-4-3" data-bind="attr: {src: image16_9  }" />
+                    </div>
+                </div>
+                <div style="width:60%; margin-left:5%;">
+                    <p class="p-content">
+                        <span data-bind="text: Title"></span>
+                        <!--ko if: $data.IsVideoArticle() ==1 -->
+                        <span><i class="fas fa-video" style="color:#a3161d"></i></span>
+                        <!-- /ko -->
+                    </p>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                </div>
+            </div>
+            <hr class="hr-bottom-parent" />
+        </div>
         <!-- /ko -->
-    </div>
-    <!-- /ko -->
-    <div class="container">
-        <p style="font-size:24px; line-height: initial;text-align:left;"><strong>Cùng chuyên mục</strong></p>
-    </div>
-    <!--ko foreach: categoryNameData -->
-    <div class="container " style="margin-top:15px;" data-bind="click: $root.itemChannelDetail">
-        <div class="d-flex" style="width:100%">
-            <div style="width:40%">
-                <div >
-                    <img class="lazy img-fluid" data-bind="attr: { 'data-src': 'https://image.vtc.vn/'+ $data.ImageUrl() }" />
+        <!--ko if: $root.imgAudioBook().length >0 -->
+        <div class="container" style="background-color:#fff7cc; ">
+            <div style="padding-top:10px;padding-bottom:10px">
+                <h3 style="color:#a3161d;">
+                    <span><img src="~/fonts/icon/icon4.png" width=30 height=30 /></span> Audio
+                </h3>
+            </div>
+            <div style="width:100%" data-bind="foreach: $root.imgAudioBook2">
+                <div class="img"  data-bind="click: $root.selectedData1">
+                    <img src="~/fonts/icon/icon-audio.png" class="icon-audio" height=50 width=50 />
+                    <img class="img-fluid img-content" style="width:100%; height:100%;" data-bind="attr: {  src: image360_360  }" />
+                </div>
+                <p style=" font-size:25px"  data-bind="click: $root.selectedData1"><strong data-bind="text:Name"></strong></p>
+                <div>
+                    <button class="button button-01 button-2"><i class="demo-icon icon-book"></i> <span>Sách nói</span></button>
                 </div>
             </div>
-            <div style="width:60%; margin-left:5%;">
-                <p class="p-content">
-                    <span data-bind="text: Title"></span>
-                    <!--ko if: $data.IsVideoArticle() ==1 -->
-                    <span><i class="fas fa-video" style="color:#a3161d"></i></span>
-                    <!-- /ko -->
-                </p>
-                <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+            <hr style="border: 1px solid #eee1ac" />
+            <div class="d-flex" data-bind="foreach: $root.imgMusic">
+                <div style="width:33.33%; margin-right:10px" data-bind="click: $root.selectedData1">
+                    <div class="img">
+                        <img src="~/fonts/icon/icon-audio.png" class="icon-audio" height=30 width=30 />
+                        <img class="img-fluid img-content" data-bind="attr: {  src: image182_182  }" />
+                    </div>
+                </div>
+                <div style="width:66.67%; ">
+                    <h5 data-bind="click: $root.selectedData1"><strong data-bind="text:Name"></strong></h5>
+                    <div data-bind="foreach: $root.audioMusic">                        
+                        <button class="button button-01 button-2" data-bind="click: $root.audiobookDetails"><i class="demo-icon icon-book"></i> <span>Âm nhạc</span></button>
+                    </div>
+                </div>
+            </div>
+            <hr style="border: -0.4px  solid #eee1ac" />
+            <div class="d-flex" data-bind="foreach: $root.imgAudioBook">
+                <div style="width:33.33%; margin-right:10px" data-bind="click: $root.selectedData1">
+                    <div class="img">
+                        <img src="~/fonts/icon/icon-audio.png" class="icon-audio" height=30 width=30 />
+                        <img class="img-fluid img-content" data-bind="attr: {  src: image182_182  }" />
+                    </div>
+                </div>
+                <div style="width:66.67%; ">
+                    <h5 data-bind="click: $root.selectedData1"><strong></strong></h5>
+                    <div data-bind="foreach: $root.audiobook">
+                        <button class="button button-01 button-3" data-bind="click: $root.audiobookDetails"><i class="demo-icon icon-music-2"></i> <span>Sách nói</span></button>
+                    </div>
+                </div>
+            </div>
+            <hr style="border: -0.4px  solid #eee1ac" />
+            <div class="d-flex justify-content-center" style="padding-bottom:20px">
+                <button class="button button-0 button-5">Xem thêm</button>
             </div>
         </div>
-        <hr class="hr-bottom-parent" />
         <!-- /ko -->
-    </div>
-    <!-- /ko -->
-</div>
-<!-- /ko -->
-<!--ko if: $root.mode() == "loadSelectedChannel" -->
-<div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
-    <div class="side-nav">
-        <nav class="navbar navbar-light ">
-            <div class="d-flex justify-content-between" style="width:100%;">
-                <div data-bind="click: $root.backLoadListChannel">
-                    <a class="navbar-brand" href="#">
-                        <span><i class="fas fa-arrow-left" style="width:30px;padding-top:5px; color:white"></i></span>
-                    </a>
+        <!--ko foreach: articleSuggestionHome2 -->
+        <div class="container " style="margin-top:15px; " data-bind="click: $root.clickDetailNew1">
+            <div class="d-flex" style="width:100%">
+                <div style="width:40%">
+                    <div class="div-4-3">
+                        <img class="img-4-3 img-fluid" data-bind="attr: { src: image16_9  }" />
+                    </div>
                 </div>
-                <div style="margin-top:5px">
-                    <img src="~/fonts/icon/logo-vtcnews.png" style="height:30px; width:80px" />
-
-                </div>
-                <div>
-                    <i class="demo-icon icon-search" style="color:white; font-size:16px; padding-top:10px;"></i>
+                <div style="width:60%; margin-left:5%;">
+                    <p class="p-content">
+                        <span data-bind="text: Title"></span>
+                        <!--ko if: $data.IsVideoArticle() ==1 -->
+                        <span><i class="fas fa-video" style="color:#a3161d"></i></span>
+                        <!-- /ko -->
+                    </p>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
                 </div>
             </div>
-        </nav>
-    </div>
-</div>
-<div>
-    <div class="container hidden-detail" style="margin-top: 70px; " data-bind="foreach: $root.slectedChannels">
-        <div class="d-flex" style="width:100%" data-bind="click: $root.itemChannelDetail">
-            <div style="width:40%">
-                <div>
-                    <img class="lazy img-fluid" data-bind="attr: { 'data-src': 'https://image.vtc.vn/'+ $data.ImageUrl() }" />
-                </div>
-            </div>
-            <div style="width:60%; margin-left:5%">
-                <p class="p-content" data-bind="text: Title"></p>
-                <span data-bind="if: IsVideoArticle  == 1"><i class="fas fa-video" style="color:#a3161d"></i></span>
-                <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
-            </div>
+            <hr class="hr-bottom-parent" />
         </div>
-        <hr class="hr-bottom-parent" />
-    </div>
-    <div class="hidden d-flex justify-content-center " style="margin-bottom:60px; align-items:center; ">
-        <i class="icon-loadding demo-icon icon-spin5 animate-spin"></i>
+        <!-- /ko -->
+        <div class="bottom-home" style="height:40px;"></div>
     </div>
 </div>
-<!-- /ko -->
-<!--ko if: $root.mode() == "newDetail" -->
-<div class="detail">
+<div id="selectedMenu" style="display:none">
     <div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
         <div class="side-nav">
             <nav class="navbar navbar-light ">
                 <div class="d-flex justify-content-between opacity-background" style="width:100%;">
                     <div data-bind="click: $root.backHomeMenu">
                         <a class="navbar-brand" href="#" style="padding-top:0px">
-                            <span style="font-size:16px;cursor:pointer; color:white" onclick="openNav()"><i class="demo-icon icon-left-4" style="color:white"></i></span>
+                            <span style="font-size:16px;cursor:pointer; color:white" ><i class="demo-icon icon-left-4" style="color:white"></i></span>
                         </a>
                     </div>
-                    <div style="margin-top:5px">
-                        <img src="~/fonts/icon/logo-vtcnews.png" style="height:30px; width:80px" />
+                    <div>
+                        <img src="https://vtc.vn/Content/mobile/images/logo.png" style="max-height:31px" />
                     </div>
                     <div>
-                        <i class="demo-icon icon-search" style="color:white; font-size:16px; padding-top:10px;"></i>
+                        <i class="demo-icon icon-search" style="color:white; font-size:18px; padding-top:6px;"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div style="margin-top: -10px;">
+            <div class="scrollmenu">
+                <!--ko foreach: $root.selectHomeMenuDetail -->
+                <a href="#" class="clicked-menu" data-bind="click: $root.loadValueMenu, attr: {id: 'news_' + $index() },text: Title"></a>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+    <div class="menuData">
+        <div class="container hidden-detail" style="margin-top: 100px; " data-bind="foreach: menuData">
+            <div class="d-flex" style="width:100%" data-bind="click: $root.clickDetailNew2">
+                <div style="width:40%">
+                    <div>
+                        <img class="img-fluid img-content" data-bind="attr: { 'src':image16_9 }" />
+                    </div>
+                </div>
+                <div style="width:60%; margin-left:5%">
+                    <p class="p-content" data-bind="text: Title"></p>
+                    <span data-bind="if: IsVideoArticle  == 1"><i class="fas fa-video" style="color:#a3161d"></i></span>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                </div>
+            </div>
+            <hr class="hr-bottom-parent" />
+        </div>
+        <div id="loaddingMenu" class=" d-flex justify-content-center " style="margin-bottom:60px; align-items:center; ">
+            <i class="icon-loadding demo-icon icon-spin5 animate-spin"></i>
+        </div>
+    </div>
+</div>
+<div id="newDetailMenu" style="display:none">
+    <div>
+        <div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
+            <div class="side-nav">
+                <nav class="navbar navbar-light ">
+                    <div class="d-flex justify-content-between opacity-background" style="width:100%;">
+                        <div data-bind="click: $root.backSelectedMenu">
+                            <a class="navbar-brand" href="#" style="padding-top:0px">
+                                <span style="font-size:16px;cursor:pointer; color:white" ><i class="demo-icon icon-left-4" style="color:white"></i></span>
+                            </a>
+                        </div>
+                        <div>
+                            <img src="https://vtc.vn/Content/mobile/images/logo.png" style="max-height:31px;max-width: 123px;" />
+                        </div>
+                        <div>
+                            <i class="demo-icon icon-search" style="color:white; font-size:18px; padding-top:6px;"></i>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div data-bind="foreach: $root.detailData">
+            <div style="width:100%; padding-top:50px;">
+                <div class="container " style="margin-top:10px">
+                    <p style="font-size:24px; line-height: initial;text-align:left;">
+                        <strong data-bind="text: Title"></strong>
+                    </p>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                </div>
+            </div>
+            <div class="detail-content" style="font-size:18px;" data-bind="html: Content">
+            </div>
+            <div class="hidden-div ">
+                <div class="div-style-ratio-1-6 d-flex container" style="align-items: center">
+                    <div>
+                        <button type="button" class="share btn btn-primary btn-sm">Share</button>
+                    </div>
+                    <div class="d-flex justify-content-center" style="margin:10px;">
+                        <button type="button" class="subYoutube btn btn-danger btn-sm"><i class="demo-icon icon-youtube-2"></i> Subscribe </button>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden-div" style="margin-top:10px; margin-bottom:60px;">
+                <div class="text-18px container">
+                    <p>
+                        Tags:
+                        <span style="color:blue" data-bind="foreach: $root.tags()">
+                            <span data-bind="text: TagName"></span>,
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class=" container " data-bind="with: $root.comment">
+            <h4 style="font-weight:bold"><i class="demo-icon icon-comment-alt-1" style="color: #a3161d"></i> Bình luận <span style="color: #a3161d" data-bind="text: $data.TotalAllRecord"></span></h4>
+            <div data-bind="foreach: $root.comnnetItems">
+                <div>
+                    <p><span style="opacity:0.5" data-bind="text: moment(CreatedDate()).fromNow()"></span></p>
+                    <h6 style="font-weight:bold; color:black" data-bind="text: CustomerName"></h6>
+                    <p data-bind="text:Content"></p>
+                    <p style="color:blue"><span><i class="demo-icon icon-thumbs-up-5"></i><span data-bind="text: CountLike"></span> thích</span> <span><i class="demo-icon icon-forward-2"></i> trả lời</span></p>
+                </div>
+
+            </div>
+            <!--ko if: $root.comment().length >0 -->
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-light" style="border-radius: 25px;border: 1px solid gray;">Xem thêm bình luận</button>
+            </div>
+            <!-- /ko -->
+            <div class="form-commnet" style="margin-top:17px;">
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" style="background-color: #a3161d; width:120px; margin-bottom:40px;" data-bind="click: $root.showModal">Bình luận</button>
+            </div>
+        </div>
+        <!--ko if: $root.ListArticleRelated().length >0 -->
+        <div class="container">
+            <p style="font-size:24px; line-height: initial;text-align:left;"><strong>Thêm thông tin</strong></p>
+        </div>
+        <!-- /ko -->
+        <!--ko foreach: ListArticleRelated -->
+        <div class="container " style="margin-top:15px;" data-bind="click: $root.clickDetailNew2">
+            <div class="d-flex" style="width:100%">
+                <div style="width:40%">
+                    <div class="div-4-3">
+                        <img class="img-content img-4-3" data-bind="attr: {src: 'https://image.vtc.vn/'+ ImageUrl() }" />
+                    </div>
+                </div>
+                <div style="width:60%; margin-left:5%;">
+                    <p class="p-content">
+                        <span data-bind="text: Title"></span>
+                        <!--ko if: $data.IsVideoArticle() ==1 -->
+                        <span><i class="fas fa-video" style="color:#a3161d"></i></span>
+                        <!-- /ko -->
+                    </p>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                </div>
+            </div>
+            <hr class="hr-bottom-parent" />
+            <!-- /ko -->
+        </div>
+        <!-- /ko -->
+        <!--ko if: $root.categoryNameData().length >0 -->
+        <div class="container">
+            <p style="font-size:24px; line-height: initial;text-align:left;"><strong>Cùng chuyên mục</strong></p>
+        </div>
+        <!-- /ko -->
+        <!--ko foreach: categoryNameData -->
+        <div class="container " style="margin-top:15px;" data-bind="click: $root.clickDetailNew2">
+            <div class="d-flex" style="width:100%">
+                <div style="width:40%">
+                    <div class="div-4-3">
+                        <img class="img-content img-4-3" data-bind="attr: { src: 'https://image.vtc.vn/'+ ImageUrl()  }" />
+                    </div>
+                </div>
+                <div style="width:60%; margin-left:5%;">
+                    <p class="p-content">
+                        <span data-bind="text: Title"></span>
+                        <!--ko if: $data.IsVideoArticle() ==1 -->
+                        <span><i class="fas fa-video" style="color:#a3161d"></i></span>
+                        <!-- /ko -->
+                    </p>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                </div>
+            </div>
+            <hr class="hr-bottom-parent" />
+            <!-- /ko -->
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+<div id="newDetail" style="display:none">
+    <div class="detail">
+        <div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
+            <div class="side-nav">
+                <nav class="navbar navbar-light ">
+                    <div class="d-flex justify-content-between opacity-background" style="width:100%;">
+                        <div data-bind="click: $root.backHomeMenu">
+                            <a class="navbar-brand" href="#" style="padding-top:0px">
+                                <span style="font-size:16px;cursor:pointer; color:white" ><i class="demo-icon icon-left-4" style="color:white"></i></span>
+                            </a>
+                        </div>
+                        <div>
+                            <img src="https://vtc.vn/Content/mobile/images/logo.png" style="max-height:31px;max-width: 123px;" />
+                        </div>
+                        <div>
+                            <i class="demo-icon icon-search" style="color:white; font-size:18px; padding-top:6px;"></i>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div data-bind="foreach: $root.detailData">
+            <div style="width:100%; padding-top:50px;">
+                <div class="container " style="margin-top:10px">
+                    <p style="font-size:24px; line-height: initial;text-align:left;">
+                        <strong data-bind="text: Title"></strong>
+                    </p>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                </div>
+            </div>
+            <div class="detail-content" style="font-size:18px;" data-bind="html: Content">
+            </div>
+            <div class="hidden-div ">
+                <div class="div-style-ratio-1-6 d-flex container" style="align-items: center">
+                    <div>
+                        <button type="button" class="btn btn-primary btn-sm share">Share</button>
+                    </div>
+                    <div class="d-flex justify-content-center" style="margin:10px;">
+                        <button type="button" class="btn btn-danger btn-sm subYoutube"><i class="demo-icon icon-youtube-2"></i> Subscribe </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden-div" style="margin-top:10px; margin-bottom:60px;">
+                <div class="text-18px container">
+                    <p>
+                        Tags:
+                        <span style="color:blue" data-bind="foreach: $root.tags()">
+                            <span data-bind="text: TagName"></span>,
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class=" container " data-bind="with: $root.comment">
+            <h4 style="font-weight:bold"><i class="demo-icon icon-comment-alt-1" style="color: #a3161d"></i> Bình luận <span style="color: #a3161d" data-bind="text: $data.TotalAllRecord"></span></h4>
+            <div data-bind="foreach: $root.comnnetItems">
+                <div>
+                    <p><span style="opacity:0.5" data-bind="text: moment(CreatedDate()).fromNow()"></span></p>
+                    <h6 style="font-weight:bold; color:black" data-bind="text: CustomerName"></h6>
+                    <p data-bind="text:Content"></p>
+                    <p style="color:blue"><span><i class="demo-icon icon-thumbs-up-5"></i><span data-bind="text: CountLike"></span> thích</span> <span><i class="demo-icon icon-forward-2"></i> trả lời</span></p>
+                </div>
+
+            </div>
+            <!--ko if: $root.comment().length >0 -->
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-light" style="border-radius: 25px;border: 1px solid gray;">Xem thêm bình luận</button>
+            </div>
+            <!-- /ko -->
+            <div class="form-commnet" style="margin-top:17px;">
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" style="background-color: #a3161d; width:120px; margin-bottom:40px;" data-bind="click: $root.showModal">Bình luận</button>
+            </div>
+        </div>
+        <!--ko if: $root.ListArticleRelated().length >0 -->
+        <div class="container">
+            <p style="font-size:24px; line-height: initial;text-align:left;"><strong>Thêm thông tin</strong></p>
+        </div>
+        <!-- /ko -->
+        <div style="margin-bottom:20px;">
+            <!--ko foreach: ListArticleRelated -->
+            <div class="container " style="margin-top:15px;" data-bind="click: $root.clickDetailNew1">
+                <div class="d-flex" style="width:100%">
+                    <div style="width:40%">
+                        <div class="div-4-3">
+                            <img class="img-content img-4-3" data-bind="attr: {src: 'https://image.vtc.vn/'+ ImageUrl() }" />
+                        </div>
+                    </div>
+                    <div style="width:60%; margin-left:5%;">
+                        <p class="p-content">
+                            <span data-bind="text: Title"></span>
+                            <!--ko if: $data.IsVideoArticle() ==1 -->
+                            <span><i class="fas fa-video" style="color:#a3161d"></i></span>
+                            <!-- /ko -->
+                        </p>
+                        <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                    </div>
+                </div>
+                <hr class="hr-bottom-parent" />
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+        </div>
+
+        <!--ko if: $root.categoryNameData().length >0 -->
+        <div class="container">
+            <p style="font-size:24px; line-height: initial;text-align:left;"><strong>Cùng chuyên mục</strong></p>
+        </div>
+        <!-- /ko -->
+        <div style="margin-bottom:20px;">
+            <!--ko foreach: categoryNameData -->
+            <div class="container " style="margin-top:15px;" data-bind="click: $root.clickDetailNew1">
+                <div class="d-flex" style="width:100%">
+                    <div style="width:40%">
+                        <div class="div-4-3">
+                            <img class="img-content img-4-3" data-bind="attr: { src: 'https://image.vtc.vn/'+ ImageUrl()  }" />
+                        </div>
+                    </div>
+                    <div style="width:60%; margin-left:5%;">
+                        <p class="p-content">
+                            <span data-bind="text: Title"></span>
+                            <!--ko if: $data.IsVideoArticle() ==1 -->
+                            <span><i class="fas fa-video" style="color:#a3161d"></i></span>
+                            <!-- /ko -->
+                        </p>
+                        <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                    </div>
+                </div>
+                <hr class="hr-bottom-parent" />
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>
+
+<div id="loadListChannel" style="display:none">
+    <div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
+        <div class="side-nav">
+            <nav class="navbar navbar-light ">
+                <div class="d-flex justify-content-between" style="width:100%;">
+                    <div data-bind="click: $root.backHomeApp">
+                        <a class="navbar-brand" href="#">
+                            <span><i class="fas fa-arrow-left" style="width:30px;padding-top:5px; color:white"></i></span>
+                        </a>
+                    </div>
+                    <div>
+                        <img src="https://vtc.vn/Content/mobile/images/logo.png" style="max-height:31px" />
+                    </div>
+                    <div>
+                        <i class="demo-icon icon-search" style="color:white; font-size:18px; padding-top:6px;"></i>
                     </div>
                 </div>
             </nav>
         </div>
     </div>
-    <!--ko with: $root.detailData -->
-    <div style="width:100%; padding-top:50px;">
-        <div class="container " style="margin-top:10px">
-            <p style="font-size:24px; line-height: initial;text-align:left;">
-                <strong data-bind="text: Title"></strong>
-            </p>
-            <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
-        </div>
-    </div>
-    <div class="detail " style="font-size:18px;" data-bind="html: Content">
-    </div>
-    <div class="hidden-div" style="margin-top:10px; margin-bottom:60px;">
-        <div class="div-style-ratio-1-6 d-flex d-flex justify-content-between container" style="align-items: center">
-            <div style="width:60%;align-items:center" class="d-flex d-flex justify-content-between">
-                <div class="text-18px">Chia sẻ:</div>
-                <div>
-                    <img style="height:40px; width:40px" src="~/fonts/icon/icon-facebook.png" />
+    <div class="listchannel">
+        <div class="opacity-background load-hidden" style=" margin-bottom:100px; margin-top:60px;" data-bind="foreach: channels">
+            <div style="width:100%" data-bind="click: $root.loadSelectedChannel">
+                <div class="img">
+                    <img class="img-fluid img-content" data-bind="attr: {src: image16_9  }" />
                 </div>
-                <div>
-                    <img style="height:40px; width:40px" src="~/fonts/icon/icon-twtter.png" />
+                <div class="container " style="margin-top:10px">
+                    <p class="p-content"><strong data-bind="text:Title"></strong>  </p>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(CreatedDate()).fromNow()"></span> </p>
                 </div>
-                <div>
-                    <img style="height:40px; width:40px" src="~/fonts/icon/icon-zalo.png" />
-                </div>
-            </div>
-            <div>
-                <button type="button" class="btn btn-primary"><i class="far fa-thumbs-up"></i> Primary</button>
+                <hr class="hr-bottom" />
             </div>
         </div>
-        <div class="d-flex justify-content-center " style="margin-top:10px;margin-bottom:10px">
-            <button type="button" class="btn btn-danger"><i class="demo-icon icon-youtube-2"></i> Theo dõi trên Youtube</button>
+        <div id="loaddingMenu" class="hidden d-flex justify-content-center " style="margin-bottom:60px; align-items:center; ">
+            <i class="icon-loadding demo-icon icon-spin5 animate-spin"></i>
         </div>
-        <div class="text-18px container">
-            <p>
-                Tags:
-                <span style="color:blue" data-bind="foreach: $root.tags()">
-                    <span data-bind="text: TagName"></span>,
-                </span>
-            </p>
-        </div>
+    </div>
+</div>
 
-    </div>
-    <!-- /ko -->
-    <div class="container">
-        <p style="font-size:24px; line-height: initial;text-align:left;"><strong>Thêm thông tin</strong></p>
-    </div>
-    <!--ko foreach: ListArticleRelated -->
-    <div class="container " style="margin-top:15px;" data-bind="click: $root.clickDetailNew1">
-        <div class="d-flex" style="width:100%">
-            <div style="width:40%">
-                <div class="div-4-3">
-                    <img class="img-content img-4-3" data-bind="attr: {src: 'https://image.vtc.vn/'+ ImageUrl() }" />
-                </div>
-            </div>
-            <div style="width:60%; margin-left:5%;">
-                <p class="p-content">
-                    <span data-bind="text: Title"></span>
-                    <!--ko if: $data.IsVideoArticle() ==1 -->
-                    <span><i class="fas fa-video" style="color:#a3161d"></i></span>
-                    <!-- /ko -->
-                </p>
-                <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
-            </div>
-        </div>
-        <hr class="hr-bottom-parent" />
-        <!-- /ko -->
-    </div>
-    <!-- /ko -->
-    <div class="container">
-        <p style="font-size:24px; line-height: initial;text-align:left;"><strong>Cùng chuyên mục</strong></p>
-    </div>
-    <!--ko foreach: categoryNameData -->
-    <div class="container " style="margin-top:15px;" data-bind="click: $root.clickDetailNew1">
-        <div class="d-flex" style="width:100%">
-            <div style="width:40%">
-                <div class="div-4-3">
-                    <img class="img-content img-4-3" data-bind="attr: { src: image16_9 }" />
-                </div>
-            </div>
-            <div style="width:60%; margin-left:5%;">
-                <p class="p-content">
-                    <span data-bind="text: Title"></span>
-                    <!--ko if: $data.IsVideoArticle() ==1 -->
-                    <span><i class="fas fa-video" style="color:#a3161d"></i></span>
-                    <!-- /ko -->
-                </p>
-                <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
-            </div>
-        </div>
-        <hr class="hr-bottom-parent" />
-        <!-- /ko -->
-    </div>
-    <!-- /ko -->
-</div>
-<!-- /ko -->
-<!--ko if: $root.mode() == "Trend" -->
-<div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
-    <div class="side-nav">
-        <nav class="navbar navbar-light ">
-            <div id="input-sidebar">
-
-            </div>
-            <div class="d-flex justify-content-between opacity-background" style="width:100%;">
-                <div>
-                    <a class="navbar-brand" href="#" style="padding-top:0px">
-                        <span style="font-size:16px;cursor:pointer; color:white" onclick="openNav()"><i class="demo-icon icon-menu"></i></span>
-                    </a>
-                </div>
-                <div style="margin-top:5px">
-                    <img src="~/fonts/icon/logo-vtcnews.png" style="height:30px; width:80px" />
-                </div>
-                <div>
-                    <i class="demo-icon icon-search" style="color:white; font-size:16px; padding-top:10px;"></i>
-                </div>
-            </div>
-        </nav>
-    </div>
-</div>
-<div class="trend">
-    <div class="container hidden-detail" style="margin-top: 70px; " data-bind="foreach: trends">
-        <div class="d-flex" style="width:100%" data-bind="click: $root.clickDetailNew2">
-            <div style="width:40%">
-                <div>
-                    <img class="lazy img-fluid" data-bind="attr: { 'data-src':image16_9 }" />
-                </div>
-            </div>
-            <div style="width:60%; margin-left:5%">
-                <p class="p-content" data-bind="text: Title"></p>
-                <span data-bind="if: IsVideoArticle  == 1"><i class="fas fa-video" style="color:#a3161d"></i></span>
-                <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
-            </div>
-        </div>
-        <hr class="hr-bottom-parent" />
-    </div>
-    <div class="hidden d-flex justify-content-center " style="margin-bottom:60px; align-items:center; ">
-        <i class="icon-loadding demo-icon icon-spin5 animate-spin"></i>
-    </div>
-</div>
-<!-- /ko -->
-<!--ko if: $root.mode() == "Video" -->
-<div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
-    <div class="side-nav">
-        <nav class="navbar navbar-light ">
-            <div id="input-sidebar">
-
-            </div>
-            <div class="d-flex justify-content-between opacity-background" style="width:100%;">
-                <div>
-                    <a class="navbar-brand" href="#" style="padding-top:0px">
-                        <span style="font-size:16px;cursor:pointer; color:white" onclick="openNav()"><i class="demo-icon icon-menu"></i></span>
-                    </a>
-                </div>
-                <div style="margin-top:5px">
-                    <img src="~/fonts/icon/logo-vtcnews.png" style="height:30px; width:80px" />
-                </div>
-                <div>
-                    <i class="demo-icon icon-search" style="color:white; font-size:16px; padding-top:10px;"></i>
-                </div>
-            </div>
-        </nav>
-    </div>
-</div>
-<div onclick="closeNav()" class="opacity-background load-hidden" style=" margin-bottom:100px; margin-top:56px;" data-bind="foreach: videoHomess">
-    <div style="width:100%" data-bind="click: $root.loadByVideoByID">
-        <div class="img">
-            <img src="~/fonts/icon/icon-video.png" class="icon-audio" height=50 width=50 />
-            <img class="img-fluid img-content" data-bind="attr: {src: image16_9}" />
-        </div>
-        <div class="container " style="margin-top:10px">
-            <p class="p-content"><strong data-bind="text:Title"></strong>  </p>
-            <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
-            <hr class="hr-bottom" />
-        </div>
-    </div>
-</div>
-<!-- /ko -->
-<!--ko if: $root.mode() == "Audio" -->
-<div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
-    <div class="side-nav">
-        <nav class="navbar navbar-light ">
-            <div id="input-sidebar">
-            </div>
-            <div class="d-flex justify-content-between opacity-background" style="width:100%;">
-                <div>
-                    <a class="navbar-brand" href="#" style="padding-top:0px">
-                        <span style="font-size:16px;cursor:pointer; color:white" onclick="openNav()"><i class="demo-icon icon-menu"></i></span>
-                    </a>
-                </div>
-                <div style="margin-top:5px">
-                    <img src="~/fonts/icon/logo-vtcnews.png" style="height:30px; width:80px" />
-                </div>
-                <div>
-                    <i class="demo-icon icon-search" style="color:white; font-size:16px; padding-top:10px;"></i>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <div style="margin-top: -10px;" class="opacity-background">
-        <div class="scrollmenu">
-            <a href="#">
-                Audio
-            </a>
-
-        </div>
-    </div>
-</div>
-<div onclick="closeNav()">
-    <div style="background-color:#fff9cc; margin-top:80px; " class="opacity-background ">
-        <div style="margin: 2%">
-            <div>
-                <h3 style="color:black; padding:12px; padding-left:0px"><i class="demo-icon icon-podcast"></i> <span>Podcast</span> </h3>
-            </div>
-            <div class="audio-podcast" style="width:100%;  background-color:white">
-                <div class="img img-text-bottom-left">
-                    <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
-                    <img class="img-fluid img-content" src="https://image.vtc.vn/resize/w1JaaFnI-oNXi_YqgetJ_zOOAJe9CHtg0//upload/2020/10/15/rao-trang--sat-lo-17103401.jpg" />
-                    <div class="bottom-left"><span>10 tập</span></div>
-                </div>
-                <div class="container" style="background-color:white; padding-top:12px; padding-bottom:12px;border-radius: 5px;">
-                    <p style="color:black; font-size:20px;"><strong>Điều kiện hôm nhân nghiệp ngã của Trương Quốc Lập - Đặng ngọc hiệp</strong></p>
-                </div>
-            </div>
-            <div>
-                <div class="d-flex justify-content-between" style="margin-top:10px;">
-                    <div class="audio-podcast" style="width:49%; background-color:white">
-                        <div class="img img-text-bottom-left">
-                            <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
-                            <img class="img-fluid img-content" src="https://image.vtc.vn/resize/w1JaaFnI-oNXi_YqgetJ_zOOAJe9CHtg0//upload/2020/10/15/rao-trang--sat-lo-17103401.jpg" />
-                            <div class="bottom-left"><span>10 tập</span></div>
+<div id="newListChannelDetail" style="display:none">
+    <div>
+        <div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
+            <div class="side-nav">
+                <nav class="navbar navbar-light ">
+                    <div class="d-flex justify-content-between opacity-background" style="width:100%;">
+                        <div data-bind="click: $root.backChannelDetail">
+                            <a class="navbar-brand" href="#" style="padding-top:0px">
+                                <span style="font-size:16px;cursor:pointer; color:white" ><i class="demo-icon icon-left-4" style="color:white"></i></span>
+                            </a>
                         </div>
-                        <div class="container" style="background-color:white; padding-top:5px; padding-bottom:5px;border-radius: 5px;">
-                            <p style="color:black; font-size:17px; line-height:20px;"><strong>nghiệp ngã của Trương Quốc Lập - Đặng ngọc hiệp</strong></p>
+                        <div>
+                            <img src="https://vtc.vn/Content/mobile/images/logo.png" style="max-height:31px;max-width: 123px;" />
+                        </div>
+                        <div>
+                            <i class="demo-icon icon-search" style="color:white; font-size:18px; padding-top:6px;"></i>
                         </div>
                     </div>
-                    <div class="audio-podcast" style="width:49%; background-color:white">
-                        <div class="img img-text-bottom-left">
-                            <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
-                            <img class="img-fluid img-content" src="https://image.vtc.vn/resize/w1JaaFnI-oNXi_YqgetJ_zOOAJe9CHtg0//upload/2020/10/15/rao-trang--sat-lo-17103401.jpg" />
-                            <div class="bottom-left"><span>10 tập</span></div>
-                        </div>
-                        <div class="container" style="background-color:white; padding-top:5px; padding-bottom:5px;border-radius: 5px;">
-                            <p style="color:black; font-size:17px; line-height:20px;"><strong>nghiệp ngã của Trương Quốc Lập - Đặng ngọc hiệp</strong></p>
-                        </div>
+                </nav>
+            </div>
+        </div>
+        <div data-bind="foreach: $root.detailData">
+            <div style="width:100%; padding-top:50px;">
+                <div class="container " style="margin-top:10px">
+                    <p style="font-size:24px; line-height: initial;text-align:left;">
+                        <strong data-bind="text: Title"></strong>
+                    </p>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                </div>
+            </div>
+            <div class="detail-content" style="font-size:18px;" data-bind="html: Content">
+            </div>
+            <div class="hidden-div ">
+                <div class="div-style-ratio-1-6 d-flex container" style="align-items: center">
+                    <div>
+                        <button type="button" class="btn btn-primary btn-sm share">Share</button>
+                    </div>
+                    <div class="d-flex justify-content-center" style="margin:10px;">
+                        <button type="button" class="btn btn-danger btn-sm subYoutube"><i class="demo-icon icon-youtube-2"></i> Subscribe </button>
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center" style="padding-bottom:20px; padding-top:20px;">
-                <button class="button button-0 button-6" data-bind="click: $root.audioPodcast">Xem thêm</button>
+            <div class="hidden-div" style="margin-top:10px; margin-bottom:60px;">
+                <div class="text-18px container">
+                    <p>
+                        Tags:
+                        <span style="color:blue" data-bind="foreach: $root.tags()">
+                            <span data-bind="text: TagName"></span>,
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class=" container " data-bind="with: $root.comment">
+            <h4 style="font-weight:bold"><i class="demo-icon icon-comment-alt-1" style="color: #a3161d"></i> Bình luận <span style="color: #a3161d" data-bind="text: $data.TotalAllRecord"></span></h4>
+            <div data-bind="foreach: $root.comnnetItems">
+                <div>
+                    <p><span style="opacity:0.5" data-bind="text: moment(CreatedDate()).fromNow()"></span></p>
+                    <h6 style="font-weight:bold; color:black" data-bind="text: CustomerName"></h6>
+                    <p data-bind="text:Content"></p>
+                    <p style="color:blue"><span><i class="demo-icon icon-thumbs-up-5"></i><span data-bind="text: CountLike"></span> thích</span> <span><i class="demo-icon icon-forward-2"></i> trả lời</span></p>
+                </div>
+
+            </div>
+            <!--ko if: $root.comment().length >0 -->
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-light" style="border-radius: 25px;border: 1px solid gray;">Xem thêm bình luận</button>
+            </div>
+            <!-- /ko -->
+            <div class="form-commnet" style="margin-top:17px;">
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" style="background-color: #a3161d; width:120px; margin-bottom:40px;" data-bind="click: $root.showModal">Bình luận</button>
+            </div>
+        </div>
+        <!--ko if: $root.ListArticleRelated().length >0 -->
+        <div class="container">
+            <p style="font-size:24px; line-height: initial;text-align:left;"><strong>Thêm thông tin</strong></p>
+        </div>
+        <!-- /ko -->
+        <!--ko foreach: ListArticleRelated -->
+        <div class="container " style="margin-top:15px;" data-bind="click: $root.itemChannelDetail">
+            <div class="d-flex" style="width:100%">
+                <div style="width:40%">
+                    <div class="div-4-3">
+                        <img class="img-content img-4-3" data-bind="attr: {src: 'https://image.vtc.vn/'+ ImageUrl() }" />
+                    </div>
+                </div>
+                <div style="width:60%; margin-left:5%;">
+                    <p class="p-content">
+                        <span data-bind="text: Title"></span>
+                        <!--ko if: $data.IsVideoArticle() ==1 -->
+                        <span><i class="fas fa-video" style="color:#a3161d"></i></span>
+                        <!-- /ko -->
+                    </p>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                </div>
+            </div>
+            <hr class="hr-bottom-parent" />
+            <!-- /ko -->
+        </div>
+        <!-- /ko -->
+        <!--ko if: $root.categoryNameData().length >0 -->
+        <div class="container">
+            <p style="font-size:24px; line-height: initial;text-align:left;"><strong>Cùng chuyên mục</strong></p>
+        </div>
+        <!-- /ko -->
+        <!--ko foreach: categoryNameData -->
+        <div class="container " style="margin-top:15px;" data-bind="click: $root.itemChannelDetail">
+            <div class="d-flex" style="width:100%">
+                <div style="width:40%">
+                    <div>
+                        <img class="lazy img-fluid" data-bind="attr: { 'data-src': 'https://image.vtc.vn/'+ $data.ImageUrl() }" />
+                    </div>
+                </div>
+                <div style="width:60%; margin-left:5%;">
+                    <p class="p-content">
+                        <span data-bind="text: Title"></span>
+                        <!--ko if: $data.IsVideoArticle() ==1 -->
+                        <span><i class="fas fa-video" style="color:#a3161d"></i></span>
+                        <!-- /ko -->
+                    </p>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                </div>
+            </div>
+            <hr class="hr-bottom-parent" />
+            <!-- /ko -->
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+<div id="loadSelectedChannel" style="display:none">
+    <div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
+        <div class="side-nav">
+            <nav class="navbar navbar-light ">
+                <div class="d-flex justify-content-between" style="width:100%;">
+                    <div data-bind="click: $root.backLoadListChannel">
+                        <a class="navbar-brand" href="#">
+                            <span><i class="fas fa-arrow-left" style="width:30px;padding-top:5px; color:white"></i></span>
+                        </a>
+                    </div>
+                    <div>
+                        <img src="https://vtc.vn/Content/mobile/images/logo.png" style="max-height:31px" />
+                    </div>
+                    <div>
+                        <i class="demo-icon icon-search" style="color:white; font-size:18px; padding-top:6px;"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="calloadSelectedChannel">
+        <div class="container hidden-detail" style="margin-top: 70px; " data-bind="foreach: $root.slectedChannels">
+            <div class="d-flex" style="width:100%" data-bind="click: $root.itemChannelDetail">
+                <div style="width:40%">
+                    <div>
+                        <img class="img-fluid img-content " data-bind="attr: { 'src': image16_9 }" />
+                    </div>
+                </div>
+                <div style="width:60%; margin-left:5%">
+                    <p class="p-content" data-bind="text: Title"></p>
+                    <span data-bind="if: IsVideoArticle  == 1"><i class="fas fa-video" style="color:#a3161d"></i></span>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                </div>
+            </div>
+            <hr class="hr-bottom-parent" />
+        </div>
+        <div class="hidden d-flex justify-content-center " style="margin-bottom:60px; align-items:center; ">
+            <i class="icon-loadding demo-icon icon-spin5 animate-spin"></i>
+        </div>
+    </div>
+</div>
+<div id="Trend" style="display:none">
+    <div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
+        <div class="side-nav">
+            <nav class="navbar navbar-light ">
+                <div id="input-sidebar1">
+                </div>
+                <div class="d-flex justify-content-between opacity-background" style="width:100%;">
+                    <div>
+                        <a class="navbar-brand " href="#" style="padding-top:0px" data-toggle="modal" data-target="#myModal">
+                            <i class="demo-icon icon-menu" style="color:white"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <img src="https://vtc.vn/Content/mobile/images/logo.png" style="max-height:31px" />
+                    </div>
+                    <div>
+                        <i class="demo-icon icon-search" style="color:white; font-size:18px; padding-top:6px;"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="trend">
+        <div class="container hidden-detail" style="margin-top: 70px; " data-bind="foreach: trends">
+            <div class="d-flex" style="width:100%" data-bind="click: $root.clickDetailNew3">
+                <div style="width:40%">
+                    <div>
+                        <img class="lazy img-fluid" data-bind="attr: { 'data-src':image16_9 }" />
+                    </div>
+                </div>
+                <div style="width:60%; margin-left:5%">
+                    <p class="p-content" data-bind="text: Title"></p>
+                    <span data-bind="if: IsVideoArticle  == 1"><i class="fas fa-video" style="color:#a3161d"></i></span>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                </div>
+            </div>
+            <hr class="hr-bottom-parent" />
+        </div>
+        <div class="load-more d-flex justify-content-center " style="margin-bottom:60px; align-items:center; ">
+            <i class="icon-loadding demo-icon icon-spin5 animate-spin"></i>
+        </div>
+    </div>
+</div>
+<div id="newDetailTrend" style="display:none">
+    <div class="detail">
+        <div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
+            <div class="side-nav">
+                <nav class="navbar navbar-light ">
+                    <div class="d-flex justify-content-between opacity-background" style="width:100%;">
+                        <div data-bind="click: $root.backTrend">
+                            <a class="navbar-brand" href="#" style="padding-top:0px">
+                                <span style="font-size:16px;cursor:pointer; color:white" ><i class="demo-icon icon-left-4" style="color:white"></i></span>
+                            </a>
+                        </div>
+                        <div>
+                            <img src="https://vtc.vn/Content/mobile/images/logo.png" style="max-height:31px;max-width: 123px;" />
+                        </div>
+                        <div>
+                            <i class="demo-icon icon-search" style="color:white; font-size:18px; padding-top:6px;"></i>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div data-bind="foreach: $root.detailData">
+            <div style="width:100%; padding-top:50px;">
+                <div class="container " style="margin-top:10px">
+                    <p style="font-size:24px; line-height: initial;text-align:left;">
+                        <strong data-bind="text: Title"></strong>
+                    </p>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                </div>
+            </div>
+            <div class="detail-content" style="font-size:18px;" data-bind="html: Content">
+            </div>
+            <div class="hidden-div ">
+                <div class="div-style-ratio-1-6 d-flex container" style="align-items: center">
+                    <div>
+                        <button type="button" class="share btn btn-primary btn-sm">Share</button>
+                    </div>
+                    <div class="d-flex justify-content-center" style="margin:10px;">
+                        <button type="button" class="subYoutube btn btn-danger btn-sm"><i class="demo-icon icon-youtube-2"></i> Subscribe </button>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden-div" style="margin-top:10px; margin-bottom:60px;">
+                <div class="text-18px container">
+                    <p>
+                        Tags:
+                        <span style="color:blue" data-bind="foreach: $root.tags()">
+                            <span data-bind="text: TagName"></span>,
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class=" container " data-bind="with: $root.comment">
+            <h4 style="font-weight:bold"><i class="demo-icon icon-comment-alt-1" style="color: #a3161d"></i> Bình luận <span style="color: #a3161d" data-bind="text: $data.TotalAllRecord"></span></h4>
+            <div data-bind="foreach: $root.comnnetItems">
+                <div>
+                    <p><span style="opacity:0.5" data-bind="text: moment(CreatedDate()).fromNow()"></span></p>
+                    <h6 style="font-weight:bold; color:black" data-bind="text: CustomerName"></h6>
+                    <p data-bind="text:Content"></p>
+                    <p style="color:blue"><span><i class="demo-icon icon-thumbs-up-5"></i><span data-bind="text: CountLike"></span> thích</span> <span><i class="demo-icon icon-forward-2"></i> trả lời</span></p>
+                </div>
+
+            </div>
+            <!--ko if: $root.comment().length >0 -->
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-light" style="border-radius: 25px;border: 1px solid gray;">Xem thêm bình luận</button>
+            </div>
+            <!-- /ko -->
+            <div class="form-commnet" style="margin-top:17px;">
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" style="background-color: #a3161d; width:120px; margin-bottom:40px;" data-bind="click: $root.showModal">Bình luận</button>
+            </div>
+        </div>
+        <!--ko if: $root.ListArticleRelated().length >0 -->
+        <div class="container">
+            <p style="font-size:24px; line-height: initial;text-align:left;"><strong>Thêm thông tin</strong></p>
+        </div>
+        <!-- /ko -->
+        <!--ko foreach: ListArticleRelated -->
+        <div class="container " style="margin-top:15px;" data-bind="click: $root.clickDetailNew3">
+            <div class="d-flex" style="width:100%">
+                <div style="width:40%">
+                    <div class="div-4-3">
+                        <img class="img-content img-4-3" data-bind="attr: {src: 'https://image.vtc.vn/'+ ImageUrl() }" />
+                    </div>
+                </div>
+                <div style="width:60%; margin-left:5%;">
+                    <p class="p-content">
+                        <span data-bind="text: Title"></span>
+                        <!--ko if: $data.IsVideoArticle() ==1 -->
+                        <span><i class="fas fa-video" style="color:#a3161d"></i></span>
+                        <!-- /ko -->
+                    </p>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                </div>
+            </div>
+            <hr class="hr-bottom-parent" />
+            <!-- /ko -->
+        </div>
+        <!-- /ko -->
+        <!--ko if: $root.categoryNameData().length >0 -->
+        <div class="container">
+            <p style="font-size:24px; line-height: initial;text-align:left;"><strong>Cùng chuyên mục</strong></p>
+        </div>
+        <!-- /ko -->
+        <!--ko foreach: categoryNameData -->
+        <div class="container " style="margin-top:15px;" data-bind="click: $root.clickDetailNew3">
+            <div class="d-flex" style="width:100%">
+                <div style="width:40%">
+                    <div class="div-4-3">
+                        <img class="img-content img-4-3" data-bind="attr: {src: 'https://image.vtc.vn/'+ ImageUrl() }" />
+                    </div>
+                </div>
+                <div style="width:60%; margin-left:5%;">
+                    <p class="p-content">
+                        <span data-bind="text: Title"></span>
+                        <!--ko if: $data.IsVideoArticle() ==1 -->
+                        <span><i class="fas fa-video" style="color:#a3161d"></i></span>
+                        <!-- /ko -->
+                    </p>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                </div>
+            </div>
+            <hr class="hr-bottom-parent" />
+            <!-- /ko -->
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+<div id="Video" style="display:none">
+    <div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
+        <div class="side-nav">
+            <nav class="navbar navbar-light ">
+                <div id="input-sidebar2">
+
+                </div>
+                <div class="d-flex justify-content-between opacity-background" style="width:100%;">
+                    <div>
+                        <a class="navbar-brand " href="#" style="padding-top:0px" data-toggle="modal" data-target="#myModal">
+                            <i class="demo-icon icon-menu" style="color:white"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <img src="https://vtc.vn/Content/mobile/images/logo.png" style="max-height:31px" />
+                    </div>
+                    <div>
+                        <i class="demo-icon icon-search" style="color:white; font-size:18px; padding-top:6px;"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="opacity-background load-hidden" style=" margin-bottom:100px; margin-top:56px;" data-bind="foreach: videoHomess">
+        <div style="width:100%" data-bind="click: $root.loadByVideoByID">
+            <div class="img">
+                <img src="~/fonts/icon/icon-video.png" class="icon-audio" height=50 width=50 />
+                <img class="img-fluid img-content" data-bind="attr: {src: 'https://image.vtc.vn/'+ ImageUrl() }" />
+            </div>
+            <div class="container " style="margin-top:10px">
+                <p class="p-content"><strong data-bind="text:Title"></strong>  </p>
+                <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                <hr class="hr-bottom" />
             </div>
         </div>
     </div>
-    <!--ko foreach: $root.audiobook -->
-    <div style="background-color:#fe6f61; margin-top:-10px" class="opacity-background">
-        <div style="margin:0 2%">
-            <div>
-                <h3 style="color:white; padding:12px; padding-left:0px" data-bind="click: $root.audiobookDetails"><i class="demo-icon icon-book"></i> <span data-bind="text: $data.Name"></span> </h3>
+</div>
+
+<div id="Audio" style="display:none">
+    <div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
+        <div class="side-nav">
+            <nav class="navbar navbar-light ">
+                <div id="input-sidebar3">
+                </div>
+                <div class="d-flex justify-content-between opacity-background" style="width:100%;">
+                    <div>
+                        <a class="navbar-brand " href="#" style="padding-top:0px" data-toggle="modal" data-target="#myModal">
+                            <i class="demo-icon icon-menu" style="color:white"></i>
+                        </a>
+                    </div>
+                    <div>
+                        <img src="https://vtc.vn/Content/mobile/images/logo.png" style="max-height:31px" />
+                    </div>
+                    <div>
+                        <i class="demo-icon icon-search" style="color:white; font-size:18px; padding-top:6px;"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div style="margin-top: -10px;" class="opacity-background">
+            <div class="scrollmenu">
+                <a href="#">
+                    Audio
+                </a>
+
             </div>
-            <div class="audio-podcast" style="width:100%;  background-color:white">
-                <!--ko foreach: $root.home -->
-                <div data-bind="click: $root.selectedData">
-                    <div data-bind="click: $root.clickSelectedData">
+        </div>
+    </div>
+    <div>
+        <div style="background-color:#fff9cc; margin-top:80px; " class="opacity-background ">
+            <div style="margin: 2%">
+                <div>
+                    <h3 style="color:black; padding:12px; padding-left:0px"><i class="demo-icon icon-podcast"></i> <span>Podcast</span> </h3>
+                </div>
+                <div class="audio-podcast" style="width:100%;  background-color:white">
+                    <div class="img img-text-bottom-left">
+                        <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
+                        <img class="img-fluid img-content" src="https://image.vtc.vn/resize/w1JaaFnI-oNXi_YqgetJ_zOOAJe9CHtg0//upload/2020/10/15/rao-trang--sat-lo-17103401.jpg" />
+                        <div class="bottom-left"><span>10 tập</span></div>
+                    </div>
+                    <div class="container" style="background-color:white; padding-top:12px; padding-bottom:12px;border-radius: 5px;">
+                        <p style="color:black; font-size:20px;"><strong>Điều kiện hôm nhân nghiệp ngã của Trương Quốc Lập - Đặng ngọc hiệp</strong></p>
+                    </div>
+                </div>
+                <div>
+                    <div class="d-flex justify-content-between" style="margin-top:10px;">
+                        <div class="audio-podcast" style="width:49%; background-color:white">
+                            <div class="img img-text-bottom-left">
+                                <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
+                                <img class="img-fluid img-content" src="https://image.vtc.vn/resize/w1JaaFnI-oNXi_YqgetJ_zOOAJe9CHtg0//upload/2020/10/15/rao-trang--sat-lo-17103401.jpg" />
+                                <div class="bottom-left"><span>10 tập</span></div>
+                            </div>
+                            <div class="container" style="background-color:white; padding-top:5px; padding-bottom:5px;border-radius: 5px;">
+                                <p style="color:black; font-size:17px; line-height:20px;"><strong>nghiệp ngã của Trương Quốc Lập - Đặng ngọc hiệp</strong></p>
+                            </div>
+                        </div>
+                        <div class="audio-podcast" style="width:49%; background-color:white">
+                            <div class="img img-text-bottom-left">
+                                <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
+                                <img class="img-fluid img-content" src="https://image.vtc.vn/resize/w1JaaFnI-oNXi_YqgetJ_zOOAJe9CHtg0//upload/2020/10/15/rao-trang--sat-lo-17103401.jpg" />
+                                <div class="bottom-left"><span>10 tập</span></div>
+                            </div>
+                            <div class="container" style="background-color:white; padding-top:5px; padding-bottom:5px;border-radius: 5px;">
+                                <p style="color:black; font-size:17px; line-height:20px;"><strong>nghiệp ngã của Trương Quốc Lập - Đặng ngọc hiệp</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center" style="padding-bottom:20px; padding-top:20px;">
+                    <button class="button button-0 button-6" data-bind="click: $root.audioPodcast">Xem thêm</button>
+                </div>
+            </div>
+        </div>
+        <!--ko foreach: $root.audiobook -->
+        <div style="background-color:#fe6f61; margin-top:-10px" class="opacity-background">
+            <div style="margin:0 2%">
+                <div>
+                    <h3 style="color:white; padding:12px; padding-left:0px" data-bind="click: $root.audiobookDetails"><i class="demo-icon icon-book"></i> <span> Sách nói</span> </h3>
+                </div>
+                <div class="audio-podcast" style="width:100%;  background-color:white">
+                    <!--ko foreach: $root.home -->
+                    <div data-bind="click: $root.selectedData1">
                         <div class="img img-text-bottom-left">
                             <img src="/fonts/icon/icon-audio.png" class="icon-audio lazy" height="50" width="50">
                             <img class="img-fluid lazy img-content" style="width:100%; height:100% ;border-top:3px" data-bind="attr: {src: $data.image360_360}" />
@@ -744,13 +1096,212 @@
                         <div class="container" style="background-color:white; padding-top:12px; padding-bottom:12px;border-radius:5px;">
                             <p class="text" style="color:black; font-size:20px;"><strong data-bind="text: $data.Name"></strong></p>
                         </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+
+                <div class="d-flex flex-wrap justify-content-between" style="margin-top:10px;border-radius:3px;">
+                    <!--ko foreach: $root.homes -->
+                    <div style="width:49%; background-color:white; margin-bottom:10px; border-radius:3px;" data-bind="click: $root.selectedData1">
+                        <div class="img img-text-bottom-left">
+                            <img src="/fonts/icon/icon-audio.png" class="icon-audio lazy" height="50" width="50">
+                            <img class="img-fluid lazy img-content" style="width:100%; height:100%;border-top:3px " data-bind="attr: {src: image182_182}" />
+                            <div class="bottom-left"><span>10 tập</span></div>
+                        </div>
+                        <div class="container" style="background-color:white; padding-top:5px; height:62px;">
+                            <p class="text" style="color:black; font-size:17px; "><strong data-bind="text:Name"></strong></p>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+
+                <div class="d-flex justify-content-center" style="padding-bottom:20px; padding-top:20px;">
+                    <button class="button button-0 button-7" data-bind="click: $root.audiobookDetails">Xem thêm</button>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <!-- /ko -->
+        <!--ko foreach: $root.audioMusic -->
+        <div style="background-color:#50b6ba; margin-bottom:50px;" class="opacity-background">
+            <div style="margin: 0 2%">
+                <div>
+                    <h3 style="color:white; padding:12px; padding-left:0px" data-bind="click: $root.audiobookDetails"><i class="demo-icon icon-music-2"></i> <span >Âm nhạc</span> </h3>
+                </div>
+                <div class="audio-podcast" style="width:100%;background-color:white ">
+                    <!--ko foreach: $root.music -->
+                    <div data-bind="click: $root.selectedData1">
+                        <div class="img img-text-bottom-left">
+                            <img src="/fonts/icon/icon-audio.png" class="icon-audio lazy" height="50" width="50">
+                            <img class="img-fluid lazy img-content" style="width:100%; height:100% ;border-top:3px" data-bind="attr: {src: $data.image360_360}" />
+                            <div class="bottom-left"><span>10 tập</span></div>
+                        </div>
+                        <div class="container" style="background-color:white; padding-top:12px; padding-bottom:12px;border-radius:5px;">
+                            <p class="text" style="color:black; font-size:20px;"><strong data-bind="text: $data.Name"></strong></p>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <div class="d-flex flex-wrap justify-content-between" style="margin-top:10px;">
+                    <!--ko foreach: $root.musics -->
+                    <div style="width:49%; background-color:white; margin-bottom:10px; border-radius:3px;" data-bind="click: $root.selectedData1">
+                        <div class="img img-text-bottom-left">
+                            <img src="/fonts/icon/icon-audio.png" class="icon-audio lazy" height="50" width="50">
+                            <img class="img-fluid lazy img-content" style="width:100%; height:100%;border-top:3px " data-bind="attr: {src: image182_182}" />
+                            <div class="bottom-left"><span>10 tập</span></div>
+                        </div>
+                        <div class="container" style="background-color:white; padding-top:5px; height:62px;">
+                            <p class="text" style="color:black; font-size:17px; "><strong data-bind="text:Name"></strong></p>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <div class="d-flex justify-content-center" style="padding-bottom:20px; padding-top:20px;">
+                    <button class="button button-0 button-8" data-bind="click: $root.audiobookDetails">Xem thêm</button>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+
+    </div>
+</div>
+
+<div id="audiobookDetailHome" style="display:none">
+    <div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
+        <div class="side-nav">
+            <nav class="navbar navbar-light ">
+                <div class="d-flex justify-content-between" style="width:100%;">
+                    <div data-bind="click: $root.backAudiobookHome">
+                        <a class="navbar-brand" href="#">
+                            <span><i class="fas fa-arrow-left" style="width:30px;padding-top:5px; color:white"></i></span>
+                        </a>
+                    </div>
+                    <div>
+                        <img src="https://vtc.vn/Content/mobile/images/logo.png" style="max-height:31px" />
+                    </div>
+                    <div>
+                        <i class="demo-icon icon-search" style="color:white; font-size:18px; padding-top:6px;"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="hidden-detail" style="margin-top:56px;background-color:#1f2342;" data-bind="with: $root.audiobookSeleced">
+        <div>
+            <div>
+                <div class="d-flex  container" width:100%">
+                    <div style="width:70%; margin-top:15px;">
+                        <div class="img img-text-bottom-left">
+                            <img class="img-fluid img-content" style="height:220px;border-radius:17px;" data-bind="attr: {src: $data.Info.image360_360}" />
+                        </div>
+                    </div>
+
+                </div>
+                <div style="color:white;" class="container">
+                    <h3 style="font-weight:bold; padding-top:10px" data-bind="text: $data.Info.Name"> </h3>
+                    <!--ko if: $data.Info.Author.length>0 -->
+                    <p>Tác giả: <span data-bind="text: $data.Info.Author"></span></p>
+                    <!-- /ko -->
+                    <p class="text-content-detail" data-bind="text: $data.Info.Des">
+                    </p>
+                </div>
+            </div>
+            <div class="container" style="padding-top: 10px;">
+                <div class="container" style="border-radius: 7px;background-color: #fff7cc;">
+                    <div class="d-flex justify-content-center ">
+                        <div>
+                            <h3 style="font-weight:bold; ">Danh sách chương </h3>
+                        </div>
+                    </div>
+                    <div class="slim-scroll">
+                        <div data-bind="foreach: $root.Items">
+                            <div class="d-flex justify-content-between" data-bind="click: $root.selectedItem">
+                                <div style="width:20%;">
+                                    <img style=" border-radius: 7px; height:55px;" class="img-fluid" data-bind="attr: {src: image182_182}" />
+                                </div>
+                                <div style="width:60%">
+                                    <h6 style="font-weight: bold;"><span data-bind="text:Name"></span></h6>
+                                </div>
+                                <div style="width:10%">
+                                    <img class="img-fluid" src="~/fonts/icon/icon-share.png" />
+                                </div>
+                            </div>
+                            <hr style="border: 1px solid #cab960; opacity:0.5" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="margin-top:10px;" id="detail-catagory">
+            <h3 style="color:white">Cùng thể loại</h3>
+            <div class="d-flex flex-wrap justify-content-between" style="margin-top:10px;">
+                <!--ko foreach: $root.audiobooks -->
+                <div style="width:49%; background-color:white; margin-bottom:10px; border-radius:3px;" data-bind="click: $root.selectedData">
+                    <div class="img img-text-bottom-left">
+                        <img src="/fonts/icon/icon-audio.png" class="icon-audio lazy" height="50" width="50">
+                        <img class="img-fluid lazy img-content" style="width:100%; height:100%;border-top:3px " data-bind="attr: {src: image182_182}" />
+                        <div class="bottom-left"><span>10 tập</span></div>
+                    </div>
+                    <div class="container" style="background-color:white; padding-top:5px; height:62px;">
+                        <p class="text" style="color:black; font-size:17px; "><strong data-bind="text:Name"></strong></p>
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="audiobookDetail" style="display:none">
+    <div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
+        <div class="side-nav">
+            <nav class="navbar navbar-light ">
+                <div class="d-flex justify-content-between" style="width:100%;">
+                    <div data-bind="click: $root.backAudio">
+                        <a class="navbar-brand" href="#">
+                            <span><i class="fas fa-arrow-left" style="width:30px;padding-top:5px; color:white"></i></span>
+                        </a>
+                    </div>
+                    <div>
+                        <img src="https://vtc.vn/Content/mobile/images/logo.png" style="max-height:31px;max-width: 123px;" />
+                    </div>
+                    <div>
+                        <i class="demo-icon icon-search" style="color:white; font-size:18px; padding-top:6px;"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div style="margin-top: -10px;">
+            <div class="scrollmenu">
+                <!--ko foreach: $root.menuAuBook -->
+                <a href="#" class="menuAudio" data-bind="click: $root.loadMenuAudiobook"><span data-bind="text: Name"></span></a>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+    <div style="  margin-top:88px " class="detail-audio">
+        <div style="margin:0 2%">
+            <div data-bind="with: $root.selectedName">
+                <h3 style="color:white; padding:12px; padding-left:0px"><i class="demo-icon icon-book"></i> <span id="name-selected" data-bind="text: $data.Name"></span></h3>
+            </div>
+
+            <div class="audio-podcast" style="width:100%;background-color:white ;border-radius:3px;">
+                <!--ko foreach: $root.audiobook-->
+                <div data-bind="click: $root.selectedData">
+                    <div class="img img-text-bottom-left">
+                        <img src="/fonts/icon/icon-audio.png" class="icon-audio lazy" height="50" width="50">
+                        <img class="img-fluid lazy img-content" style="width:100%; height:100% ;border-top:3px" data-bind="attr: {src: $data.image360_360}" />
+                        <div class="bottom-left"><span>10 tập</span></div>
+                    </div>
+                    <div class="container" style="background-color:white; padding-top:12px; padding-bottom:12px;border-radius:5px;">
+                        <p class="text" style="color:black; font-size:20px;"><strong data-bind="text: $data.Name"></strong></p>
                     </div>
                 </div>
                 <!-- /ko -->
             </div>
 
             <div class="d-flex flex-wrap justify-content-between" style="margin-top:10px;border-radius:3px;">
-                <!--ko foreach: $root.homes -->
+                <!--ko foreach: $root.audiobooks -->
                 <div style="width:49%; background-color:white; margin-bottom:10px; border-radius:3px;" data-bind="click: $root.selectedData">
                     <div class="img img-text-bottom-left">
                         <img src="/fonts/icon/icon-audio.png" class="icon-audio lazy" height="50" width="50">
@@ -763,213 +1314,173 @@
                 </div>
                 <!-- /ko -->
             </div>
-
-            <div class="d-flex justify-content-center" style="padding-bottom:20px; padding-top:20px;">
-                <button class="button button-0 button-7" data-bind="click: $root.audiobookDetails">Xem thêm</button>
-            </div>
-            <!-- /ko -->
-        </div>
-    </div>
-    <!-- /ko -->
-    <!--ko foreach: $root.audioMusic -->
-    <div style="background-color:#50b6ba; margin-bottom:50px;" class="opacity-background">
-        <div style="margin: 0 2%">
-            <div>
-                <h3 style="color:white; padding:12px; padding-left:0px" data-bind="click: $root.audiobookDetails"><i class="demo-icon icon-music-2"></i> <span data-bind="text: Name"></span> </h3>
-            </div>
-            <div class="audio-podcast" style="width:100%;background-color:white ">
-                <!--ko foreach: $root.music -->
-                <div data-bind="click: $root.selectedData">
-                    <div data-bind="click: $root.clickSelectedData">
-                        <div class="img img-text-bottom-left">
-                            <img src="/fonts/icon/icon-audio.png" class="icon-audio lazy" height="50" width="50">
-                            <img class="img-fluid lazy img-content" style="width:100%; height:100% ;border-top:3px" data-bind="attr: {src: $data.image360_360}" />
-                            <div class="bottom-left"><span>10 tập</span></div>
-                        </div>
-                        <div class="container" style="background-color:white; padding-top:12px; padding-bottom:12px;border-radius:5px;">
-                            <p class="text" style="color:black; font-size:20px;"><strong data-bind="text: $data.Name"></strong></p>
-                        </div>
-                    </div>
-                </div>
-                <!-- /ko -->
-            </div>
-            <div class="d-flex flex-wrap justify-content-between" style="margin-top:10px;">
-                <!--ko foreach: $root.musics -->
-                <div style="width:49%; background-color:white; margin-bottom:10px; border-radius:3px;" data-bind="click: $root.selectedData">
-                    <div class="img img-text-bottom-left">
-                        <img src="/fonts/icon/icon-audio.png" class="icon-audio lazy" height="50" width="50">
-                        <img class="img-fluid lazy img-content" style="width:100%; height:100%;border-top:3px " data-bind="attr: {src: image182_182}" />
-                        <div class="bottom-left"><span>10 tập</span></div>
-                    </div>
-                    <div class="container" style="background-color:white; padding-top:5px; height:62px;">
-                        <p class="text" style="color:black; font-size:17px; "><strong data-bind="text:Name"></strong></p>
-                    </div>
-                </div>
-                <!-- /ko -->
-            </div>
-
-            <div class="d-flex justify-content-center" style="padding-bottom:20px; padding-top:20px;">
-                <button class="button button-0 button-8" data-bind="click: $root.audiobookDetails">Xem thêm</button>
-            </div>
-        </div>
-    </div>
-    <!-- /ko -->
-
-</div>
-<!-- /ko -->
-<!--ko if: $root.mode() == "audiobookDetail" -->
-<div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
-    <div class="side-nav">
-        <nav class="navbar navbar-light ">
-            <div class="d-flex justify-content-between" style="width:100%;">
-                <div data-bind="click: $root.backAudio">
-                    <a class="navbar-brand" href="#">
-                        <span><i class="fas fa-arrow-left" style="width:30px;padding-top:5px; color:white"></i></span>
-                    </a>
-                </div>
-                <div style="margin-top:5px">
-                    <img src="~/fonts/icon/logo-vtcnews.png" style="height:30px; width:80px" />
-                </div>
-                <div>
-                    <i class="demo-icon icon-search" style="color:white; font-size:16px; padding-top:10px;"></i>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <div style="margin-top: -10px;">
-        <div class="scrollmenu">
-            <!--ko foreach: $root.menuAuBook -->
-            <a href="#" class="menuAudio" data-bind="click: $root.loadMenuAudiobook"><span data-bind="text: Name"></span></a>
-            <!-- /ko -->
         </div>
     </div>
 </div>
-<div style="  margin-top:88px " class="detail-audio">
-    <div style="margin:0 2%">
-        <div data-bind="with: $root.selectedName">
-            <h3 style="color:white; padding:12px; padding-left:0px"><i class="demo-icon icon-book"></i> <span id="name-selected" data-bind="text: $data.Name"></span></h3>
-        </div>
 
-        <div class="audio-podcast" style="width:100%;background-color:white ;border-radius:3px;">
-            <!--ko foreach: $root.audiobook-->
-            <div data-bind="click: $root.selectedData">
-                <div class="img img-text-bottom-left">
-                    <img src="/fonts/icon/icon-audio.png" class="icon-audio lazy" height="50" width="50">
-                    <img class="img-fluid lazy img-content" style="width:100%; height:100% ;border-top:3px" data-bind="attr: {src: $data.image360_360}" />
-                    <div class="bottom-left"><span>10 tập</span></div>
-                </div>
-                <div class="container" style="background-color:white; padding-top:12px; padding-bottom:12px;border-radius:5px;">
-                    <p class="text" style="color:black; font-size:20px;"><strong data-bind="text: $data.Name"></strong></p>
-                </div>
-            </div>
-            <!-- /ko -->
-        </div>
-
-        <div class="d-flex flex-wrap justify-content-between" style="margin-top:10px;border-radius:3px;">
-            <!--ko foreach: $root.audiobooks -->
-            <div style="width:49%; background-color:white; margin-bottom:10px; border-radius:3px;" data-bind="click: $root.selectedData">
-                <div class="img img-text-bottom-left">
-                    <img src="/fonts/icon/icon-audio.png" class="icon-audio lazy" height="50" width="50">
-                    <img class="img-fluid lazy img-content" style="width:100%; height:100%;border-top:3px " data-bind="attr: {src: image182_182}" />
-                    <div class="bottom-left"><span>10 tập</span></div>
-                </div>
-                <div class="container" style="background-color:white; padding-top:5px; height:62px;">
-                    <p class="text" style="color:black; font-size:17px; "><strong data-bind="text:Name"></strong></p>
-                </div>
-            </div>
-            <!-- /ko -->
-        </div>
-    </div>
-</div>
-<!-- /ko -->
-<!--ko if: $root.mode() == "selectedAudiobookDetail" -->
-<div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
-    <div class="side-nav">
-        <nav class="navbar navbar-light ">
-            <div class="d-flex justify-content-between" style="width:100%;">
-                <div data-bind="click: $root.backAudiobookDetail">
-                    <a class="navbar-brand" href="#">
-                        <span><i class="fas fa-arrow-left" style="width:30px;padding-top:5px; color:white"></i></span>
-                    </a>
-                </div>
-                <div style="margin-top:5px">
-                    <img src="~/fonts/icon/logo-vtcnews.png" style="height:30px; width:80px" />
-
-                </div>
-                <div>
-                    <i class="demo-icon icon-search" style="color:white; font-size:16px; padding-top:10px;"></i>
-                </div>
-            </div>
-        </nav>
-    </div>
-</div>
-<div class="hidden-detail" style="margin-top:56px;background-color:#1f2342;" data-bind="with: $root.audiobookSeleced">
-    <div>
-        <div>
-            <div class="d-flex  container" width:100%">
-                <div style="width:70%; margin-top:15px;">
-                    <div class="img img-text-bottom-left">
-                        <img class="img-fluid img-content" style="height:220px;border-radius:17px;" data-bind="attr: {src: $data.Info.image360_360}" />
+<div id="selectedAudiobookDetail" style="display:none">
+    <div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
+        <div class="side-nav">
+            <nav class="navbar navbar-light ">
+                <div class="d-flex justify-content-between" style="width:100%;">
+                    <div data-bind="click: $root.backAudiobookDetail">
+                        <a class="navbar-brand" href="#">
+                            <span><i class="fas fa-arrow-left" style="width:30px;padding-top:5px; color:white"></i></span>
+                        </a>
                     </div>
-                </div>
-
-            </div>
-            <div style="color:white;" class="container">
-                <h3 style="font-weight:bold; padding-top:10px" data-bind="text: $data.Info.Name"> </h3>
-                <!--ko if: $data.Info.Author.length>0 -->
-                <p>Tác giả: <span data-bind="text: $data.Info.Author"></span></p>
-                <!-- /ko -->
-                <p class="text-content-detail" data-bind="text: $data.Info.Des">
-                </p>
-            </div>
-        </div>
-        <div class="container" style="padding-top: 10px;">
-            <div class="container" style="border-radius: 7px;background-color: #fff7cc;">
-                <div class="d-flex justify-content-center ">
                     <div>
-                        <h3 style="font-weight:bold; ">Danh sách chương </h3>
+                        <img src="https://vtc.vn/Content/mobile/images/logo.png" style="max-height:31px;max-width: 123px;" />
+                    </div>
+                    <div>
+                        <i class="demo-icon icon-search" style="color:white; font-size:18px; padding-top:6px;"></i>
                     </div>
                 </div>
-                <div id="slim-scroll">
-                    <div data-bind="foreach: $root.Items">
-                        <div class="d-flex justify-content-between" data-bind="click: $root.selectedItem">
-                            <div style="width:20%;">
-                                <img style=" border-radius: 7px; height:55px;" class="img-fluid" data-bind="attr: {src: image182_182}" />
-                            </div>
-                            <div style="width:60%">
-                                <h6 style="font-weight: bold;"><span data-bind="text:Name"></span></h6>
-                            </div>
-                            <div style="width:10%">
-                                <img class="img-fluid" src="~/fonts/icon/icon-share.png" />
-                            </div>
+            </nav>
+        </div>
+    </div>
+    <div class="hidden-detail" style="margin-top:56px;background-color:#1f2342;" data-bind="with: $root.audiobookSeleced">
+        <div>
+            <div>
+                <div class="d-flex  container" width:100%">
+                    <div style="width:70%; margin-top:15px;">
+                        <div class="img img-text-bottom-left">
+                            <img class="img-fluid img-content" style="height:220px;border-radius:17px;" data-bind="attr: {src: $data.Info.image360_360}" />
                         </div>
-                        <hr style="border: 1px solid #cab960; opacity:0.5" />
                     </div>
+
+                </div>
+                <div style="color:white;" class="container">
+                    <h3 style="font-weight:bold; padding-top:10px" data-bind="text: $data.Info.Name"> </h3>
+                    <!--ko if: $data.Info.Author.length>0 -->
+                    <p>Tác giả: <span data-bind="text: $data.Info.Author"></span></p>
+                    <!-- /ko -->
+                    <p class="text-content-detail" data-bind="text: $data.Info.Des">
+                    </p>
+                </div>
+            </div>
+            <div class="container" style="padding-top: 10px;">
+                <div class="container" style="border-radius: 7px;background-color: #fff7cc;">
+                    <div class="d-flex justify-content-center ">
+                        <div>
+                            <h3 style="font-weight:bold; ">Danh sách chương </h3>
+                        </div>
+                    </div>
+                    <div class="slim-scroll">
+                        <div data-bind="foreach: $root.Items">
+                            <div class="d-flex justify-content-between" data-bind="click: $root.selectedItem">
+                                <div style="width:20%;">
+                                    <img style=" border-radius: 7px; height:55px;" class="img-fluid" data-bind="attr: {src: image182_182}" />
+                                </div>
+                                <div style="width:60%">
+                                    <h6 style="font-weight: bold;"><span data-bind="text:Name"></span></h6>
+                                </div>
+                                <div style="width:10%">
+                                    <img class="img-fluid" src="~/fonts/icon/icon-share.png" />
+                                </div>
+                            </div>
+                            <hr style="border: 1px solid #cab960; opacity:0.5" />
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
-    </div>
-    <div class="container" style="margin-top:10px;" id="detail-catagory">
-        <h3 style="color:white">Cùng thể loại</h3>
-        <div class="d-flex flex-wrap justify-content-between" style="margin-top:10px;">
-            <!--ko foreach: $root.audiobooks -->
-            <div style="width:49%; background-color:white; margin-bottom:10px; border-radius:3px;" data-bind="click: $root.selectedData">
-                <div class="img img-text-bottom-left">
-                    <img src="/fonts/icon/icon-audio.png" class="icon-audio lazy" height="50" width="50">
-                    <img class="img-fluid lazy img-content" style="width:100%; height:100%;border-top:3px " data-bind="attr: {src: image182_182}" />
-                    <div class="bottom-left"><span>10 tập</span></div>
+        <div class="container" style="margin-top:10px;" id="detail-catagory">
+            <h3 style="color:white">Cùng thể loại</h3>
+            <div class="d-flex flex-wrap justify-content-between" style="margin-top:10px;">
+                <!--ko foreach: $root.audiobooks -->
+                <div style="width:49%; background-color:white; margin-bottom:10px; border-radius:3px;" data-bind="click: $root.selectedData">
+                    <div class="img img-text-bottom-left">
+                        <img src="/fonts/icon/icon-audio.png" class="icon-audio lazy" height="50" width="50">
+                        <img class="img-fluid lazy img-content" style="width:100%; height:100%;border-top:3px " data-bind="attr: {src: image182_182}" />
+                        <div class="bottom-left"><span>10 tập</span></div>
+                    </div>
+                    <div class="container" style="background-color:white; padding-top:5px; height:62px;">
+                        <p class="text" style="color:black; font-size:17px; "><strong data-bind="text:Name"></strong></p>
+                    </div>
                 </div>
-                <div class="container" style="background-color:white; padding-top:5px; height:62px;">
-                    <p class="text" style="color:black; font-size:17px; "><strong data-bind="text:Name"></strong></p>
-                </div>
+                <!-- /ko -->
             </div>
-            <!-- /ko -->
         </div>
     </div>
 </div>
-<!-- /ko -->
 
-<div class="container opacity-background" id="img-live">
+
+<div class="container demo"> 
+    <div class="modal left fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">             
+                <div class="modal-body">
+                    <div class="d-flex d-flex justify-content-between container" style="width:100%; margin-left:5px;margin-top:10px;margin-bottom:10px ">
+                        <div><img src="https://vtc.vn/Content/mobile/images/logo-footer.png" style="max-height:36px; " /></div>                       
+                    </div>
+                    <button class="dropdown-btn"><i class="demo-icon icon-home-outline"></i> Trang chủ</button>
+                    <button class="dropdown-btn-btn dropdown-btn">
+                        <i class="demo-icon icon-newspaper-2"></i>  Tin tức
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-container" style="margin-left:20px">
+                        <p style="padding-left:22px; font-size:18px; opacity:0.8">Podcast</p>
+                        <p  style="padding-left:22px; font-size:18px; opacity:0.8">Sách nói</p>
+                        <p  style="padding-left:22px; font-size:18px; opacity:0.8">Âm nhạc</p>
+                    </div>
+                    <button class="dropdown-btn"><i class="demo-icon icon-videocam-5"></i> Video</button>
+                    <button class="dropdown-btn dropdown-btn-btn">
+                        <i class="demo-icon icon-mic-outline"></i>  Audio
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-container" style="margin-left:20px">
+                        <p style="padding-left:22px; font-size:18px; opacity:0.8">Podcast</p>
+                        <p style="padding-left:22px; font-size:18px; opacity:0.8">Sách nói</p>
+                        <p style="padding-left:22px; font-size:18px; opacity:0.8">Âm nhạc</p>
+                    </div>
+                    <hr class="hr-bottom" />
+                    <div class="container">
+                        <h6><strong>BÁO ĐIỆN TỬ VTC NEWS </strong></h6>
+                        <p>CQCQ: Đài Truyền hình KTS VTC</p>
+                        <p>Tổng biên tập: <strong>Ngô Văn Hải</strong></p>
+                        <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i>  <span style="margin-left:6px">Tầng 12A, Tòa nhà 18 Tam Trinh, Hai Bà Trưng, TP.Hà Nội.</span></p>
+                        <div style="width:100%">
+                            <p><i class="fas fa-phone-alt" aria-hidden="true"></i>  <span style="margin-left:6px">  024.3632.1588</span></p>
+                        </div>
+                        <div>
+                            <p><i class="fas fa-envelope" aria-hidden="true"></i>  <span style="margin-left:6px">toasoan@vtc.gov.vn</span></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- modal-content -->
+        </div><!-- modal-dialog -->
+    </div>
+
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style=" margin-top: 80px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" style="text-align:center" id="exampleModalLabel">Gửi bình luận</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="_idArticle" hidden />
+                <textarea class="form-control" rows="2" id="_value" placeholder="Nội dung"></textarea>
+                <span id="checkvalue" style="color:red"></span>
+                <input type="text" class="form-control" id="_username" placeholder="Họ và tên" style="margin-top:10px;" />
+                <span id="checkusername" style="color:red"></span>
+                <input type="email" class="form-control" id="_email" placeholder="Email" style="margin-top:10px;" />
+            </div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button type="button" class="btn btn-secondary" style="margin-right:10px;" data-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-primary" style="background-color:#a3161d" id="button" data-dismiss="modal" data-bind="click: $root.postCommnet">Gửi</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container opacity-background" id="img-live" style="visibility:hidden">
     <div class="d-flex justify-content-end" style="position: fixed; bottom: 130px; right: 20px;  z-index: 1000;" data-bind="click: $root.live">
         <img src="~/fonts/icon/icon-live.png" width=50 height=50 />
     </div>
@@ -1012,13 +1523,13 @@
         <i class="fas fa-times" style="margin-left:27%;" data-bind="click: $root.closeAudio"></i>
     </div>
     <div>
-        <audio id="audio-play"
+        <audio id="audio-play" class="video-js vjs-default-skin"
                volume="0.4" autoplay="autoplay">
         </audio>
     </div>
 </div>
 
-<div id="avg-nav-bar" class="opacity-background">
+<div id="avg-nav-bar" class="opacity-background" style="visibility:hidden">
     <button class="select-button selected" data-bind="click: $root.homeApp">
         <i class="demo-icon icon-home-outline"></i>
         <span>Trang chủ</span>
@@ -1042,6 +1553,5 @@
 </div>
 
 @section scripts {
-    <script src="~/AppJs/layoutApp.js?v=3"></script>
-
+    <script defer  src="~/AppJs/layoutApp.js?v=4"></script>
 }

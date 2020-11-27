@@ -15,11 +15,11 @@
                 <h3><strong data-bind="text: Title"></strong>  </h3>
                 <p class="size-content"><span style="opacity:0.5"></span> <span style="color:#a3161d"></span></p>
             </div>          
-            <div class="hidden-div container text-18px d-flex justify-content-end" style="visibility:hidden">
+           @* <div class="hidden-div container text-18px d-flex justify-content-end" style="visibility:hidden">
                 <p><strong>Phương Anh</strong>(<span>Nguồn CNN</span>)</p>
-            </div>
+            </div>*@
         </div>
-        <div style="visibility:hidden" class="hidden-div">
+       @* <div style="visibility:hidden" class="hidden-div">
             <div class="div-style-ratio-1-6 d-flex d-flex justify-content-between container" style="align-items: center">
                 <div style="width:60%;align-items:center" class="d-flex d-flex justify-content-between">
                     <div class="text-18px">Chia sẻ:</div>
@@ -37,6 +37,9 @@
                 <div>
                     <button type="button" class="btn btn-primary"><i class="far fa-thumbs-up"></i> Primary</button>
                 </div>
+                <div class="d-flex justify-content-center " style="margin-top:10px;margin-bottom:10px">
+                    <button type="button" class="btn btn-danger"><i class="demo-icon icon-youtube-2"></i> Theo dõi trên Youtube</button>
+                </div>
             </div>
             <div class="d-flex justify-content-center " style="margin-top:10px;margin-bottom:10px">
                 <button type="button" class="btn btn-danger"><i class="demo-icon icon-youtube-2"></i> Theo dõi trên Youtube</button>
@@ -44,7 +47,7 @@
             <div class="text-18px container">
                 <p>Tags: <span style="color:blue"><a src="#">Donal Trump</a>, <a src="#">Covid19</a>, <a src="#">Virus Corona</a></span></p>
             </div>
-        </div>
+        </div>*@
         <div class="container hidden-div" style="visibility:hidden">
             <h4 style="font-weight:bold">Video Liên quan</h4>
             <div class=" d-flex flex-wrap justify-content-between" data-bind="foreach: $root.GetVideoHomes">

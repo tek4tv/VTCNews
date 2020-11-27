@@ -66,12 +66,12 @@
         });
     }
     self.selectHomeMenuDetail = ko.observableArray();
-    self.selectHomeMenu = function (item) {      
+    self.selectHomeMenu = function (item) {
         var Id = item.Id();
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn/api/home/news/menu",
             type: 'GET'
-        }).done(function (data) {          
+        }).done(function (data) {
             $.each(data, function (index, item) {
                 if (item.ParentId == Id) {
                     self.selectHomeMenuDetail.push(self.convertToKoObject(item))
