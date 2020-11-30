@@ -107,13 +107,11 @@
                 }
             });
         }
-        $('.clicked-menu').click(function () {
-            
+        $('.clicked-menu').click(function () {            
             $('.clicked').removeClass('clicked');
             $(this).addClass('clicked');
         });
         $('.select-button ').click(function () {
-            console.log('1')
             $('.selected').removeClass('selected');
             $(this).addClass('selected');
         });
@@ -121,8 +119,6 @@
             moment.locale('vi');
         });
     </script>
-   
-
     @RenderSection("scripts", required: false)
 
 </body>

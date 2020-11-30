@@ -117,6 +117,10 @@ body {
 .scrollmenu a.clicked {
     border-bottom: 4px solid white;
 }
+.detail-content p{
+    padding-left:5px;
+    padding-right:5px;
+}
 
 
 button:focus {
