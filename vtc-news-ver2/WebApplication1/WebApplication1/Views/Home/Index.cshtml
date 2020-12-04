@@ -306,7 +306,7 @@
     <div class="menuData">
         <div class="container hidden-detail" style="margin-top: 100px; " data-bind="foreach: menuData">
             <div class="d-flex" style="width:100%" data-bind="click: $root.clickDetailNew2">
-                <div style="width:40%" >
+                <div style="width:40%">
                     <div>
                         <img class="img-fluid img-content" data-bind="attr: { 'src':image16_9 }" />
                     </div>
@@ -793,7 +793,7 @@
             </div>
             <hr class="hr-bottom-parent" />
         </div>
-        <div class="hidden d-flex justify-content-center " style="margin-bottom:60px; align-items:center; ">
+        <div id="loadding-selected" class="hidden d-flex justify-content-center " style="margin-bottom:60px; align-items:center; ">
             <i class="icon-loadding demo-icon icon-spin5 animate-spin"></i>
         </div>
     </div>
@@ -825,7 +825,7 @@
             <div class="d-flex" style="width:100%" data-bind="click: $root.clickDetailNew3">
                 <div style="width:40%">
                     <div>
-                        <img class=" img-fluid" data-bind="attr: { 'data-src':image16_9 }" />
+                        <img class=" img-fluid img-content" data-bind="attr: { 'src':image16_9 }" />
                     </div>
                 </div>
                 <div style="width:60%; margin-left:5%">
@@ -1048,7 +1048,7 @@
                     <div class="img img-text-bottom-left">
                         <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
                         <img class="img-fluid img-content" src="https://image.vtc.vn/resize/w1JaaFnI-oNXi_YqgetJ_zOOAJe9CHtg0//upload/2020/10/15/rao-trang--sat-lo-17103401.jpg" />
-                        
+
                     </div>
                     <div class="container" style="background-color:white; padding-top:12px; padding-bottom:12px;border-radius: 5px;">
                         <p style="color:black; font-size:20px;"><strong>Điều kiện hôm nhân nghiệp ngã của Trương Quốc Lập - Đặng ngọc hiệp</strong></p>
@@ -1060,7 +1060,7 @@
                             <div class="img img-text-bottom-left">
                                 <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
                                 <img class="img-fluid img-content" src="https://image.vtc.vn/resize/w1JaaFnI-oNXi_YqgetJ_zOOAJe9CHtg0//upload/2020/10/15/rao-trang--sat-lo-17103401.jpg" />
-                                
+
                             </div>
                             <div class="container" style="background-color:white; padding-top:5px; padding-bottom:5px;border-radius: 5px;">
                                 <p style="color:black; font-size:17px; line-height:20px;"><strong>nghiệp ngã của Trương Quốc Lập - Đặng ngọc hiệp</strong></p>
@@ -1070,7 +1070,7 @@
                             <div class="img img-text-bottom-left">
                                 <img src="/fonts/icon/icon-audio.png" class="icon-audio" height="50" width="50">
                                 <img class="img-fluid img-content" src="https://image.vtc.vn/resize/w1JaaFnI-oNXi_YqgetJ_zOOAJe9CHtg0//upload/2020/10/15/rao-trang--sat-lo-17103401.jpg" />
-                                
+
                             </div>
                             <div class="container" style="background-color:white; padding-top:5px; padding-bottom:5px;border-radius: 5px;">
                                 <p style="color:black; font-size:17px; line-height:20px;"><strong>nghiệp ngã của Trương Quốc Lập - Đặng ngọc hiệp</strong></p>
@@ -1087,12 +1087,12 @@
         <div style="background-color:#fe6f61; margin-top:-10px" class="opacity-background">
             <div style="margin:0 2%">
                 <div>
-                    <h3 style="color:white; padding:12px; padding-left:0px" data-bind="click: $root.audiobookDetails"><i class="demo-icon icon-book"></i> <span class="name-selected"  >Sách nói</span> </h3>
-                    <input type="text" id="audiobook" hidden data-bind="attr: {  value: Id  }"/>
+                    <h3 style="color:white; padding:12px; padding-left:0px" data-bind="click: $root.audiobookDetails"><i class="demo-icon icon-book"></i> <span class="name-selected">Sách nói</span> </h3>
+                    <input type="text" id="audiobook" hidden data-bind="attr: {  value: Id  }" />
                 </div>
                 <div class="audio-podcast" style="width:100%;background-color:white">
                     <!--ko foreach: $root.home -->
-                    <div data-bind="click: $root.selectedData1" >
+                    <div data-bind="click: $root.selectedData1">
                         <div class="img img-text-bottom-left" style="border-radius:3px; ">
                             <img src="/fonts/icon/icon-audio.png" class="icon-audio " height="50" width="50">
                             <img class="img-fluid  " style="width:100%; height:100% ;border-top:3px" data-bind="attr: {src: $data.image360_360}" />
@@ -1111,7 +1111,7 @@
                         <div class="img img-text-bottom-left">
                             <img src="/fonts/icon/icon-audio.png" class="icon-audio " height="50" width="50">
                             <img class="img-fluid  " style="width:100%; height:100%;border-top:3px " data-bind="attr: {src: image182_182}" />
-                            
+
                         </div>
                         <div class="container" style="background-color:white; padding-top:5px; height:62px; border-radius:3px;">
                             <p class="text" style="color:black; font-size:17px; "><strong data-bind="text:Name"></strong></p>
@@ -1131,15 +1131,15 @@
         <div style="background-color:#50b6ba; margin-bottom:50px;" class="opacity-background">
             <div style="margin: 0 2%">
                 <div>
-                    <h3 style="color:white; padding:12px; padding-left:0px" data-bind="click: $root.audiobookDetails"><i class="demo-icon icon-music-2"></i> <span class="name-selected" >Âm nhạc</span> </h3>
+                    <h3 style="color:white; padding:12px; padding-left:0px" data-bind="click: $root.audiobookDetails"><i class="demo-icon icon-music-2"></i> <span class="name-selected">Âm nhạc</span> </h3>
                 </div>
                 <div class="audio-podcast" style="width:100%;background-color:white ">
                     <!--ko foreach: $root.music -->
                     <div data-bind="click: $root.selectedData1">
-                        <div class="img img-text-bottom-left"  style="border-radius: 3px;">
+                        <div class="img img-text-bottom-left" style="border-radius: 3px;">
                             <img src="/fonts/icon/icon-audio.png" class="icon-audio " height="50" width="50">
-                            <img class="img-fluid "  style="width:100%; height:100% ;border-top:3px" data-bind="attr: {src: $data.image360_360}" />
-                            
+                            <img class="img-fluid " style="width:100%; height:100% ;border-top:3px" data-bind="attr: {src: $data.image360_360}" />
+
                         </div>
                         <div class="container" style="background-color:white; padding-top:12px; padding-bottom:12px;border-radius:3px;">
                             <p class="text" style="color:black; font-size:20px;"><strong data-bind="text: $data.Name"></strong></p>
@@ -1153,7 +1153,7 @@
                         <div class="img img-text-bottom-left">
                             <img src="/fonts/icon/icon-audio.png" class="icon-audio " height="50" width="50">
                             <img class="img-fluid  " style="width:100%; height:100%;border-top:3px " data-bind="attr: {src: image182_182}" />
-                            
+
                         </div>
                         <div class="container" style="background-color:white; padding-top:5px; height:62px;border-radius:3px;">
                             <p class="text" style="color:black; font-size:17px; "><strong data-bind="text:Name"></strong></p>
@@ -1245,7 +1245,7 @@
                     <div class="img img-text-bottom-left">
                         <img src="/fonts/icon/icon-audio.png" class="icon-audio " height="50" width="50">
                         <img class="img-fluid  " style="width:100%; height:100%;border-top:3px " data-bind="attr: {src: image182_182}" />
-                        
+
                     </div>
                     <div class="container" style="background-color:white; padding-top:5px; height:62px;border-radius:3px;">
                         <p class="text" style="color:black; font-size:17px; "><strong data-bind="text:Name"></strong></p>
@@ -1293,10 +1293,10 @@
             <div class="audio-podcast" style="width:100%;background-color:white ;">
                 <!--ko foreach: $root.audiobook-->
                 <div data-bind="click: $root.selectedData" style="border-radius: 3px;">
-                    <div class="img img-text-bottom-left" >
+                    <div class="img img-text-bottom-left">
                         <img src="/fonts/icon/icon-audio.png" class="icon-audio " height="50" width="50">
                         <img class="img-fluid  " style="width:100%; height:100% ;border-top:3px" data-bind="attr: {src: $data.image360_360}" />
-                        
+
                     </div>
                     <div class="container" style="background-color:white; padding-top:12px; padding-bottom:12px;border-radius:3px;">
                         <p class="text" style="color:black; font-size:20px;"><strong data-bind="text: $data.Name"></strong></p>
@@ -1311,7 +1311,7 @@
                     <div class="img img-text-bottom-left">
                         <img src="/fonts/icon/icon-audio.png" class="icon-audio " height="50" width="50">
                         <img class="img-fluid  " style="width:100%; height:100%;border-top:3px " data-bind="attr: {src: image182_182}" />
-                        
+
                     </div>
                     <div class="container" style="background-color:white; padding-top:5px; height:62px;border-radius:3px;">
                         <p class="text" style="color:black; font-size:17px; "><strong data-bind="text:Name"></strong></p>
@@ -1398,7 +1398,7 @@
                     <div class="img img-text-bottom-left">
                         <img src="/fonts/icon/icon-audio.png" class="icon-audio " height="50" width="50">
                         <img class="img-fluid  img-content" style="width:100%; height:100%;border-top:3px " data-bind="attr: {src: image182_182}" />
-                        
+
                     </div>
                     <div class="container" style="background-color:white; padding-top:5px; height:62px;">
                         <p class="text" style="color:black; font-size:17px; "><strong data-bind="text:Name"></strong></p>
@@ -1409,6 +1409,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 <div class="container demo">
@@ -1558,5 +1560,6 @@
 </div>
 
 @section scripts {
-    <script defer src="~/AppJs/layoutApp.js?v=4"></script>
+ 
+    <script defer src="~/AppJs/layoutApp.js?v=20"></script>
 }
