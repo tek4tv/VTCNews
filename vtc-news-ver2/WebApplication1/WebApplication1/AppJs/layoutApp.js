@@ -40,14 +40,19 @@
             url: "https://api.vtcnews.tek4tv.vn/api/podcast/GetAlbumPaging/chanId/14/pageIndex/1",
             type: 'GET'
         }).done(function (data) {
-            self.imgMusic.push(self.convertToKoObject(data[1]))
+            if (data.length > 0) {
+                self.imgMusic.push(self.convertToKoObject(data[1]))
+            }
+        
         });      
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn/api/podcast/GetAlbumPaging/chanId/3/pageIndex/1",
             type: 'GET'
         }).done(function (data) {
-            self.imgAudioBook.push(self.convertToKoObject(data[1]))
-            self.imgAudioBook2.push(self.convertToKoObject(data[2]))
+            if (data.length > 0) {
+                self.imgAudioBook.push(self.convertToKoObject(data[1]))
+                self.imgAudioBook2.push(self.convertToKoObject(data[2]))
+            }
         });
        
     }
@@ -75,87 +80,111 @@
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn/api/home/news/menu",
             type: 'GET'
-        }).done(function (data) {         
-            $.each(data, function (index, item) {              
-                if (item.ParentId == null) {                  
+        }).done(function (data) {
+            $.each(data, function (index, item) {
+                if (item.ParentId == null) {
                     self.homeMenus.push(self.convertToKoObject(item))
                 }
             })
-           
+
         });
     }
     // selected menu
     self.selectHomeMenuDetail = ko.observableArray();
-    self.nameId = ko.observable();
-    var countMenu = 0;
-    self.selectHomeMenu = function (item) {       
-        if (countMenu == 0) {
-            self.showMode('lazyloading');
-        }
-        countMenu++;
+    self.nameId = ko.observable();  
+    self.selectHomeMenu = function (item) {             
         var Id = item.Id();
-        self.nameId(Id);
-       
+        self.nameId(Id);    
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn/api/home/news/menu",
             type: 'GET'
-        }).done(function (data) {
+        }).done(function (data) {          
             self.selectHomeMenuDetail.removeAll();
+            if (self.menuData().length > 0) {
+                self.menuData.removeAll();
+            }           
+            var i = 0;
             $.each(data, function (index, item) {
-                if (item.ParentId == Id) {
-                    self.selectHomeMenuDetail.push(self.convertToKoObject(item))
+                if (item.ParentId == Id) {                  
+                    item.Array = [];        
+                    item.Index = i++;
+                    self.selectHomeMenuDetail.push(self.convertToKoObject(item));
+                    self.menuData.push(self.convertToKoObject(item));
                 }               
             })
-            self.showMode("selectedMenu"); 
+            self.showMode("selectedMenu");
+            $('.lazy').lazy();
+            self.initSwiperTab(); 
             $('.clicked-menu').click(function () {
                 $('.clicked').removeClass('clicked');
                 $(this).addClass('clicked');
+               
             });
-            $('#news_0').trigger('click');
+            $(`#news_0`).click();
+         
+            $('.swiper2 .swiper-wrapper').css("transform", "");
             
         });
     }
-    self.menuData = ko.observableArray();
+    self.initSwiperTab = function () {     
+        var swiper2 = new Swiper('.swiper2', {
+            autoHeight: false,
+            direction: 'horizontal',
+            on: {
+                slideChange: function (swiper) {
+                    var n = this.activeIndex;
+                    $(`#news_${n}`).click();
+
+                }
+            }
+        }); 
+    }
+   
+    self.menuData = ko.observableArray();   
     self.Id = ko.observable();
     self.parentId = ko.observable();
     self.nameMenu = ko.observable();
-    self.loadValueMenu = function (item) {  
+    self.loadValueMenu = function (item) { 
+        var index = item.Index();      
+        var swiper2 = new Swiper('.swiper2');
+        swiper2.slideTo(index, 500, false);
+        console.log(index)
         self.scrollToTop();       
         self.nameMenu(item.Title())
-        console.log(self.nameMenu())
-        var Id = item.Id();
+        var Id = item.Id();  
+        var id = item.Index();
         self.page(1);
         self.Id(Id);
-        self.parentId(item.ParentId())
-        console.log(self.Id())
-        console.log(item.ParentId())
+       self.parentId(item.ParentId());      
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn/api/home/news/ArticleCategoryPaging/" +  1+ "/" + self.Id(),         
             type: 'GET'
         }).done(function (data) {
-            self.menuData.removeAll();
+            if (self.menuData()[id].Array().length > 0) {
+                self.menuData()[id].Array.removeAll();
+            }          
             $.each(data, function (index, item) {
-                self.menuData.push(self.convertToKoObject(item))
-            })
-            $(window).scroll(function () {
+                self.menuData()[id].Array.push(self.convertToKoObject(item))
+            })  
+            /*$(window).scroll(function () {
                 if ($(window).scrollTop() + 120 >= $(document).height() - $(window).height()) {
-                    if ($("#selectedMenu").css("display") != 'none') {
-                        if (!self.isLoading()) {
-                            self.loadMoreValueMenu(self.Id());
-                        }
+                    if (!self.isLoading()) {
+                        self.loadMoreValueMenu(item);
                     }
                 }
-            });                   
-        });           
+            })*/
+        });             
     }
-    self.loadMoreValueMenu = function (Id) {
+    self.loadMoreValueMenu = function (item) {
         self.isLoading(true);
         self.page(self.page() + 1);
+        var id = item.Index();
         $.ajax({
-            url: "https://api.vtcnews.tek4tv.vn/api/home/news/ArticleCategoryPaging/" + self.page() + "/" + Id,
+            url: "https://api.vtcnews.tek4tv.vn/api/home/news/ArticleCategoryPaging/" + self.page() + "/" + self.Id(),
             type: 'GET',
         }).done(function (data) {
             self.isLoading(false);
+            console.log(data)
             if (data.length == 0) {
                 console.log('null')
                 $('#loaddingMenu').css('visibility','hidden');
@@ -163,7 +192,7 @@
             }
             else {
                 $.each(data, function (index, item) {
-                    self.menuData.push(self.convertToKoObject(item))
+                    self.menuData()[id].Array.push(self.convertToKoObject(item))
                 })
             }
         });
@@ -312,13 +341,14 @@
             console.log(data)
             self.scrollToTop();
             self.tags.removeAll();
+            self.detailData.removeAll();
             self.categoryNameData.removeAll();
             self.ListArticleRelated.removeAll();
             // load List Article Related
             $.each(self.convertToJson(data).ListArticleRelated, function (index, item) {
                 self.ListArticleRelated.push(self.convertToKoObject(item))
             })
-            self.detailData(self.convertToJson(data).DetailData);
+            self.detailData.push(self.convertToJson(data).DetailData);
             $.each(self.convertToJson(data).ListTag, function (index, item) {
                 self.tags.push(self.convertToKoObject(item))
             })
@@ -444,13 +474,15 @@
         }).done(function (data) {
             self.scrollToTop();
             self.tags.removeAll();
+            self.detailData.removeAll();
             self.categoryNameData.removeAll();
             self.ListArticleRelated.removeAll();
             // load List Article Related
             $.each(self.convertToJson(data).ListArticleRelated, function (index, item) {
                 self.ListArticleRelated.push(self.convertToKoObject(item))
             })
-            self.detailData(self.convertToJson(data).DetailData);
+            self.detailData.push(self.convertToJson(data).DetailData);
+            console.log(self.detailData())
             $.each(self.convertToJson(data).ListTag, function (index, item) {
                 self.tags.push(self.convertToKoObject(item))
             })
@@ -471,7 +503,6 @@
             self.showMode("newDetail");
             $('#_idArticle').val(item.Id())
             
-            // load commnet
             $.ajax({
                 url: 'https://api.vtcnews.tek4tv.vn/api/home/news/comment/GetComment/' + item.Id()+'/1' ,
                 type: 'GET',
@@ -482,8 +513,7 @@
                 self.comment(JSON.parse(data))
                 $.each(JSON.parse(data).Items, function (index, item) {
                     self.comnnetItems.push(self.convertToKoObject(item))
-                })
-                console.log(self.comment().TotalAllRecord)
+                })               
             })
 
             var urlContent = $(".detail-content p a").attr('href');
@@ -500,7 +530,6 @@
             $(".subYoutube").click(function () {
                 MainActivity.openUrl(linkYoutube);
                 window.webkit.messageHandlers.jsMessageHandler.postMessage(linkYoutube);
-
             })
             var srcLink = $('.inlink-remake').attr('href');
             $(".inlink-remake").attr("href", "#");
@@ -509,7 +538,6 @@
                 MainActivity.openUrl(url);
                 window.webkit.messageHandlers.openURL.postMessage(url);
             })
-
             $(".lazy").each(function () {
                 $(this).attr("src", $(this).attr("data-src"));
                 $(this).removeAttr("data-src");
@@ -557,12 +585,13 @@
                 self.scrollToTop();
                 self.tags.removeAll();
                 self.categoryNameData.removeAll();
+                self.detailData.removeAll();
                 self.ListArticleRelated.removeAll();
                 // load List Article Related
                 $.each(self.convertToJson(data).ListArticleRelated, function (index, item) {
                     self.ListArticleRelated.push(self.convertToKoObject(item))
                 })
-                self.detailData(self.convertToJson(data).DetailData);
+                self.detailData.push(self.convertToJson(data).DetailData);
                 $.each(self.convertToJson(data).ListTag, function (index, item) {
                     self.tags.push(self.convertToKoObject(item))
                 })
@@ -670,13 +699,14 @@
                 self.scrollToTop();
                 self.tags.removeAll();
                 self.categoryNameData.removeAll();
+                self.detailData.removeAll();
                 self.ListArticleRelated.removeAll();
                 // load List Article Related
                 $.each(self.convertToJson(data).ListArticleRelated, function (index, item) {
                     self.ListArticleRelated.push(self.convertToKoObject(item))
                 })
 
-                self.detailData(self.convertToJson(data).DetailData);
+                self.detailData.push(self.convertToJson(data).DetailData);
                 $.each(self.convertToJson(data).ListTag, function (index, item) {
                     self.tags.push(self.convertToKoObject(item))
                 })
