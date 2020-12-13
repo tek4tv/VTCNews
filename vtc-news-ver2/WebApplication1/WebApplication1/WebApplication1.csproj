@@ -175,6 +175,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\imgs\lachapp.png" />
     <Content Include="Content\imgs\lazy.jpg" />
+    <Content Include="Content\imgs\lazy_optimized.jpg" />
     <Content Include="Content\imgs\logo.png" />
     <Content Include="Content\imgs\vov1.png" />
     <Content Include="Content\imgs\vov2.png" />

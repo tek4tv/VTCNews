@@ -325,11 +325,13 @@ div.scrollmenu {
 
 
 
-.img {
+.div-4-3 {
     position: relative;
 }
 
-    .img .icon-audio {
+    .div-4-3 .icon-audio {
+        position: absolute;
+        z-index:1;
         top: 50%;
         left: 50%;
         position: absolute;
