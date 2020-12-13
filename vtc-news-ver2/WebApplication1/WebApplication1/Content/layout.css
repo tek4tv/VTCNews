@@ -82,7 +82,7 @@ body {
         box-sizing: border-box;
         display: block;
         float: left;
-        transition: all ease 0.3s;
+       
     }
 
         #avg-nav-bar button:active {
@@ -126,11 +126,6 @@ body {
 button:focus {
     outline: none !important
 }
-
-
-
-
-
 
     /* Style the sidenav links and the dropdown button */
     .dropdown-btn {

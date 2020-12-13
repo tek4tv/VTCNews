@@ -159,6 +159,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\VideoDetailController.cs" />
+    <Compile Include="Controllers\VideoMenuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -168,6 +169,7 @@
     <Content Include="AppJs\header.js" />
     <Content Include="AppJs\layoutApp.js" />
     <Content Include="AppJs\videoDetail.js" />
+    <Content Include="AppJs\videomenu.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -298,6 +300,7 @@
     <Content Include="Views\Shared\_LayoutVideoDetail.cshtml" />
     <Content Include="Views\Header\Index.cshtml" />
     <Content Include="Views\VideoDetail\Index.cshtml" />
+    <Content Include="Views\VideoMenu\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
