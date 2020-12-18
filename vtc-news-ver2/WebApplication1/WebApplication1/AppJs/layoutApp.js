@@ -42,8 +42,7 @@
         }).done(function (data) {
             if (data.length > 0) {
                 self.imgMusic.push(self.convertToKoObject(data[1]))
-            }
-        
+            }       
         });      
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn/api/podcast/GetAlbumPaging/chanId/3/pageIndex/1",
@@ -53,22 +52,24 @@
                 self.imgAudioBook.push(self.convertToKoObject(data[1]))
                 self.imgAudioBook2.push(self.convertToKoObject(data[2]))
             }
-        });
-       
+        });      
     }
     setTimeout(function () {        
         $('#screen-welcome').css('display', 'none');         
         self.loadGetChannelHots();      
         self.showMode('HomeApp');      
-        $('#avg-nav-bar').css('visibility', '');   
+        $('#avg-nav-bar').css('visibility', ''); 
+        count++;
         self.lazy();
-    }, 1000);
+        console.log(count)
+    }, 3000);
     var count = 0;
     self.homeApp = function () {        
         if (count == 0) {
             self.showMode("screen-welcome");
         }       
-        self.showMode('HomeApp');        
+        self.showMode('HomeApp');
+        console.log(count)
     }    
    
     // load menu home app
@@ -83,7 +84,6 @@
                     self.homeMenus.push(self.convertToKoObject(item))
                 }
             })
-
         });
     }
     // selected menu
@@ -109,17 +109,21 @@
                     self.menuData.push(self.convertToKoObject(item));
                 }               
             })
-            self.showMode("selectedMenu");          
+            self.showMode("selectedMenu");                  
             self.initSwiperTab(); 
             $('.clicked-menu').click(function () {
                 $('.clicked').removeClass('clicked');
                 $(this).addClass('clicked');                   
             });
             $(`#news_0`).click();         
-            $('.swiper2 .swiper-wrapper').css("transform", "");
-          
+            $('.swiper3 .swiper-wrapper').css("transform", "");
+            self.len(self.menuData().length)
+            
+            
+           
         });
     }
+    self.len = ko.observable();
     self.lazy = function () {
         let imgs = $(".lazy-img");    
         for (let a = 0; a < imgs.length; a++) {
@@ -136,27 +140,54 @@
             newImg.src = url;
         }
     }
-    self.initSwiperTab = function () {     
+    self.initSwiperTab = function () { 
+        var setting = {
+            autoHeight: false,
+            direction: 'horizontal',
+            noSwipingClass: true,
+            noSwiping: 'swiper-slide',
+            onlyExternal: true,
+            on: {
+                slideChange: function () { 
+                    var n = 0;
+                     n = this.activeIndex;                 
+                    if (n > self.len()-1) {                                           
+                        $(`#news_${self.len() - 1}`).click();
+                        $('.swiper-wrapper').css('transform', `translate3d(-${240 * self.len()}px, 0px, 0px)`)
+                    }                   
+                   $(`#news_${n}`).click();
+                }
+            }
+        }
+      
+        var swiper3 = new Swiper('.swiper3', setting); 
+        swiper3.update();
+    }
+    self.initSwiperTab1 = function () {
         var swiper2 = new Swiper('.swiper2', {
             autoHeight: false,
             direction: 'horizontal',
             on: {
-                slideChange: function (swiper) {
-                    var n = this.activeIndex;                   
-                    $(`#news_${n}`).click();                   
+                slideChange: function () {
+                    var n = 0;
+                     n = this.activeIndex;
+                    console.log(n);
+                    $(`#podcast_${n}`).click();
                 }
             }
-        }); 
+        });
+        
     }
    
     self.menuData = ko.observableArray();   
     self.Id = ko.observable();
     self.parentId = ko.observable();
     self.nameMenu = ko.observable();
-    self.loadValueMenu = function (item) { 
+    self.loadValueMenu = function (item) {        
         var index = item.Index();      
-        var swiper2 = new Swiper('.swiper2');
-        swiper2.slideTo(index, 500, false);     
+        var swiper3 = new Swiper('.swiper3' );
+        swiper3.slideTo(index, 500, false);  
+        swiper3.update();
         self.scrollToTop();       
         self.nameMenu(item.Title())
         var Id = item.Id();  
@@ -164,8 +195,7 @@
         self.page(1);
         self.Id(Id);
         self.parentId(item.ParentId()); 
-        if (self.menuData()[id].Array().length == 0) {
-            console.log('load')
+        if (self.menuData()[id].Array().length == 0) {           
             $.ajax({
                 url: "https://api.vtcnews.tek4tv.vn/api/home/news/ArticleCategoryPaging/" + 1 + "/" + self.Id(),
                 type: 'GET'
@@ -294,18 +324,16 @@
             }
         });
     }
-
-
     self.slectedChannels = ko.observableArray();
     self.loadSelectedChannel = function (item) {     
         var id = item.Id();
-        self.showMode("loadSelectedChannel");
-        
+        self.showMode("loadSelectedChannel");    
+        self.scrollToTop();
         self.pageSelected(1);
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn/api/home/news/IndexChannelPaging/" + self.pageSelected() + "/" + id,
             type: 'GET'
-        }).done(function (data) {
+        }).done(function (data) {           
            self.slectedChannels.removeAll();
             $.each(data.Items, function (index, item) {
                 self.slectedChannels.push(self.convertToKoObject(item))
@@ -998,25 +1026,21 @@
     //Audio   
     
     var loadAudio = 0;
-    self.audioApp = function () {
+    self.audioApp = function () {      
         if (loadAudio == 0) {
             self.GetAllPodcast()
             self.showMode('lazyloading');
-            setTimeout(function () {
-                self.showMode("Audio");
-               
-            }, 500);
+            self.showMode("Audio");
+           
         } else {
             self.showMode("Audio");
-            $('#avg-nav-bar').css('visibility', '');      
+            $('#avg-nav-bar').css('visibility', '');              
         }
-        loadAudio++;
-   
+        loadAudio++;  
     }
     self.audiobook = ko.observableArray();
     self.audioMusic = ko.observableArray();
-    self.podcast = ko.observableArray();
-   
+    self.podcast = ko.observableArray(); 
     self.GetAllPodcast = function () {
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn/api/podcast/GetAllPodcast",
@@ -1024,22 +1048,51 @@
         }).done(function (data) {             
             self.audiobook.removeAll();
             self.audioMusic.removeAll();
-            $.each(data, function (index, item) {
-                
+            self.podcast.removeAll();
+            $.each(data, function (index, item) {               
                 if (item.Name == "Sách nói") {                   
-                    self.audiobook.push(self.convertToKoObject(item)); 
+                   self.audiobook.push(self.convertToKoObject(item)); 
                    self.homeAudioDetails(self.convertToKoObject(item));                  
                 }                   
-            })    
-            $.each(data, function (index, item) {
-                
+            })
+            console.log(self.audiobook())
+            $.each(data, function (index, item) {             
                 if (item.Name == "Âm nhạc") {
                     self.audioMusic.push(self.convertToKoObject(item));
                     self.homeAudioDetailsMusic(self.convertToKoObject(item))
                 }
-
-            })    
+            })   
+            console.log(self.audioMusic())
+            $.each(data, function (index, item) {
+                if (item.Name == "Podcast") {
+                    self.podcast.push(self.convertToKoObject(item));      
+                    self.homePodcastDetails(self.convertToKoObject(item))
+                }             
+            })
+            console.log(self.podcast())
                      
+        });
+    }
+
+    self.podcastHomes = ko.observableArray();
+    self.podcastHome = ko.observableArray();
+    self.homePodcastDetails = function (item) {
+        console.log(item)
+        $.ajax({
+            url: "https://api.vtcnews.tek4tv.vn/api/podcast/ChannelByPodcast/" + item.Id(),
+            type: 'GET'
+        }).done(function (data) {
+            $.ajax({
+                url: "https://api.vtcnews.tek4tv.vn/api/podcast/GetAlbumPaging/chanId/" + data[0].Id + "/pageIndex/" + 1,
+                type: 'GET'
+            }).done(function (items) {     
+                self.podcastHomes.removeAll();
+                self.podcastHome.removeAll();
+                for (var i = 1; i < 5; i++) {
+                    self.podcastHomes.push(self.convertToKoObject(items[i]))
+                }
+                self.podcastHome.push(self.convertToKoObject(items[0]))               
+            });
         });
     }
 
@@ -1060,9 +1113,13 @@
                 for (var i = 1; i < 5; i++) {
                     self.homes.push(self.convertToKoObject(items[i]))
                 }
-                self.home.push(self.convertToKoObject(items[0]))               
+                self.home.push(self.convertToKoObject(items[0])) 
+                console.log(self.podcast());
             });
         });
+    }
+    self.audioPodcast = function () {
+
     }
     self.music = ko.observableArray();
     self.musics = ko.observableArray();
@@ -1095,13 +1152,11 @@
         }             
     }
     //get audiobook detail    
+   
     self.selectedName = ko.observable();
     self.menuAuBook = ko.observableArray();
     self.audiobookDetails = function (item) {
-        self.scrollToTop();
-        self.showMode("audiobookDetail");
-        $('#avg-nav-bar').css('visibility', 'hidden');
-        $('#close-audio').css('bottom', '0px');        
+        self.scrollToTop();      
         self.selectedName(item);
         self.changebackgound(item);    
         $.ajax({
@@ -1116,24 +1171,39 @@
                 })
                 self.loadMenuAudiobook(self.menuAuBook()[0]);
             }
+          
+            self.showMode("audiobookDetail");
+            
+            $('#avg-nav-bar').css('visibility', 'hidden');
+            $('#close-audio').css('bottom', '0px');
+           // self.initSwiperTab1();
+            $('.clicked-menu').click(function () {
+                $('.clicked').removeClass('clicked');
+                $(this).addClass('clicked');
+            });
+            $(`#podcast_0`).click();
+        //    $('.swiper2 .swiper-wrapper').css("transform", "");
         });
     }
     self.audiobooks = ko.observableArray();
     self.audiobook = ko.observableArray();
-    self.loadMenuAudiobook = function (item) {    
-        $.ajax({
-            url: "https://api.vtcnews.tek4tv.vn/api/podcast/GetAlbumPaging/chanId/"+item.Id()+"/pageIndex/" + 1,
-            type: 'GET'
-        }).done(function (data) {
-            self.audiobooks.removeAll();
-            self.audiobook.removeAll();
-            if (data.length > 0) {
-                for (var i = 1; i < data.length; i++) {
-                    self.audiobooks.push(self.convertToKoObject(data[i]));
+    self.loadMenuAudiobook = function (item) {  
+       
+        //if (self.audiobooks().length == 0) {
+            $.ajax({
+                url: "https://api.vtcnews.tek4tv.vn/api/podcast/GetAlbumPaging/chanId/" + item.Id() + "/pageIndex/" + 1,
+                type: 'GET'
+            }).done(function (data) {
+                self.audiobooks.removeAll();
+                self.audiobook.removeAll();
+                if (data.length > 0) {
+                    for (var i = 1; i < data.length; i++) {
+                        self.audiobooks.push(self.convertToKoObject(data[i]));
+                    }
+                    self.audiobook.push(self.convertToKoObject(data[0]));
                 }
-                self.audiobook.push(self.convertToKoObject(data[0]));
-            }
-        });
+            });
+       // }
     }
     self.audiobookSeleced = ko.observable();
     self.Items = ko.observableArray();
@@ -1153,8 +1223,7 @@
                 $('.slim-scroll').slimScroll({
                     height: '250px',
                 });
-            }
-                           
+            }                          
         });
     }
     self.selectedData1 = function (item) {
@@ -1201,7 +1270,6 @@
         audio.load();
        // audio.next();
     }
-
     self.closeAudio = function () {
         $("#close-audio").css({ 'visibility': 'hidden' });
         $("#audio-play").get(0).pause(); 
@@ -1246,8 +1314,7 @@
     }
     self.backAudiobookHome = function () {
         $('#homeapp').removeClass('selected');
-        $('#audioapp').addClass('selected');
-       
+        $('#audioapp').addClass('selected');    
         self.showMode("Audio");
         $('#avg-nav-bar').css('visibility', '');
         
@@ -1256,13 +1323,13 @@
         self.showMode("audiobookDetail");
         $('#avg-nav-bar').css('visibility', '');
     }
-    self.backAudio = function () {     
-        
+    self.backAudio = function () {            
         $('#homeapp').removeClass('selected');
         $('#audioapp').addClass('selected');
         self.GetAllPodcast();
         self.showMode("Audio");      
         $('#avg-nav-bar').css('visibility', '');
+       // $('#close-audio').css('margin-bottom', '80px');
     }
    
     self.interval = function () {

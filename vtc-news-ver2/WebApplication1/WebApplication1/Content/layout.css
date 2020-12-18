@@ -341,6 +341,7 @@ div.scrollmenu {
 }
 
 
+
 .img-text-bottom-left {
     position: relative;
     text-align: center;
@@ -408,6 +409,22 @@ div.scrollmenu {
 .img-4-3 {
     position: absolute;
     padding-top: -56.25%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.div-1-1 {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    border-radius: 5px;
+}
+.img-1-1{
+    position: absolute;
+    padding-top: -100%;
     left: 0;
     bottom: 0;
     right: 0;
