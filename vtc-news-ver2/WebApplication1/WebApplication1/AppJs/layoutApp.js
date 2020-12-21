@@ -16,7 +16,9 @@
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
+    var swiper3;
     self.backHomeMenu = function () {
+       
         self.showMode("HomeApp");
         $('#clicked-menu').addClass('clicked');
     }
@@ -109,8 +111,9 @@
                     self.menuData.push(self.convertToKoObject(item));
                 }               
             })
-            self.showMode("selectedMenu");                  
-            self.initSwiperTab(); 
+            self.showMode("selectedMenu");                   
+           
+            self.initSwiperTab();
             $('.clicked-menu').click(function () {
                 $('.clicked').removeClass('clicked');
                 $(this).addClass('clicked');                   
@@ -118,9 +121,7 @@
             $(`#news_0`).click();         
             $('.swiper3 .swiper-wrapper').css("transform", "");
             self.len(self.menuData().length)
-            
-            
-           
+         
         });
     }
     self.len = ko.observable();
@@ -141,27 +142,35 @@
         }
     }
     self.initSwiperTab = function () { 
+        var n = 0;
         var setting = {
             autoHeight: false,
-            direction: 'horizontal',
-            noSwipingClass: true,
-            noSwiping: 'swiper-slide',
-            onlyExternal: true,
-            on: {
-                slideChange: function () { 
-                    var n = 0;
-                     n = this.activeIndex;                 
-                    if (n > self.len()-1) {                                           
+            direction: 'horizontal',  
+            reachBeginning:true,
+            on: {      
+               
+                slideChange: function () {
+                    n = this.activeIndex;
+                    let name = `#news_${n}`;
+                    if (n > self.len() - 1) {
+                        n = self.len() - 1;
                         $(`#news_${self.len() - 1}`).click();
-                        $('.swiper-wrapper').css('transform', `translate3d(-${240 * self.len()}px, 0px, 0px)`)
-                    }                   
-                   $(`#news_${n}`).click();
+                        $('.swiper-wrapper').css('transform', `translate3d(-${240 * self.len()}px, 0px, 0px)`)                     
+                    }
+                    console.log(n)
+                    
+                    $(`#news_${n}`).click(); 
+                    self.scrollToAnchor(name)
                 }
             }
-        }
-      
-        var swiper3 = new Swiper('.swiper3', setting); 
-        swiper3.update();
+        }      
+        swiper3 = new Swiper('.swiper3', setting); 
+       
+       
+    }
+    self.scrollToAnchor= function (aid) {
+        var aTag = $("a[name='" + aid + "']");
+        $('#scrollmenu').animate({ scrollLeft: aTag.offset().right }, 'slow');
     }
     self.initSwiperTab1 = function () {
         var swiper2 = new Swiper('.swiper2', {
@@ -171,23 +180,23 @@
                 slideChange: function () {
                     var n = 0;
                      n = this.activeIndex;
-                    console.log(n);
+                   
                     $(`#podcast_${n}`).click();
                 }
             }
         });
         
-    }
-   
+    }  
     self.menuData = ko.observableArray();   
     self.Id = ko.observable();
     self.parentId = ko.observable();
     self.nameMenu = ko.observable();
     self.loadValueMenu = function (item) {        
-        var index = item.Index();      
-        var swiper3 = new Swiper('.swiper3' );
-        swiper3.slideTo(index, 500, false);  
-        swiper3.update();
+        var index = item.Index();               
+        //swiper3 = new Swiper('.swiper3');
+       //
+       // self.initSwiperTab();
+        swiper3.slideTo(index, 500, false); 
         self.scrollToTop();       
         self.nameMenu(item.Title())
         var Id = item.Id();  
