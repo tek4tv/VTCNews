@@ -18,5 +18,9 @@ namespace WebApplication1.Controllers
         {
             return PartialView("_SideBar");
         }
+        public PartialViewResult SelectedMenu()
+        {
+            return PartialView("_SelectedMenu");
+        }
     }
 }

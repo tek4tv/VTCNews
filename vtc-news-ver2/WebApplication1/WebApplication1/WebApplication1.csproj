@@ -301,10 +301,12 @@
     <Content Include="Views\Header\Index.cshtml" />
     <Content Include="Views\VideoDetail\Index.cshtml" />
     <Content Include="Views\VideoMenu\Index.cshtml" />
+    <Content Include="Views\Home\_SelectedMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\SelectedMenu\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

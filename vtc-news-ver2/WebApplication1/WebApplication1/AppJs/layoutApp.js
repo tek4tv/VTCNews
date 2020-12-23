@@ -89,15 +89,26 @@
         });
     }
     // selected menu
+    self.ChooseMenu = function () {
+        $.ajax({
+            url: '/Home/SelectedMenu',
+            type: 'GET'
+        }).done(function (data) {
+            console.log(data)
+        })
+
+    }
+
     self.selectHomeMenuDetail = ko.observableArray();
     self.nameId = ko.observable();  
-    self.selectHomeMenu = function (item) {             
+    self.selectHomeMenu = function (item) {        
         var Id = item.Id();
         self.nameId(Id);    
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn/api/home/news/menu",
             type: 'GET'
-        }).done(function (data) {          
+        }).done(function (data) {     
+            self.ChooseMenu();
             self.selectHomeMenuDetail.removeAll();
             if (self.menuData().length > 0) {
                 self.menuData.removeAll();
@@ -121,7 +132,7 @@
             $(`#news_0`).click();         
             $('.swiper3 .swiper-wrapper').css("transform", "");
             self.len(self.menuData().length)
-         
+            
         });
     }
     self.len = ko.observable();
