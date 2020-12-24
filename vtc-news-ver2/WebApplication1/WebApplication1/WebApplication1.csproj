@@ -168,6 +168,7 @@
   <ItemGroup>
     <Content Include="AppJs\header.js" />
     <Content Include="AppJs\layoutApp.js" />
+    <Content Include="AppJs\menu.js" />
     <Content Include="AppJs\videoDetail.js" />
     <Content Include="AppJs\videomenu.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />

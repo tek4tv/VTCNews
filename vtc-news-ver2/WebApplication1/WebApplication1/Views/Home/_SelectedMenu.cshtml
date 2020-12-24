@@ -1,1 +1,221 @@
-﻿<script>console.log('hello');</script>
+﻿<!-- ko if: $root.mode() == "" -->
+<!--ko if: $root.selectHomeMenuDetail().length >0 -->
+<div style="margin-top:40px">
+    <div class="scrollmenu" id="scrollmenu1">
+        <ul>
+            <!--ko foreach: $root.selectHomeMenuDetail -->
+            <li>
+                <a href="#" class="clicked-menu" data-bind="click: $root.loadValueMenu, attr: {id: 'news_' + $index(),name: 'news_' + $index()},text: Title"></a>
+            </li>
+            <!-- /ko -->
+        </ul>
+    </div>
+</div>
+<div class="swiper-container swiper3 ">
+    <div class="swiper-wrapper " data-bind="foreach: $root.menuData()">
+        <div class="swiper-slide  d-flex" style="flex-direction:column">
+            <!--ko ifnot: $data.Array().length >0 -->
+            <div>
+                <div>
+                    <div class="card br" style="margin-top:100px;">
+                        <div class="wrapper">
+                            <div class="comment br animate w80"></div>
+                            <div class="comment br animate"></div>
+                            <div class="comment br animate"></div>
+                        </div>
+                    </div>
+                    <div class="card br">
+                        <div class="wrapper">
+                            <div class="comment br animate w80"></div>
+                            <div class="comment br animate"></div>
+                            <div class="comment br animate"></div>
+                        </div>
+                    </div>
+                    <div class="card br">
+                        <div class="wrapper">
+                            <div class="comment br animate w80"></div>
+                            <div class="comment br animate"></div>
+                            <div class="comment br animate"></div>
+                        </div>
+                    </div>
+                    <div class="card br">
+                        <div class="wrapper">
+                            <div class="comment br animate w80"></div>
+                            <div class="comment br animate"></div>
+                            <div class="comment br animate"></div>
+                        </div>
+                    </div>
+                    <div class="card br">
+                        <div class="wrapper">
+                            <div class="comment br animate w80"></div>
+                            <div class="comment br animate"></div>
+                            <div class="comment br animate"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /ko -->
+            <!--ko if: $data.Array().length >1 -->
+            <div class="container " style="margin-top:10px" data-bind="foreach: Array ">
+                <div class="d-flex" style="width:100%" data-bind="click: $root.clickDetailNew2">
+                    <div style="width:40%">
+                        <div>
+                            <img class="img-fluid img-content lazy-img1" src="/Content/imgs/lazy_optimized.jpg" data-bind="attr: { 'ref-src':$data.imagecrop()}" />
+                        </div>
+                    </div>
+                    <div style="width:60%; margin-left:5%">
+                        <p class="p-content" data-bind="text: Title"></p>
+                        <span data-bind="if: IsVideoArticle  == 1"><i class="fas fa-video" style="color:#a3161d"></i></span>
+                        <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                    </div>
+                </div>
+                <hr class="hr-bottom-parent" />
+            </div>
+            <!-- /ko -->
+            <!--ko if: $data.Array().length ==1 -->
+            <div class="d-flex justify-content-center" style="margin-top:150px">
+                Không có dữ liệu
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</div>
+<!-- /ko -->
+<!--ko ifnot: $root.selectHomeMenuDetail().length >0 -->
+<div class="d-flex justify-content-center" style="margin-top:150px">
+    Không có dữ liệu
+</div>
+<!-- /ko -->
+<!-- /ko -->
+<!-- ko if: $root.mode() == "newDetailMenu" -->
+<div>
+    <div>
+        <div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1002">
+            <div class="side-nav">
+                <nav class="navbar navbar-light ">
+                    <div class="d-flex justify-content-between opacity-background" style="width:100%;">
+                        <div data-bind="click: $root.backSelectedMenu">
+                            <a class="navbar-brand" href="#" style="padding-top:0px">
+                                <span style="font-size:16px;cursor:pointer; color:white"><i class="demo-icon icon-left-4" style="color:white"></i></span>
+                            </a>
+                        </div>
+                        <div>
+                            <img src="https://vtc.vn/Content/mobile/images/logo.png" style="max-height:31px;max-width: 123px;" />
+                        </div>
+                        <div>
+                            <i class="demo-icon icon-search" style="color:white; font-size:18px; padding-top:6px;"></i>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div data-bind="foreach: $root.detailData">
+            <div style="width:100%; padding-top:50px;">
+                <div class="container " style="margin-top:10px">
+                    <p style="font-size:24px; line-height: initial;text-align:left;">
+                        <strong data-bind="text: Title"></strong>
+                    </p>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                </div>
+            </div>
+            <div class="detail-content" style="font-size:18px;" data-bind="html: Content">
+            </div>
+            <div class="hidden-div ">
+                <div class="div-style-ratio-1-6 d-flex container" style="align-items: center">
+                    <div>
+                        <button type="button" class="share btn btn-primary btn-sm">Share</button>
+                    </div>
+                    <div class="d-flex justify-content-center" style="margin:10px;">
+                        <button type="button" class="subYoutube btn btn-danger btn-sm"><i class="demo-icon icon-youtube-2"></i> Subscribe </button>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden-div" style="margin-top:10px; margin-bottom:60px;">
+                <div class="text-18px container">
+                    <p>
+                        Tags:
+                        <span style="color:blue" data-bind="foreach: $root.tags()">
+                            <span data-bind="text: TagName"></span>,
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class=" container " data-bind="with: $root.comment">
+            <h4 style="font-weight:bold"><i class="demo-icon icon-comment-alt-1" style="color: #a3161d"></i> Bình luận <span style="color: #a3161d" data-bind="text: $data.TotalAllRecord"></span></h4>
+            <div data-bind="foreach: $root.comnnetItems">
+                <div>
+                    <p><span style="opacity:0.5" data-bind="text: moment(CreatedDate()).fromNow()"></span></p>
+                    <h6 style="font-weight:bold; color:black" data-bind="text: CustomerName"></h6>
+                    <p data-bind="text:Content"></p>
+                    <p style="color:blue"><span><i class="demo-icon icon-thumbs-up-5"></i><span data-bind="text: CountLike"></span> thích</span> <span><i class="demo-icon icon-forward-2"></i> trả lời</span></p>
+                </div>
+
+            </div>
+            <!--ko if: $root.comment().length >0 -->
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-light" style="border-radius: 25px;border: 1px solid gray;">Xem thêm bình luận</button>
+            </div>
+            <!-- /ko -->
+            <div class="form-commnet" style="margin-top:17px;">
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal" style="background-color: #a3161d; width:120px; margin-bottom:40px;" data-bind="click: $root.showModal">Bình luận</button>
+            </div>
+        </div>
+        <!--ko if: $root.ListArticleRelated().length >0 -->
+        <div class="container">
+            <p style="font-size:24px; line-height: initial;text-align:left;"><strong>Thêm thông tin</strong></p>
+        </div>
+        <!-- /ko -->
+        <!--ko foreach: ListArticleRelated -->
+        <div class="container " style="margin-top:15px;" data-bind="click: $root.clickDetailNew2">
+            <div class="d-flex" style="width:100%">
+                <div style="width:40%">
+                    <div class="div-4-3">
+                        <img class="img-content img-4-3" data-bind="attr: {src: imagecrop }" />
+                    </div>
+                </div>
+                <div style="width:60%; margin-left:5%;">
+                    <p class="p-content">
+                        <span data-bind="text: Title"></span>
+                        <!--ko if: $data.IsVideoArticle() ==1 -->
+                        <span><i class="fas fa-video" style="color:#a3161d"></i></span>
+                        <!-- /ko -->
+                    </p>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                </div>
+            </div>
+            <hr class="hr-bottom-parent" />
+            <!-- /ko -->
+        </div>
+        <!-- /ko -->
+        <!--ko if: $root.categoryNameData().length >0 -->
+        <div class="container">
+            <p style="font-size:24px; line-height: initial;text-align:left;"><strong>Cùng chuyên mục</strong></p>
+        </div>
+        <!-- /ko -->
+        <!--ko foreach: categoryNameData -->
+        <div class="container " style="margin-top:15px;" data-bind="click: $root.clickDetailNew2">
+            <div class="d-flex" style="width:100%">
+                <div style="width:40%">
+                    <div class="div-4-3">
+                        <img class="img-content img-4-3" data-bind="attr: { src: imagecrop  }" />
+                    </div>
+                </div>
+                <div style="width:60%; margin-left:5%;">
+                    <p class="p-content">
+                        <span data-bind="text: Title"></span>
+                        <!--ko if: $data.IsVideoArticle() ==1 -->
+                        <span><i class="fas fa-video" style="color:#a3161d"></i></span>
+                        <!-- /ko -->
+                    </p>
+                    <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
+                </div>
+            </div>
+            <hr class="hr-bottom-parent" />
+            <!-- /ko -->
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+<!-- /ko -->
+<script src="~/AppJs/menu.js"></script>

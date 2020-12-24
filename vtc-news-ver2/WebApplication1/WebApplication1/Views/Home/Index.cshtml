@@ -84,7 +84,7 @@
                     <i class="demo-icon icon-home-outline"></i>
                 </a>
                 <!--ko foreach: $root.homeMenus -->
-                <a href="#" class="clicked-menu" data-bind="click: $root.selectHomeMenu"><span data-bind="text: Title"></span></a>
+                <a href="#" class="clicked-menu" data-bind="click: $root.ChooseMenu"><span data-bind="text: Title"></span></a>
                 <!-- /ko -->
             </div>
         </div>
@@ -93,7 +93,7 @@
     <div class="opacity-background load-hidden" style="margin-top:90px">
         <!--ko foreach: firstGetarticleHots -->
         <div style="width:100%" data-bind="click: $root.clickDetailNew1" class="click-active">
-            <img class=" img-fluid  lazy-img" style="width:100%" src="/Content/imgs/lazy_optimized.jpg" data-bind="attr: { 'ref-src':image16_9 }" />          
+            <img class=" img-fluid  lazy-img" style="width:100%" src="/Content/imgs/lazy_optimized.jpg" data-bind="attr: { 'ref-src':image16_9_large }" />          
             <div class="container click-active" style="margin-top:10px">
                 <p style="font-size:24px; line-height: initial;text-align:left;">
                     <strong data-bind="text: Title"></strong>
@@ -171,7 +171,7 @@
                 <div data-bind="click: $root.loadByVideoByID">
                     <div class="div-4-3">
                         <img src="~/fonts/icon/icon-video.png" class="icon-audio" style="z-index:2" height=50 width=50 />
-                        <img class="img-fluid img-4-3 img-content img-4-3 lazy-img" style="width:100%" src="/Content/imgs/lazy_optimized.jpg" data-bind="attr: { 'ref-src':'https://image.vtc.vn/'+ ImageUrl() }" />
+                        <img class="img-fluid img-4-3 img-content img-4-3 lazy-img" style="width:100%" src="/Content/imgs/lazy_optimized.jpg" data-bind="attr: { 'ref-src':image16_9_large }" />
                        
                     </div>
                     <p style="color:white; font-size:24px; line-height: initial;text-align:left; padding-top:5px;">
@@ -313,96 +313,8 @@
                 </div>
             </nav>
         </div>
-        <div style="margin-top: -10px;">
-            <div class="scrollmenu" id="scrollmenu">
-                <ul>
-                    <!--ko foreach: $root.selectHomeMenuDetail -->
-                    <li>
-                        <a href="#" class="clicked-menu" data-bind="click: $root.loadValueMenu, attr: {id: 'news_' + $index(),name: 'news_' + $index()},text: Title"></a>
-                    </li>
-                    <!-- /ko -->
-                </ul>
-                <!-- swiper1 -->
-               
-               
-               
-                @*<div class="swiper-container swiper1">
-                    <div class="swiper-wrapper" data-bind="foreach: $root.selectHomeMenuDetail()">
-                        <div class="swiper-slide selected" data-bind="click:$root.loadValueMenu ,attr: {id: 'news_' + $index() },text: Title" style="color:white; font-size:13px">
-                        </div>
-                    </div>
-                </div>*@
-            </div>
-        </div>
     </div>
-    <div class="swiper-container swiper3 " >
-        <div class="swiper-wrapper " data-bind="foreach: $root.menuData()">
-            <div class="swiper-slide  d-flex" style="flex-direction:column">
-                <!--ko ifnot: $data.Array().length >0 -->
-                <div>
-                    <div>
-                        <div class="card br" style="margin-top:100px;">
-                            <div class="wrapper">
-                                <div class="comment br animate w80"></div>
-                                <div class="comment br animate"></div>
-                                <div class="comment br animate"></div>
-                            </div>
-                        </div>
-                        <div class="card br">
-                            <div class="wrapper">
-                                <div class="comment br animate w80"></div>
-                                <div class="comment br animate"></div>
-                                <div class="comment br animate"></div>
-                            </div>
-                        </div>
-                        <div class="card br">
-                            <div class="wrapper">
-                                <div class="comment br animate w80"></div>
-                                <div class="comment br animate"></div>
-                                <div class="comment br animate"></div>
-                            </div>
-                        </div>
-                        <div class="card br">
-                            <div class="wrapper">
-                                <div class="comment br animate w80"></div>
-                                <div class="comment br animate"></div>
-                                <div class="comment br animate"></div>
-                            </div>
-                        </div>
-                        <div class="card br">
-                            <div class="wrapper">
-                                <div class="comment br animate w80"></div>
-                                <div class="comment br animate"></div>
-                                <div class="comment br animate"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /ko -->
-                <!--ko if: $data.Array().length >0 -->
-                <div class="container hidden-detail" style="margin-top: 100px;" data-bind="foreach: Array ">
-                    <div class="d-flex" style="width:100%" data-bind="click: $root.clickDetailNew2">
-                        <div style="width:40%">
-                            <div>                               
-                                <img class="img-fluid img-content lazy-img" src ="/Content/imgs/lazy_optimized.jpg" data-bind="attr: { 'ref-src':$data.image16_9()}"  />
-                            </div>
-                        </div>
-                        <div style="width:60%; margin-left:5%">
-                            <p class="p-content" data-bind="text: Title"></p>
-                            <span data-bind="if: IsVideoArticle  == 1"><i class="fas fa-video" style="color:#a3161d"></i></span>
-                            <p class="size-content"><span style="opacity:0.5" data-bind="text: moment(PublishedDate()).fromNow()"></span> <span style="color:#a3161d" data-bind="text: CategoryName"></span></p>
-                        </div>
-                    </div>
-                    <hr class="hr-bottom-parent" />
-                </div>
-               @* <div id="loaddingMenu" class=" d-flex justify-content-center " style="margin-bottom:60px; align-items:center; ">
-                    <i class="icon-loadding demo-icon icon-spin5 animate-spin"></i>
-                </div>*@
-                <!-- /ko -->
-            </div>
-        </div>
-         
-    </div>
+    <div id="swiper-binding"></div>
 </div>
 <div id="newDetailMenu" style="display:none">
     <div>
@@ -1121,7 +1033,7 @@
         <div style="width:100%" data-bind="click: $root.loadByVideoByID">
             <div class="div-4-3">
                 <img src="~/fonts/icon/icon-video.png" class="icon-audio" height=50 width=50 />      
-                <img class="img-4-3 img-content lazy-img" style="width:100%" src ="/Content/imgs/lazy_optimized.jpg" data-bind="attr: {'ref-src': 'https://image.vtc.vn/'+ ImageUrl() }" />
+                <img class="img-4-3 img-content lazy-img" style="width:100%" src ="/Content/imgs/lazy_optimized.jpg" data-bind="attr: {'ref-src': image16_9_large }" />
             </div>
             <div class="container " style="margin-top:10px">
                 <p class="p-content"><strong data-bind="text:Title"></strong>  </p>
@@ -1517,16 +1429,16 @@
                     <div class="d-flex d-flex justify-content-between container" style="width:100%; margin-left:5px;margin-top:10px;margin-bottom:10px ">
                         <div><img src="https://vtc.vn/Content/mobile/images/logo-footer.png" style="max-height:36px; " /></div>
                     </div>
-                    <button class="dropdown-btn"><i class="demo-icon icon-home-outline"></i> Trang chủ</button>
+                    <button class="dropdown-btn" id="homeAppModal" data-bind="click: $root.homeAppModal"><i class="demo-icon icon-home-outline" ></i> Trang chủ</button>
                     <button class="dropdown-btn-btn dropdown-btn">
                         <i class="demo-icon icon-newspaper-2"></i>  Tin tức
                         <i class="fa fa-caret-down"></i>
                     </button>
-                    <div class="dropdown-container" style="margin-left:20px">
+                    <div class="dropdown-container" style="margin-left:20px" id="trendModal" data-bind="click: $root.trendModal" >
                         <p style="padding-left:22px; font-size:18px; opacity:0.8">Tin mới</p>
-                       
+
                     </div>
-                    <button class="dropdown-btn"><i class="demo-icon icon-videocam-5"></i> Video</button>
+                    <button class="dropdown-btn" id="videoModal" data-bind="click: $root.videoModal"><i class="demo-icon icon-videocam-5" ></i> Video</button>
                     <button class="dropdown-btn dropdown-btn-btn">
                         <i class="demo-icon icon-mic-outline"></i>  Audio
                         <i class="fa fa-caret-down"></i>
@@ -1550,7 +1462,7 @@
                         </div>
                     </div>
                 </div>
-
+                
             </div><!-- modal-content -->
         </div><!-- modal-dialog -->
     </div>
@@ -1632,15 +1544,15 @@
         <i class="demo-icon icon-home-outline"></i>
         <span>Trang chủ</span>
     </button>
-    <button class="select-button " data-bind="click: $root.trend">
+    <button class="select-button " id="trending" data-bind="click: $root.trend">
         <i class="demo-icon icon-bell"></i>
         <span>Tin Mới</span>
     </button>
-    <button class="select-button button-video" data-bind="click: $root.videoApp">
+    <button class="select-button button-video" id="videoapp" data-bind="click: $root.videoApp">
         <i class="demo-icon icon-videocam-5"></i>
         <span>Video</span>
     </button>
-    <button class="select-button" id="audioapp" data-bind="click: $root.audioApp">
+    <button class="select-button" id="audioapp"  data-bind="click: $root.audioApp">
         <i class="demo-icon icon-mic-outline"></i>
         <span>Audio</span>
     </button>

@@ -477,7 +477,7 @@ div.scrollmenu {
     .swiper1 .swiper-slide {
         text-align: center;
         font-size: 18px;
-        height: 50px;
+       
         /* Center slide text vertically */
         display: -webkit-box;
         display: -ms-flexbox;
@@ -568,7 +568,8 @@ ul {
     margin: 0;
     background: #a3161d;
     font-size: 0;
-    text-align: center;
+   
+    overflow-x: scroll;
 }
 
 li {
@@ -581,3 +582,6 @@ li {
     li > a {
         padding: 10px;
     }
+.side-nav{
+    height:50px;
+}
