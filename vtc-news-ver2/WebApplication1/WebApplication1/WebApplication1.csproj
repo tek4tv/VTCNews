@@ -303,6 +303,7 @@
     <Content Include="Views\VideoDetail\Index.cshtml" />
     <Content Include="Views\VideoMenu\Index.cshtml" />
     <Content Include="Views\Home\_SelectedMenu.cshtml" />
+    <Content Include="Views\Home\_MenuPodcast.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

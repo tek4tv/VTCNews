@@ -642,8 +642,8 @@
     <div class="listchannel">
         <div class="opacity-background load-hidden" style=" margin-bottom:100px; margin-top:60px;" data-bind="foreach: channels">
             <div style="width:100%" data-bind="click: $root.loadSelectedChannel">
-                <div class="img">
-                    <img class="img-fluid img-content " style="width:100%" @*src="/Content/imgs/lazy_optimized.jpg" *@data-bind="attr: { 'src':image16_9 }" />
+                <div class="img div-4-3 ">
+                    <img class="img-fluid img-content img-4-3" style="width:100%" @*src="/Content/imgs/lazy_optimized.jpg" *@data-bind="attr: { 'src':image16_9 }" />
                 </div>
                 <div class="container " style="margin-top:10px">
                     <p class="p-content"><strong data-bind="text:Title"></strong>  </p>
@@ -1292,48 +1292,12 @@
                     </div>
                 </div>
             </nav>
-        </div>
-        <div style="margin-top: -10px;">
-            <div class="scrollmenu">
-                <!--ko foreach: $root.menuAuBook -->
-                <a href="#" class="menuAudio clicked-menu" data-bind="click: $root.loadMenuAudiobook, attr: {id: 'podcast_' + $index() }"><span data-bind="text: Name"></span></a>
-                <!-- /ko -->
-            </div>
-        </div>
+        </div>       
     </div>
-    <div style="  margin-top:88px " class="detail-audio">
-        <div style="margin:0 2%">
-            <div data-bind="with: $root.selectedName">
-                <h3 style="color:white; padding:12px; padding-left:0px"><i class="demo-icon icon-book"></i> <span class="name-selected" data-bind="text: $data.Name"></span></h3>
-            </div>
-            <div class="audio-podcast" style="width:100%;background-color:white ;">
-                <!--ko foreach: $root.audiobook-->
-                <div data-bind="click: $root.selectedData" style="border-radius: 3px;">
-                    <div class="img img-text-bottom-left">
-                        @*<img src="/fonts/icon/icon-audio.png" class="icon-audio " height="50" width="50">*@
-                        <img class="img-fluid  " style="width:100%; height:100% ;border-top:3px" data-bind="attr: {src: $data.image360_360}" />
-                    </div>
-                    <div class="container" style="background-color:white; padding-top:12px; padding-bottom:12px;border-radius:3px;">
-                        <p class="text" style="color:black; font-size:20px;"><strong data-bind="text: $data.Name"></strong></p>
-                    </div>
-                </div>
-                <!-- /ko -->
-            </div>
-            <div class="d-flex flex-wrap justify-content-between" style="margin-top:10px;">
-                <!--ko foreach: $root.audiobooks -->
-                <div style="width:49%; background-color:white; margin-bottom:10px; border-radius:3px;" data-bind="click: $root.selectedData">
-                    <div class="img img-text-bottom-left">
-                        @*<img src="/fonts/icon/icon-audio.png" class="icon-audio " height="50" width="50">*@
-                        <img class="img-fluid  " style="width:100%; height:100%;border-top:3px " data-bind="attr: {src: image182_182}" />
-                    </div>
-                    <div class="container" style="background-color:white; padding-top:5px; height:62px;border-radius:3px;">
-                        <p class="text" style="color:black; font-size:17px; "><strong data-bind="text:Name"></strong></p>
-                    </div>
-                </div>
-                <!-- /ko -->
-            </div>
-        </div>
+    <div id="menuAudioBook">
+
     </div>
+   
 </div>
 <div id="selectedAudiobookDetail" style="display:none">
     <div id="top-header" style="position:fixed;top: 0; width: 100%;z-index:1001">
