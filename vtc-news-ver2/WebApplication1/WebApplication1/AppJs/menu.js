@@ -50,10 +50,8 @@
             on: {
                 slideChange: function () {
                     n = this.activeIndex;                                 
-                    $(`#news_${n}`).click();
-                    
-                    $(`#news_${n}`)[0].scrollIntoView(false)
-                   
+                    $(`#news_${n}`).click();                    
+                    $(`#news_${n}`)[0].scrollIntoView(false)                   
                 }
             }
         }

@@ -1,40 +1,82 @@
-﻿<div style="margin-top: -10px;">
+﻿<div style="margin-top:40px">
     <div class="scrollmenu">
-        <!--ko foreach: $root.menuAuBook -->
-        <a href="#" class="menuAudio clicked-menu" data-bind="click: $root.loadMenuAudiobook, attr: {id: 'podcast_' + $index() }"><span data-bind="text: Name"></span></a>
+        <!--ko foreach: menuAuBook -->
+        <a href="#" class="menuAudio clicked-menu" data-bind="click: $root.loadAlbumPage, attr: {id: 'podcast_' + $index() }"><span data-bind="text: Name"></span></a>
         <!-- /ko -->
     </div>
 </div>
-<div style="margin-top:88px " class="detail-audio">
-    <div style="margin:0 2%">
-        <div data-bind="with: $root.selectedName">
-            <h3 style="color:white; padding:12px; padding-left:0px"><i class="demo-icon icon-book"></i> <span class="name-selected" data-bind="text: $data.Name"></span></h3>
-        </div>
-        <div class="audio-podcast" style="width:100%;background-color:white ;">
-            <!--ko foreach: $root.audiobook-->
-            <div data-bind="click: $root.selectedData" style="border-radius: 3px;">
-                <div class="img img-text-bottom-left">
-                    @*<img src="/fonts/icon/icon-audio.png" class="icon-audio " height="50" width="50">*@
-                    <img class="img-fluid  " style="width:100%; height:100% ;border-top:3px" data-bind="attr: {src: $data.image360_360}" />
-                </div>
-                <div class="container" style="background-color:white; padding-top:12px; padding-bottom:12px;border-radius:3px;">
-                    <p class="text" style="color:black; font-size:20px;"><strong data-bind="text: $data.Name"></strong></p>
+<div class="swiper-container  swiper4">
+    <div class="swiper-wrapper swiper-height " style="height:500px;" data-bind="foreach: $root.menuAuBook()">
+        <div class="swiper-slide   d-flex" style="flex-direction:column">
+            <!--ko ifnot: $data.Array().length >0 -->
+            <div>
+                <div>
+                    <div class="card br" style="margin-top:100px;">
+                        <div class="wrapper">
+                            <div class="comment br animate w80"></div>
+                            <div class="comment br animate"></div>
+                            <div class="comment br animate"></div>
+                        </div>
+                    </div>
+                    <div class="card br">
+                        <div class="wrapper">
+                            <div class="comment br animate w80"></div>
+                            <div class="comment br animate"></div>
+                            <div class="comment br animate"></div>
+                        </div>
+                    </div>
+                    <div class="card br">
+                        <div class="wrapper">
+                            <div class="comment br animate w80"></div>
+                            <div class="comment br animate"></div>
+                            <div class="comment br animate"></div>
+                        </div>
+                    </div>
+                    <div class="card br">
+                        <div class="wrapper">
+                            <div class="comment br animate w80"></div>
+                            <div class="comment br animate"></div>
+                            <div class="comment br animate"></div>
+                        </div>
+                    </div>
+                    <div class="card br">
+                        <div class="wrapper">
+                            <div class="comment br animate w80"></div>
+                            <div class="comment br animate"></div>
+                            <div class="comment br animate"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- /ko -->
-        </div>
-        <div class="d-flex flex-wrap justify-content-between" style="margin-top:10px;">
-            <!--ko foreach: $root.audiobooks -->
-            <div style="width:49%; background-color:white; margin-bottom:10px; border-radius:3px;" data-bind="click: $root.selectedData">
-                <div class="img img-text-bottom-left">
-                    @*<img src="/fonts/icon/icon-audio.png" class="icon-audio " height="50" width="50">*@
-                    <img class="img-fluid  " style="width:100%; height:100%;border-top:3px " data-bind="attr: {src: image182_182}" />
+            <!--ko if: $data.Array().length >0 -->
+            <div style="margin:0 2%">
+                <div class="audio-podcast" style="width:100%;background-color:white ;" data-bind="foreach:ArrayFirst">
+                    <div data-bind="click: $root.selectedData" style="border-radius: 3px;">
+                        <div class="img img-text-bottom-left">
+                            @*<img src="/fonts/icon/icon-audio.png" class="icon-audio " height="50" width="50">*@
+                            <img class="img-fluid  " style="width:100%; height:100% ;border-top:3px" data-bind="attr: {src: image360_360}" />
+                        </div>
+                        <div class="container" style="background-color:white; padding-top:12px; padding-bottom:12px;border-radius:3px;">
+                            <p class="text" style="color:black; font-size:20px;"><strong data-bind="text:Name"></strong></p>
+                        </div>
+                    </div>
                 </div>
-                <div class="container" style="background-color:white; padding-top:5px; height:62px;border-radius:3px;">
-                    <p class="text" style="color:black; font-size:17px; "><strong data-bind="text:Name"></strong></p>
+                <div class="d-flex flex-wrap justify-content-between" style="margin-top:10px;" data-bind="foreach:Array">
+                    <div style="width:49%; background-color:white; margin-bottom:10px; border-radius:3px;" data-bind="click: $root.selectedData">
+                        <div class="img img-text-bottom-left">
+                            @*<img src="/fonts/icon/icon-audio.png" class="icon-audio " height="50" width="50">*@
+                            <img class="img-fluid  " style="width:100%; height:100%;border-top:3px " data-bind="attr: {src: image182_182}" />
+                        </div>
+                        <div class="container" style="background-color:white; padding-top:5px; height:62px;border-radius:3px;">
+                            <p class="text" style="color:black; font-size:17px; "><strong data-bind="text: Name"></strong></p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- /ko -->
         </div>
     </div>
 </div>
+
+<script src="~/AppJs/menuPodcast.js?v=13"></script>

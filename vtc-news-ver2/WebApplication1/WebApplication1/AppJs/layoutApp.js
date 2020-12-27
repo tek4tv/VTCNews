@@ -44,9 +44,10 @@
         document.documentElement.scrollTop = 0;
     }
    
-    self.backHomeMenu = function () {
-       
+    self.backHomeMenu = function () {         
         self.showMode("HomeApp");
+        $('#swiper-podcast').empty(); 
+        $("#swiper-binding").empty();
         $('#clicked-menu').addClass('clicked');
     }
     self.loadData = function () {
@@ -87,6 +88,7 @@
         $('#screen-welcome').css('display', 'none');         
         self.loadGetChannelHots();      
         self.showMode('HomeApp');      
+        $('#swiper-podcast').empty(); 
         $('#avg-nav-bar').css('visibility', ''); 
         count++;
         self.lazy();
@@ -98,6 +100,7 @@
             self.showMode("screen-welcome");
         }       
         self.showMode('HomeApp');
+        $('#swiper-podcast').empty(); 
         console.log(count)
     }    
    
@@ -435,6 +438,7 @@
     self.backLoadListChannel = function () {
         if (self.channels().length == 0) {
             self.showMode("HomeApp");
+            $('#swiper-podcast').empty(); 
         } else {
             self.showMode("loadListChannel");
             
@@ -812,7 +816,8 @@
 
     //back home of loadListChannel
     self.backHomeApp = function () {
-        self.showMode("HomeApp");        
+        self.showMode("HomeApp"); 
+        $('#swiper-podcast').empty(); 
     }
     
     // trend   
@@ -990,9 +995,11 @@
             self.GetAllPodcast()
             self.showMode('lazyloading');
             self.showMode("Audio");
+            $('#swiper-binding').empty();   
            
         } else {
             self.showMode("Audio");
+            $('#swiper-binding').empty();   
             $('#avg-nav-bar').css('visibility', '');              
         }
         loadAudio++;  
@@ -1113,57 +1120,23 @@
     //get audiobook detail    
    
     self.selectedName = ko.observable();
-    self.menuAuBook = ko.observableArray();
-    self.audiobookDetails = function (item) {
-        self.scrollToTop();      
-        self.selectedName(item);
-        self.changebackgound(item);    
+   
+    self.audiobookDetails = function (item) {   
+        let name = item.Name();       
         $.ajax({
-            url: "https://api.vtcnews.tek4tv.vn/api/podcast/ChannelByPodcast/"+item.Id(),
+            url: '/Home/MenuPodcast',
             type: 'GET'
         }).done(function (data) {
-            self.menuAuBook.removeAll();
-            if (data.length > 0) {
-                console.log(data)
-                $.each(data, function (index, item) {
-                    self.menuAuBook.push(self.convertToKoObject(item));
-                })
-                self.loadMenuAudiobook(self.menuAuBook()[0]);
-            }
-          
-            self.showMode("audiobookDetail");
-            
-            $('#avg-nav-bar').css('visibility', 'hidden');
-            $('#close-audio').css('bottom', '0px');
-           // self.initSwiperTab1();
-            $('.clicked-menu').click(function () {
-                $('.clicked').removeClass('clicked');
-                $(this).addClass('clicked');
-            });
-            $(`#podcast_0`).click();
-        //    $('.swiper2 .swiper-wrapper').css("transform", "");
-        });
+            let html = '<input type="text" hidden id="swiper-input" value="' + name + '" />';
+            $("#swiper-podcast").html(data + html);
+            self.showMode('audiobookDetail');
+            $('.swiper-height').css("height", "")
+        })
     }
     self.audiobooks = ko.observableArray();
     self.audiobook = ko.observableArray();
-    self.loadMenuAudiobook = function (item) {  
-       
-        //if (self.audiobooks().length == 0) {
-            $.ajax({
-                url: "https://api.vtcnews.tek4tv.vn/api/podcast/GetAlbumPaging/chanId/" + item.Id() + "/pageIndex/" + 1,
-                type: 'GET'
-            }).done(function (data) {
-                self.audiobooks.removeAll();
-                self.audiobook.removeAll();
-                if (data.length > 0) {
-                    for (var i = 1; i < data.length; i++) {
-                        self.audiobooks.push(self.convertToKoObject(data[i]));
-                    }
-                    self.audiobook.push(self.convertToKoObject(data[0]));
-                }
-            });
-       // }
-    }
+  
+
     self.audiobookSeleced = ko.observable();
     self.Items = ko.observableArray();
     self.selectedData = function (item) {        
@@ -1275,6 +1248,7 @@
         $('#homeapp').removeClass('selected');
         $('#audioapp').addClass('selected');    
         self.showMode("Audio");
+        $('#swiper-podcast').empty();    
         $('#avg-nav-bar').css('visibility', '');
         
     }
