@@ -22,5 +22,9 @@ namespace WebApplication1.Controllers
         {
             return PartialView("_SelectedMenu");
         }
+        public PartialViewResult MenuPodcast()
+        {
+            return PartialView("_MenuPodcast");
+        }
     }
 }
