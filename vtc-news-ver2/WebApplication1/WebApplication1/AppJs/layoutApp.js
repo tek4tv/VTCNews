@@ -19,6 +19,7 @@
         $('#audioapp').removeClass('selected');
         $('#homeapp').addClass('selected');  
         self.homeApp();
+        self.scrollToTop();
     }
     self.trendModal = function () {
         $('#trendModal').attr("data-dismiss", "modal");
@@ -28,6 +29,7 @@
         $('#audioapp').removeClass('selected');
         $('#trending').addClass('selected');
         self.trend();
+        self.scrollToTop();
     }
     self.videoModal = function () {
         $('#videoModal').attr("data-dismiss", "modal");
@@ -37,6 +39,7 @@
         $('#audioapp').removeClass('selected');
         $('#videoapp').addClass('selected');
         self.videoApp()
+        self.scrollToTop();
     }
    
     self.scrollToTop = function () {
@@ -84,6 +87,7 @@
             }
         });      
     }
+  
     setTimeout(function () {        
         $('#screen-welcome').css('display', 'none');         
         self.loadGetChannelHots();      
@@ -185,7 +189,6 @@
             type: 'GET',
         }).done(function (data) {
             self.isLoading(false);
-            console.log(data)
             if (data.length == 0) {
                 console.log('null')
                 $('#loaddingMenu').css('visibility','hidden');
@@ -1152,9 +1155,8 @@
             self.scrollToTop();    
             self.showMode("selectedAudiobookDetail");
             if (data.Items.length > 4) {
-                $('.slim-scroll').slimScroll({
-                    height: '250px',
-                });
+                $('.slim-scroll').css('height', '250px');
+               // $('.slim-scroll').css('overflow', 'hidden');
             }                          
         });
     }
@@ -1172,10 +1174,8 @@
             console.log(data)
             self.showMode("audiobookDetailHome");
             console.log('ok');
-            $('.slim-scroll').slimScroll({
-                height: '250px',
-              
-            });
+            $('.slim-scroll').css('height', '250px');
+            //$('.slim-scroll').css('overflow', 'hidden');
         });
     }  
     self.newItems = ko.observableArray();  
@@ -1315,6 +1315,37 @@
         });           
     }   
 
+    self.NextToPodcast = function () {
+        $('#next-podcast').attr("data-dismiss", "modal");
+        $('#homeapp').removeClass('selected');
+        $('#trending').removeClass('selected');
+        $('#videoapp').removeClass('selected');
+        $('#audioapp').removeClass('selected');
+        $('#audioapp').addClass('selected');  
+        self.audioApp();
+        self.scrollToTop();
+    }
+    self.NextToMusic = function () {
+        $('#next-music').attr("data-dismiss", "modal");
+        $('#homeapp').removeClass('selected');
+        $('#trending').removeClass('selected');
+        $('#videoapp').removeClass('selected');
+        $('#audioapp').removeClass('selected');
+        $('#audioapp').addClass('selected');
+        self.audioApp();
+        $('#podcast-music')[0].scrollIntoView(false);
+    }
+    self.NextToAudiobook = function () {
+        $('#next-audiobook').attr("data-dismiss", "modal");
+        $('#homeapp').removeClass('selected');
+        $('#trending').removeClass('selected');
+        $('#videoapp').removeClass('selected');
+        $('#audioapp').removeClass('selected');
+        $('#audioapp').addClass('selected');
+        self.audioApp();
+        $('#podcast-audiobook')[0].scrollIntoView(false);
+    }
+
     self.listMode = ko.observableArray();
     self.initListMode = function () {
         self.listMode = [
@@ -1333,14 +1364,9 @@
             { Name: 'newDetailMenu' },
             { Name: 'newDetailTrend' },
             { Name: 'audiobookDetailHome' },
-            { Name: 'screen-welcome' },
-            
-        ];
-
-       
-    
-    }
-    
+            { Name: 'screen-welcome' },           
+        ];  
+    }  
     self.showMode = function (name) {
         if ($("#HomeApp").css("display") != 'none') {
             scrollPotison = document.documentElement.scrollTop;

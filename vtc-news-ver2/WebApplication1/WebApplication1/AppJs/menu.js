@@ -1,6 +1,6 @@
 ﻿var MenuModel = function () {
     var self = this;
-    self.mode = ko.observable();
+   
     self.convertToKoObject = function (data) {
         var newObj = ko.mapping.fromJS(data);
         return newObj;
@@ -20,7 +20,7 @@
     self.menuData = ko.observableArray();
     self.selectHomeMenuDetail = ko.observableArray();
     self.loadData = function () {
-        self.mode("");  
+        self.showMode("menuHome");    
         var i = 0;
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn/api/home/news/menu",
@@ -34,32 +34,40 @@
                     self.menuData.push(self.convertToKoObject(item));
                 }
             })                            
-            self.initSwiperTab();
+           
             $('.clicked-menu').click(function () {
                 $('.clicked').removeClass('clicked');
                 $(this).addClass('clicked');
+              //  $('#swiper3-height').css("height", "");
             });
-            $(`#news_0`).click();                         
-        });       
+            $(`#news_0`).click();    
+           // $('#swiper3-height').css("height", "");
+           
+        });    
+        
     }
+    var swiper3;
     self.initSwiperTab = function () {
-        var n = 0;
+        //var n = 0;
         var setting = {
-            autoHeight: true,
-            direction: 'horizontal',         
+            autoHeight:true,
             on: {
                 slideChange: function () {
-                    n = this.activeIndex;                                 
-                    $(`#news_${n}`).click();                    
-                    $(`#news_${n}`)[0].scrollIntoView(false)                   
+                  var  n = this.activeIndex;
+                    $('#swiper3-height').css("height", "");
+                    $(`#news_${n}`).click();                
+                    $(`#news_${n}`)[0].scrollIntoView(false);
+                    
                 }
             }
         }
         swiper3 = new Swiper('.swiper3', setting);
+       
     }   
+    
     self.loadValueMenu = function (item) { 
         var index = item.Index();
-        swiper3.slideTo(index, 500, false);    
+      
         if (self.menuData()[index].Array().length == 0) {
             $.ajax({
                 url: "https://api.vtcnews.tek4tv.vn/api/home/news/ArticleCategoryPaging/" + 1 + "/" + item.Id(),
@@ -77,6 +85,9 @@
                 }
                 console.log(self.menuData()[index].Array())
                 self.lazy();
+              //  $('#swiper3-height').css("height", "");
+                self.initSwiperTab();
+                swiper3.slideTo(index, 500, false);    
             });
         }
     }
@@ -122,7 +133,7 @@
                         }
                     }
                 });
-                self.mode("newDetailMenu");
+                self.showMode("newDetailMenu");
                 
                 $('#_idArticle').val(item.Id())
                 // load commnet
@@ -202,7 +213,7 @@
         })
     }
     self.loadByVideoMenuByID = function (item) {
-        console.log(item)
+     
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn//api/home/news/GetVideoDetail/" + item.Id(),
             type: 'GET'
@@ -252,7 +263,22 @@
         }
     }
     self.backSelectedMenu = function () {
-        self.mode("");
+        self.showMode("menuHome");
+    }
+
+    self.listMode = ko.observableArray();
+    self.initListMode = function () {
+        self.listMode = [
+            { Name: 'menuHome' },
+            { Name: 'newDetailMenu' }
+        ];
+    }
+    self.showMode = function (name) {
+        $.each(self.listMode, function (idx, item) {
+            $("#" + item.Name).css("display", "none");
+        });
+        $("#" + name).css("display", "");
+        modeName = name;
     }
 }
 
@@ -260,5 +286,6 @@ $(function () {
     ko.cleanNode($("#swiper-binding")[0]);
     var menuModel = new MenuModel();
     menuModel.loadData();
+    menuModel.initListMode();
     ko.applyBindings(menuModel, $("#swiper-binding")[0]);
 });
