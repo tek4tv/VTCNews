@@ -20,8 +20,7 @@
     self.menuData = ko.observableArray();
     self.selectHomeMenuDetail = ko.observableArray();
     self.loadData = function () {
-        self.showMode("menuHome"); 
-       
+        self.showMode("menuHome");     
         var i = 0;
         $.ajax({
             url: "https://api.vtcnews.tek4tv.vn/api/home/news/menu",
@@ -39,32 +38,25 @@
             $('.clicked-menu').click(function () {
                 $('.clicked').removeClass('clicked');
                 $(this).addClass('clicked');
-              //  $('#swiper3-height').css("height", "");
             });
-
             $(`#news_0`).click();    
-           // $('#swiper3-height').css("height", "");
-           
-        });    
-        
+            $('#swiper3-height').css("height", "");          
+        });           
     }
     var swiper3;
     self.initSwiperTab = function () {
-        //var n = 0;
-        var setting = {
-            autoHeight:true,
+        var setting = {   
+            autoHeight: true,
             on: {
                 slideChange: function () {
                   var  n = this.activeIndex;
                     $('#swiper3-height').css("height", "");
                     $(`#news_${n}`).click();                
-                    $(`#news_${n}`)[0].scrollIntoView(false);
-                    
+                    $(`#news_${n}`)[0].scrollIntoView(false);                 
                 }
             }
         }
-        swiper3 = new Swiper('.swiper3', setting);
-       
+        swiper3 = new Swiper('.swiper3', setting);     
     }   
     
     self.loadValueMenu = function (item) { 

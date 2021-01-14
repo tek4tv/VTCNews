@@ -34,7 +34,7 @@
                 item.ArrayFirst = [];
                 self.menuAuBook.push(self.convertToKoObject(item));
             })  
-                               
+            self.initSwiperTab(); 
             $('.clicked-menu').click(function () {
                 $('.clicked').removeClass('clicked');
                 $(this).addClass('clicked');         
@@ -45,7 +45,7 @@
     }
     self.loadAlbumPage = function (item) {         
         var index = item.Index();
-         
+        swiper4.slideTo(index, 500, true);  
         if (self.menuAuBook()[index].Array().length == 0) {
             $.ajax({
                 url: "https://api.vtcnews.tek4tv.vn/api/podcast/GetAlbumPaging/chanId/" + item.Id() + "/pageIndex/" + 1,
@@ -57,10 +57,7 @@
                 self.menuAuBook()[index].ArrayFirst.push(self.convertToKoObject(data[0]));
                 for (let i = 1; i < data.length; i++) {
                     self.menuAuBook()[index].Array.push(self.convertToKoObject(data[i]));
-                }
-              //  $('.swiper-height').css("height", "");
-                self.initSwiperTab(); 
-                swiper4.slideTo(index, 500, true);  
+                }           
             })
         }
     }
@@ -82,14 +79,16 @@
     var n = 0;
     self.initSwiperTab = function () {       
         var setting = {
-            autoHeight: true,             
+            //calculateHeight: true,  
+            
             on: {
                 slideChange: function () {                  
                     n = this.activeIndex;
                     $(`#podcast_${n}`).click();                  
                     $(`#podcast_${n}`)[0].scrollIntoView(false);                    
-                    $('.swiper-height').css("height", "");
-                }
+                   
+                },
+                autoHeight: true
             }
         }
         swiper4 = new Swiper('.swiper4', setting);
@@ -109,8 +108,7 @@
             })
             self.scrollToTop();
             if (data.Items.length > 4) {
-                $('.slim-scroll').css('height', '250px');
-            
+                $('.slim-scroll').css('height', '250px');           
             }
             self.loadCategory();
         });
